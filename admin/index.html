@@ -370,38 +370,42 @@ var MOCK_USERS = [
 ];
 
 // ===================================================================
-//  AUTH
+//  AUTH  (session stored as plain JSON — no btoa/atob)
 // ===================================================================
-function createToken(user){
-  return btoa(JSON.stringify({sub:user.id,email:user.email,role:user.role,name:user.name,exp:Date.now()+30*60*1000}));
+var SESSION_KEY = 'steel_admin_session';
+
+function saveSession(user) {
+  var s = { id: user.id, name: user.name, email: user.email, role: user.role, exp: Date.now() + 30*60*1000 };
+  try { localStorage.setItem(SESSION_KEY, JSON.stringify(s)); } catch(e) {}
 }
-function getTokenPayload(){
-  var t=localStorage.getItem('steel_admin_token');
-  if(!t)return null;
-  try{return JSON.parse(atob(t));}catch(e){return null;}
+function getSession() {
+  try {
+    var s = localStorage.getItem(SESSION_KEY);
+    return s ? JSON.parse(s) : null;
+  } catch(e) { return null; }
 }
-function isAuthenticated(){
-  var p=getTokenPayload();
-  if(!p)return false;
-  if(p.exp<Date.now()){forceLogout();return false;}
+function isAuthenticated() {
+  var s = getSession();
+  if (!s) return false;
+  if (s.exp < Date.now()) { forceLogout(); return false; }
   return true;
 }
-function getCurrentUser(){return getTokenPayload();}
-function login(email,password){
-  var u=MOCK_USERS.find(function(u){return u.email===email&&u.password===password;});
-  if(!u)return false;
-  localStorage.setItem('steel_admin_token',createToken(u));
-  addAudit('Login','Usuário '+u.name+' entrou no sistema');
+function getCurrentUser() { return getSession(); }
+function login(email, password) {
+  var em = (email || '').trim().toLowerCase();
+  var u = MOCK_USERS.find(function(u) { return u.email.toLowerCase() === em && u.password === password; });
+  if (!u) return false;
+  saveSession(u);
   return true;
 }
-function logout(){
-  var u=getCurrentUser();
-  if(u)addAudit('Logout','Usuário '+u.name+' encerrou a sessão');
-  localStorage.removeItem('steel_admin_token');
+function logout() {
+  var u = getCurrentUser();
+  if (u) addAudit('Logout', 'Usuário ' + u.name + ' encerrou a sessão');
+  localStorage.removeItem(SESSION_KEY);
   location.reload();
 }
-function forceLogout(){
-  localStorage.removeItem('steel_admin_token');
+function forceLogout() {
+  localStorage.removeItem(SESSION_KEY);
   location.reload();
 }
 
@@ -487,8 +491,8 @@ function startTimer(){
 }
 function resetTimer(){
   timerSec=30*60;
-  var p=getTokenPayload();
-  if(p)localStorage.setItem('steel_admin_token',btoa(JSON.stringify(Object.assign({},p,{exp:Date.now()+30*60*1000}))));
+  var s=getSession();
+  if(s){ s.exp=Date.now()+30*60*1000; try{localStorage.setItem(SESSION_KEY,JSON.stringify(s));}catch(e){} }
 }
 function showSessionExpired(){
   document.getElementById('session-expired').hidden=false;
@@ -1083,16 +1087,23 @@ function handleLogin(e){
   btn.textContent='Entrando…';
   btn.disabled=true;
   setTimeout(function(){
-    if(login(email,pass)){
-      showAdmin();
-      initData();
-      navigate('dashboard');
-      startTimer();
-    } else {
-      document.getElementById('login-email').classList.add('error');
-      document.getElementById('login-pass').classList.add('error');
-      document.getElementById('pass-error').classList.add('show');
-      document.getElementById('pass-error').textContent='E-mail ou senha incorretos.';
+    try {
+      if(login(email,pass)){
+        initData();
+        addAudit('Login','Usuário ' + (getCurrentUser()||{name:'?'}).name + ' entrou no sistema');
+        showAdmin();
+        navigate('dashboard');
+        startTimer();
+      } else {
+        document.getElementById('login-email').classList.add('error');
+        document.getElementById('login-pass').classList.add('error');
+        var errEl=document.getElementById('pass-error');
+        if(errEl){errEl.classList.add('show');errEl.textContent='E-mail ou senha incorretos.';}
+      }
+    } catch(err) {
+      console.error('Login error:', err);
+      var errEl=document.getElementById('pass-error');
+      if(errEl){errEl.classList.add('show');errEl.textContent='Erro interno. Tente novamente.';}
     }
     btn.textContent='Entrar →';
     btn.disabled=false;
