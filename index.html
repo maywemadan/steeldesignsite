@@ -1422,9 +1422,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
   <ul class="nav-links">
     <li><a href="#/casas" data-route="casas" onclick="navigate('casas'); return false;">Steel Casas</a></li>
+    <li><a href="#/empresas" data-route="empresas" onclick="navigate('empresas'); return false;">Corporativo</a></li>
+    <li><a href="#/empreendimentos" data-route="empreendimentos" onclick="navigate('empreendimentos'); return false;">Empreendimentos</a></li>
     <li><a href="#/sobre" data-route="sobre" onclick="navigate('sobre'); return false;">A Steel</a></li>
-    <li><a href="#/processo" data-route="processo" onclick="navigate('processo'); return false;">Processo</a></li>
-    <li><a href="#/processo" data-route="processo" onclick="navigate('processo'); return false;">Qualidade</a></li>
     <li><a href="#/contato" data-route="contato" onclick="navigate('contato'); return false;">Contato</a></li>
   </ul>
 
@@ -1443,8 +1443,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="#/casas" data-route="casas" onclick="navigate('casas'); toggleMobileMenu(); return false;">Steel Casas</a>
+  <a href="#/empresas" data-route="empresas" onclick="navigate('empresas'); toggleMobileMenu(); return false;">Corporativo</a>
+  <a href="#/empreendimentos" data-route="empreendimentos" onclick="navigate('empreendimentos'); toggleMobileMenu(); return false;">Empreendimentos</a>
   <a href="#/sobre" data-route="sobre" onclick="navigate('sobre'); toggleMobileMenu(); return false;">A Steel</a>
-  <a href="#/processo" data-route="processo" onclick="navigate('processo'); toggleMobileMenu(); return false;">Processo &amp; Qualidade</a>
   <a href="#/contato" data-route="contato" onclick="navigate('contato'); toggleMobileMenu(); return false;">Contato</a>
 </div>
 
@@ -1723,10 +1724,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
       <div>
         <div class="footer-col-title">Serviços</div>
         <ul class="footer-links">
-          <li><a href="#">Residencial</a></li>
-          <li><a href="#">Corporativo</a></li>
-          <li><a href="#">Empreendimentos</a></li>
-          <li><a href="#">Projeto BIM</a></li>
+          <li><a href="#/casas" onclick="navigate('casas'); return false;">Steel Casas</a></li>
+          <li><a href="#/empresas" onclick="navigate('empresas'); return false;">Corporativo</a></li>
+          <li><a href="#/empreendimentos" onclick="navigate('empreendimentos'); return false;">Empreendimentos</a></li>
+          <li><a href="#/processo" onclick="navigate('processo'); return false;">Processo &amp; Qualidade</a></li>
         </ul>
       </div>
       <div>
@@ -2187,6 +2188,516 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   </footer>
 </div>
 
+<!-- ========================== EMPRESAS PAGE ========================== -->
+<div id="page-empresas" class="page" hidden>
+
+  <div class="page-header">
+    <div class="eyebrow">Cap. 02 · Obras Corporativas</div>
+    <div class="page-count">9 obras concluídas</div>
+    <h1 class="page-h1">Steel <em>Empresas.</em></h1>
+    <p class="page-desc" style="max-width:640px;">Edificações corporativas, industriais, hospitalares e institucionais executadas com gestão integrada BIM, ISO 45001 e cronograma transparente. Nove obras que transformaram setores.</p>
+  </div>
+
+  <!-- SECTORS -->
+  <section style="padding:72px 64px; background:var(--cream); border-bottom:1px solid var(--border);">
+    <div class="eyebrow" style="margin-bottom:16px;">Setores de atuação</div>
+    <h2 class="section-h2" style="margin-bottom:48px;">Quatro frentes,<br/>um mesmo <em>padrão.</em></h2>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:14px;">
+
+      <div style="background:linear-gradient(165deg,#2a2622,#0f0e0d); color:var(--cream); padding:32px 26px; display:flex; flex-direction:column; gap:12px; min-height:320px;">
+        <div style="font-family:'DM Serif Display',serif; font-style:italic; font-size:28px; color:rgba(241,235,224,0.35); margin-bottom:auto;">01</div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.22em; color:var(--red-lt); text-transform:uppercase; margin-bottom:8px;">Corporativo</div>
+        <h4 style="font-family:'DM Serif Display',serif; font-size:28px; line-height:1.05; margin-bottom:12px;">Sedes &amp; <em style="color:var(--red-lt);">Escritórios</em></h4>
+        <p style="font-size:13px; line-height:1.65; color:rgba(241,235,224,0.7); margin-bottom:16px;">Edifícios de uso corporativo com lajes flexíveis, fachadas de alto desempenho e certificação AQUA ou LEED.</p>
+        <div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:18px;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; padding:5px 10px; border:1px solid rgba(241,235,224,0.2); color:rgba(241,235,224,0.8); text-transform:uppercase; border-radius:100px;">AQUA</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; padding:5px 10px; border:1px solid rgba(241,235,224,0.2); color:rgba(241,235,224,0.8); text-transform:uppercase; border-radius:100px;">BIM</span>
+        </div>
+        <div style="padding-top:14px; border-top:1px solid rgba(241,235,224,0.12); display:flex; justify-content:space-between; align-items:baseline; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.16em; color:rgba(241,235,224,0.5); text-transform:uppercase;">
+          <span>Obras entregues</span><span style="font-family:'DM Serif Display',serif; font-style:italic; font-size:22px; color:var(--cream);">4</span>
+        </div>
+      </div>
+
+      <div style="background:var(--red); color:var(--cream); padding:32px 26px; display:flex; flex-direction:column; gap:12px; min-height:320px;">
+        <div style="font-family:'DM Serif Display',serif; font-style:italic; font-size:28px; color:rgba(241,235,224,0.3); margin-bottom:auto;">02</div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.22em; color:rgba(241,235,224,0.7); text-transform:uppercase; margin-bottom:8px;">Industrial</div>
+        <h4 style="font-family:'DM Serif Display',serif; font-size:28px; line-height:1.05; margin-bottom:12px;">Galpões &amp; <em style="color:rgba(241,235,224,0.7);">Centros Logísticos</em></h4>
+        <p style="font-size:13px; line-height:1.65; color:rgba(241,235,224,0.75); margin-bottom:16px;">Estruturas pré-fabricadas e metálicas de grande vão, docas, pisos de alta resistência e sistemas automatizados.</p>
+        <div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:18px;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; padding:5px 10px; border:1px solid rgba(241,235,224,0.3); color:rgba(241,235,224,0.85); text-transform:uppercase; border-radius:100px;">ISO 45001</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; padding:5px 10px; border:1px solid rgba(241,235,224,0.3); color:rgba(241,235,224,0.85); text-transform:uppercase; border-radius:100px;">Vão Livre</span>
+        </div>
+        <div style="padding-top:14px; border-top:1px solid rgba(241,235,224,0.2); display:flex; justify-content:space-between; align-items:baseline; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.16em; color:rgba(241,235,224,0.55); text-transform:uppercase;">
+          <span>Obras entregues</span><span style="font-family:'DM Serif Display',serif; font-style:italic; font-size:22px; color:var(--cream);">3</span>
+        </div>
+      </div>
+
+      <div style="background:linear-gradient(165deg,#38332c,#14130f); color:var(--cream); padding:32px 26px; display:flex; flex-direction:column; gap:12px; min-height:320px;">
+        <div style="font-family:'DM Serif Display',serif; font-style:italic; font-size:28px; color:rgba(241,235,224,0.35); margin-bottom:auto;">03</div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.22em; color:var(--red-lt); text-transform:uppercase; margin-bottom:8px;">Hospitalar</div>
+        <h4 style="font-family:'DM Serif Display',serif; font-size:28px; line-height:1.05; margin-bottom:12px;">Saúde &amp; <em style="color:var(--red-lt);">Ampliações</em></h4>
+        <p style="font-size:13px; line-height:1.65; color:rgba(241,235,224,0.7); margin-bottom:16px;">Construção e ampliação de unidades hospitalares com controle de contaminação, normas ANVISA e ABNT NBR 7256.</p>
+        <div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:18px;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; padding:5px 10px; border:1px solid rgba(241,235,224,0.2); color:rgba(241,235,224,0.8); text-transform:uppercase; border-radius:100px;">ANVISA</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; padding:5px 10px; border:1px solid rgba(241,235,224,0.2); color:rgba(241,235,224,0.8); text-transform:uppercase; border-radius:100px;">LEED</span>
+        </div>
+        <div style="padding-top:14px; border-top:1px solid rgba(241,235,224,0.12); display:flex; justify-content:space-between; align-items:baseline; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.16em; color:rgba(241,235,224,0.5); text-transform:uppercase;">
+          <span>Obras entregues</span><span style="font-family:'DM Serif Display',serif; font-style:italic; font-size:22px; color:var(--cream);">2</span>
+        </div>
+      </div>
+
+      <div style="background:linear-gradient(160deg,#6a5e50,#1a1612); color:var(--cream); padding:32px 26px; display:flex; flex-direction:column; gap:12px; min-height:320px;">
+        <div style="font-family:'DM Serif Display',serif; font-style:italic; font-size:28px; color:rgba(241,235,224,0.35); margin-bottom:auto;">04</div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.22em; color:var(--red-lt); text-transform:uppercase; margin-bottom:8px;">Retrofit</div>
+        <h4 style="font-family:'DM Serif Display',serif; font-size:28px; line-height:1.05; margin-bottom:12px;">Conversão &amp; <em style="color:var(--red-lt);">Restauro</em></h4>
+        <p style="font-size:13px; line-height:1.65; color:rgba(241,235,224,0.7); margin-bottom:16px;">Retrofit técnico de fachadas, conversão de uso e reformas executivas respeitando memória patrimonial e desempenho atual.</p>
+        <div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:18px;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; padding:5px 10px; border:1px solid rgba(241,235,224,0.2); color:rgba(241,235,224,0.8); text-transform:uppercase; border-radius:100px;">Patrimônio</span>
+        </div>
+        <div style="padding-top:14px; border-top:1px solid rgba(241,235,224,0.12); display:flex; justify-content:space-between; align-items:baseline; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.16em; color:rgba(241,235,224,0.5); text-transform:uppercase;">
+          <span>Obras entregues</span><span style="font-family:'DM Serif Display',serif; font-style:italic; font-size:22px; color:var(--cream);">—</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- OBRAS LIST -->
+  <section style="padding:72px 64px; background:var(--paper);">
+    <div class="eyebrow" style="margin-bottom:16px;">Portfólio corporativo</div>
+    <div style="display:grid; grid-template-columns:1fr auto; align-items:end; padding-bottom:24px; margin-bottom:32px; border-bottom:2px solid var(--ink);">
+      <h2 class="section-h2">9 obras <em>entregues.</em></h2>
+      <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.18em; color:var(--graphite); text-transform:uppercase;">Atualizado 2026</span>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:0;">
+
+      <div style="display:grid; grid-template-columns:64px 1fr auto; gap:24px; align-items:center; padding:24px 0; border-bottom:1px solid var(--border);">
+        <span style="font-family:'DM Serif Display',serif; font-style:italic; font-size:36px; color:rgba(15,14,13,0.18);">01</span>
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.2em; color:var(--red); text-transform:uppercase; margin-bottom:6px;">Corporativo · Vinhedo SP · 2022</div>
+          <div style="font-family:'DM Serif Display',serif; font-size:28px; color:var(--ink); margin-bottom:4px;">Sede <em>Volare</em></div>
+          <div style="font-size:13px; color:var(--graphite);">12 lajes · 9.400 m² · Certificação AQUA · Auditório 350 lugares</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.16em; color:var(--graphite); text-transform:uppercase; margin-bottom:4px;">Área total</div>
+          <div style="font-family:'DM Serif Display',serif; font-size:24px; color:var(--ink);">9.400 <em style="font-size:14px; color:var(--red);">m²</em></div>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:64px 1fr auto; gap:24px; align-items:center; padding:24px 0; border-bottom:1px solid var(--border);">
+        <span style="font-family:'DM Serif Display',serif; font-style:italic; font-size:36px; color:rgba(15,14,13,0.18);">02</span>
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.2em; color:var(--red); text-transform:uppercase; margin-bottom:6px;">Hospitalar · Belo Horizonte MG · 2023</div>
+          <div style="font-family:'DM Serif Display',serif; font-size:28px; color:var(--ink); margin-bottom:4px;">Hospital <em>Albano</em> — Ampliação</div>
+          <div style="font-size:13px; color:var(--graphite);">+186 leitos · 24.000 m² · LEED · Novo bloco cirúrgico e UTI</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.16em; color:var(--graphite); text-transform:uppercase; margin-bottom:4px;">Área total</div>
+          <div style="font-family:'DM Serif Display',serif; font-size:24px; color:var(--ink);">24.000 <em style="font-size:14px; color:var(--red);">m²</em></div>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:64px 1fr auto; gap:24px; align-items:center; padding:24px 0; border-bottom:1px solid var(--border);">
+        <span style="font-family:'DM Serif Display',serif; font-style:italic; font-size:36px; color:rgba(15,14,13,0.18);">03</span>
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.2em; color:var(--red); text-transform:uppercase; margin-bottom:6px;">Industrial · Itupeva SP · 2024</div>
+          <div style="font-family:'DM Serif Display',serif; font-size:28px; color:var(--ink); margin-bottom:4px;">CD Logística <em>Sul</em></div>
+          <div style="font-size:13px; color:var(--graphite);">18.000 m² · 42 docas · Piso nivelado a laser · Mezanino administrativo</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.16em; color:var(--graphite); text-transform:uppercase; margin-bottom:4px;">Área total</div>
+          <div style="font-family:'DM Serif Display',serif; font-size:24px; color:var(--ink);">18.000 <em style="font-size:14px; color:var(--red);">m²</em></div>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:64px 1fr auto; gap:24px; align-items:center; padding:24px 0; border-bottom:1px solid var(--border);">
+        <span style="font-family:'DM Serif Display',serif; font-style:italic; font-size:36px; color:rgba(15,14,13,0.18);">04</span>
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.2em; color:var(--red); text-transform:uppercase; margin-bottom:6px;">Corporativo · São Paulo SP · 2021</div>
+          <div style="font-family:'DM Serif Display',serif; font-size:28px; color:var(--ink); margin-bottom:4px;">Torre <em>Banco Áureo</em></div>
+          <div style="font-size:13px; color:var(--graphite);">18 lajes · 14.200 m² · Fachada dupla pele · Geração solar integrada</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.16em; color:var(--graphite); text-transform:uppercase; margin-bottom:4px;">Área total</div>
+          <div style="font-family:'DM Serif Display',serif; font-size:24px; color:var(--ink);">14.200 <em style="font-size:14px; color:var(--red);">m²</em></div>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:64px 1fr auto; gap:24px; align-items:center; padding:24px 0; border-bottom:1px solid var(--border);">
+        <span style="font-family:'DM Serif Display',serif; font-style:italic; font-size:36px; color:rgba(15,14,13,0.18);">05</span>
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.2em; color:var(--red); text-transform:uppercase; margin-bottom:6px;">Industrial · Barueri SP · 2020</div>
+          <div style="font-family:'DM Serif Display',serif; font-size:28px; color:var(--ink); margin-bottom:4px;">Planta <em>Usina SP</em></div>
+          <div style="font-size:13px; color:var(--graphite);">22.000 m² · Estrutura metálica · Câmaras frigoríficas · ISO 45001</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.16em; color:var(--graphite); text-transform:uppercase; margin-bottom:4px;">Área total</div>
+          <div style="font-family:'DM Serif Display',serif; font-size:24px; color:var(--ink);">22.000 <em style="font-size:14px; color:var(--red);">m²</em></div>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:64px 1fr auto; gap:24px; align-items:center; padding:24px 0; border-bottom:1px solid var(--border);">
+        <span style="font-family:'DM Serif Display',serif; font-style:italic; font-size:36px; color:rgba(15,14,13,0.18);">06</span>
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.2em; color:var(--red); text-transform:uppercase; margin-bottom:6px;">Institucional · Brasília DF · 2019</div>
+          <div style="font-family:'DM Serif Display',serif; font-size:28px; color:var(--ink); margin-bottom:4px;">Embaixada <em>dos Países Baixos</em></div>
+          <div style="font-size:13px; color:var(--graphite);">3.800 m² · Segurança nível IV · Auditório, residência e área de serviços consulares</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.16em; color:var(--graphite); text-transform:uppercase; margin-bottom:4px;">Área total</div>
+          <div style="font-family:'DM Serif Display',serif; font-size:24px; color:var(--ink);">3.800 <em style="font-size:14px; color:var(--red);">m²</em></div>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:64px 1fr auto; gap:24px; align-items:center; padding:24px 0; border-bottom:1px solid var(--border);">
+        <span style="font-family:'DM Serif Display',serif; font-style:italic; font-size:36px; color:rgba(15,14,13,0.18);">07</span>
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.2em; color:var(--red); text-transform:uppercase; margin-bottom:6px;">Corporativo · Alphaville SP · 2018</div>
+          <div style="font-family:'DM Serif Display',serif; font-size:28px; color:var(--ink); margin-bottom:4px;">Campus <em>Grupo Maia</em></div>
+          <div style="font-size:13px; color:var(--graphite);">8 blocos · 32.000 m² · Auditório central · Sistema BMS integrado</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.16em; color:var(--graphite); text-transform:uppercase; margin-bottom:4px;">Área total</div>
+          <div style="font-family:'DM Serif Display',serif; font-size:24px; color:var(--ink);">32.000 <em style="font-size:14px; color:var(--red);">m²</em></div>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:64px 1fr auto; gap:24px; align-items:center; padding:24px 0; border-bottom:1px solid var(--border);">
+        <span style="font-family:'DM Serif Display',serif; font-style:italic; font-size:36px; color:rgba(15,14,13,0.18);">08</span>
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.2em; color:var(--red); text-transform:uppercase; margin-bottom:6px;">Industrial · Cajamar SP · 2017</div>
+          <div style="font-family:'DM Serif Display',serif; font-size:28px; color:var(--ink); margin-bottom:4px;">Galpão <em>Lateral Group</em></div>
+          <div style="font-size:13px; color:var(--graphite);">28.000 m² · 60 docas · Vão livre 50m · Torre administrativa integrada</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.16em; color:var(--graphite); text-transform:uppercase; margin-bottom:4px;">Área total</div>
+          <div style="font-family:'DM Serif Display',serif; font-size:24px; color:var(--ink);">28.000 <em style="font-size:14px; color:var(--red);">m²</em></div>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:64px 1fr auto; gap:24px; align-items:center; padding:24px 0;">
+        <span style="font-family:'DM Serif Display',serif; font-style:italic; font-size:36px; color:rgba(15,14,13,0.18);">09</span>
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.2em; color:var(--red); text-transform:uppercase; margin-bottom:6px;">Hospitalar · São Paulo SP · 2015</div>
+          <div style="font-family:'DM Serif Display',serif; font-size:28px; color:var(--ink); margin-bottom:4px;">Centro Médico <em>Volare</em></div>
+          <div style="font-size:13px; color:var(--graphite);">6.200 m² · 4 centros cirúrgicos · Hemodinâmica · Pronto-socorro</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.16em; color:var(--graphite); text-transform:uppercase; margin-bottom:4px;">Área total</div>
+          <div style="font-family:'DM Serif Display',serif; font-size:24px; color:var(--ink);">6.200 <em style="font-size:14px; color:var(--red);">m²</em></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div>
+      <div class="eyebrow" style="color:var(--red-lt); margin-bottom:20px;">Novo projeto</div>
+      <h2 style="font-family:'DM Serif Display',serif; font-size:56px; line-height:1; letter-spacing:-0.025em; color:var(--cream);">Tem uma obra<br/>corporativa<br/><em style="color:var(--red-lt);">para executar?</em></h2>
+    </div>
+    <div class="cta-card">
+      <div class="cta-card-row"><span class="cta-card-label">Telefone direto</span><span class="cta-card-value">(11) 4252-5900</span></div>
+      <div class="cta-card-row"><span class="cta-card-label">E-mail comercial</span><span class="cta-card-value">contato@steelconstrucoes.com.br</span></div>
+      <a class="btn btn-red" href="#/contato" onclick="navigate('contato'); return false;" style="width:100%; justify-content:center; margin-top:16px;">Iniciar conversa →</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-name">STEEL</div>
+        <div class="footer-brand-sub">Construções &amp; Empreendimentos</div>
+        <div class="footer-quote">"Construir com intenção, entregar com assinatura."</div>
+      </div>
+      <div>
+        <div class="footer-col-title">Páginas</div>
+        <ul class="footer-links">
+          <li><a href="#/" onclick="navigate('home'); return false;">Início</a></li>
+          <li><a href="#/casas" onclick="navigate('casas'); return false;">Steel Casas</a></li>
+          <li><a href="#/empreendimentos" onclick="navigate('empreendimentos'); return false;">Empreendimentos</a></li>
+          <li><a href="#/sobre" onclick="navigate('sobre'); return false;">Quem Somos</a></li>
+          <li><a href="#/contato" onclick="navigate('contato'); return false;">Contato</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Serviços</div>
+        <ul class="footer-links">
+          <li><a href="#/casas" onclick="navigate('casas'); return false;">Residencial</a></li>
+          <li><a href="#/empresas" onclick="navigate('empresas'); return false;">Corporativo</a></li>
+          <li><a href="#/empreendimentos" onclick="navigate('empreendimentos'); return false;">Empreendimentos</a></li>
+          <li><a href="#/processo" onclick="navigate('processo'); return false;">Qualidade</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contato</div>
+        <ul class="footer-links">
+          <li><a href="tel:+551142525900">(11) 4252-5900</a></li>
+          <li><a href="mailto:contato@steelconstrucoes.com.br">contato@steelconstrucoes.com.br</a></li>
+          <li>Av. Cauaxi, 350 — Sala 1201<br>Alphaville, Barueri SP</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Steel Construções e Empreendimentos Ltda · CNPJ 58.370.644/0001-51 · Avenida Cauaxi, 350 – Alphaville, Barueri SP
+    </div>
+  </footer>
+</div>
+
+<!-- ========================== EMPREENDIMENTOS PAGE ========================== -->
+<div id="page-empreendimentos" class="page" hidden>
+
+  <div class="page-header">
+    <div class="eyebrow">Cap. 03 · Incorporações</div>
+    <div class="page-count">11 empreendimentos concluídos</div>
+    <h1 class="page-h1">Steel <em>Empreendimentos.</em></h1>
+    <p class="page-desc" style="max-width:640px;">Incorporações residenciais e de uso misto desenvolvidas com arquitetos parceiros, da identificação do terreno à entrega das chaves — sempre sob o mesmo CNPJ, com a mesma equipe.</p>
+  </div>
+
+  <!-- GRID DE EMPREENDIMENTOS -->
+  <section style="padding:72px 64px; background:var(--cream);">
+    <div style="display:grid; grid-template-columns:1fr auto; align-items:end; padding-bottom:24px; margin-bottom:40px; border-bottom:2px solid var(--ink);">
+      <h2 class="section-h2">Portfólio de <em>incorporações.</em></h2>
+      <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.18em; color:var(--graphite); text-transform:uppercase;">11 concluídos</span>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px;">
+
+      <div style="background:var(--paper); border:1px solid var(--border); display:flex; flex-direction:column;">
+        <div style="background:linear-gradient(165deg,#4a423a,#14130f); aspect-ratio:4/3; position:relative; overflow:hidden;">
+          <span style="position:absolute; top:0; left:0; background:var(--black); color:var(--cream); font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.18em; text-transform:uppercase; padding:7px 12px; display:flex; align-items:center; gap:6px;"><span style="width:6px; height:6px; background:var(--cream); border-radius:50%;"></span>Entregue · 2024</span>
+          <span style="position:absolute; top:16px; right:16px; font-family:'DM Serif Display',serif; font-style:italic; font-size:26px; color:rgba(241,235,224,0.35);">01</span>
+        </div>
+        <div style="padding:20px 22px;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.18em; color:var(--graphite); text-transform:uppercase; margin-bottom:8px; padding-bottom:8px; border-bottom:1px solid var(--border);">Residencial · Pinheiros SP</div>
+          <div style="font-family:'DM Serif Display',serif; font-size:26px; color:var(--ink); margin-bottom:6px;">Edifício <em style="color:var(--red);">Aurora</em></div>
+          <div style="font-size:13px; color:var(--graphite); margin-bottom:16px;">128 apartamentos · 84–212 m² · 24 pavimentos</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; border-top:1px solid var(--border); padding-top:14px;">
+            <div><div style="font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:0.16em; color:var(--stone); text-transform:uppercase; margin-bottom:3px;">Unidades</div><div style="font-family:'DM Serif Display',serif; font-size:18px; color:var(--ink);">128</div></div>
+            <div><div style="font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:0.16em; color:var(--stone); text-transform:uppercase; margin-bottom:3px;">Tipologia</div><div style="font-family:'DM Serif Display',serif; font-size:18px; color:var(--ink);">84–212 m²</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--paper); border:1px solid var(--border); display:flex; flex-direction:column;">
+        <div style="background:linear-gradient(155deg,#5a4d3e,#2a2418); aspect-ratio:4/3; position:relative; overflow:hidden;">
+          <span style="position:absolute; top:0; left:0; background:var(--black); color:var(--cream); font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.18em; text-transform:uppercase; padding:7px 12px; display:flex; align-items:center; gap:6px;"><span style="width:6px; height:6px; background:var(--cream); border-radius:50%;"></span>Entregue · 2023</span>
+          <span style="position:absolute; top:16px; right:16px; font-family:'DM Serif Display',serif; font-style:italic; font-size:26px; color:rgba(241,235,224,0.35);">02</span>
+        </div>
+        <div style="padding:20px 22px;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.18em; color:var(--graphite); text-transform:uppercase; margin-bottom:8px; padding-bottom:8px; border-bottom:1px solid var(--border);">Corporativo · Belo Horizonte MG</div>
+          <div style="font-family:'DM Serif Display',serif; font-size:26px; color:var(--ink); margin-bottom:6px;">Steel Pier <em style="color:var(--red);">Office Tower</em></div>
+          <div style="font-size:13px; color:var(--graphite); margin-bottom:16px;">18 lajes · 12.000 m² locáveis · Roof garden</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; border-top:1px solid var(--border); padding-top:14px;">
+            <div><div style="font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:0.16em; color:var(--stone); text-transform:uppercase; margin-bottom:3px;">Pavimentos</div><div style="font-family:'DM Serif Display',serif; font-size:18px; color:var(--ink);">18</div></div>
+            <div><div style="font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:0.16em; color:var(--stone); text-transform:uppercase; margin-bottom:3px;">M² locáveis</div><div style="font-family:'DM Serif Display',serif; font-size:18px; color:var(--ink);">12.000</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--paper); border:1px solid var(--border); display:flex; flex-direction:column;">
+        <div style="background:linear-gradient(170deg,#3a352e,#14130f); aspect-ratio:4/3; position:relative; overflow:hidden;">
+          <span style="position:absolute; top:0; left:0; background:var(--bone); color:var(--ink); font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.18em; text-transform:uppercase; padding:7px 12px; display:flex; align-items:center; gap:6px;"><span style="width:6px; height:6px; background:var(--ink); border-radius:50%;"></span>Pronto · 2022</span>
+          <span style="position:absolute; top:16px; right:16px; font-family:'DM Serif Display',serif; font-style:italic; font-size:26px; color:rgba(241,235,224,0.35);">03</span>
+        </div>
+        <div style="padding:20px 22px;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.18em; color:var(--graphite); text-transform:uppercase; margin-bottom:8px; padding-bottom:8px; border-bottom:1px solid var(--border);">Casas em condomínio · Brasília DF</div>
+          <div style="font-family:'DM Serif Display',serif; font-size:26px; color:var(--ink); margin-bottom:6px;">Vivienda <em style="color:var(--red);">Margens</em></div>
+          <div style="font-size:13px; color:var(--graphite); margin-bottom:16px;">14 casas · 240–360 m² · Lago Paranoá</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; border-top:1px solid var(--border); padding-top:14px;">
+            <div><div style="font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:0.16em; color:var(--stone); text-transform:uppercase; margin-bottom:3px;">Casas</div><div style="font-family:'DM Serif Display',serif; font-size:18px; color:var(--ink);">14</div></div>
+            <div><div style="font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:0.16em; color:var(--stone); text-transform:uppercase; margin-bottom:3px;">Tipologia</div><div style="font-family:'DM Serif Display',serif; font-size:18px; color:var(--ink);">240–360 m²</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--paper); border:1px solid var(--border); display:flex; flex-direction:column;">
+        <div style="background:linear-gradient(160deg,#4a3a2e,#14130f); aspect-ratio:4/3; position:relative; overflow:hidden;">
+          <span style="position:absolute; top:0; left:0; background:var(--red); color:var(--cream); font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.18em; text-transform:uppercase; padding:7px 12px; display:flex; align-items:center; gap:6px;"><span style="width:6px; height:6px; background:var(--cream); border-radius:50%;"></span>Entregue · 2021</span>
+          <span style="position:absolute; top:16px; right:16px; font-family:'DM Serif Display',serif; font-style:italic; font-size:26px; color:rgba(241,235,224,0.35);">04</span>
+        </div>
+        <div style="padding:20px 22px;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.18em; color:var(--graphite); text-transform:uppercase; margin-bottom:8px; padding-bottom:8px; border-bottom:1px solid var(--border);">Lofts · Conversão Industrial · SP</div>
+          <div style="font-family:'DM Serif Display',serif; font-size:26px; color:var(--ink); margin-bottom:6px;">Fábrica <em style="color:var(--red);">Plaza</em></div>
+          <div style="font-size:13px; color:var(--graphite); margin-bottom:16px;">62 lofts · 48–140 m² · Área industrial reconvertida</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; border-top:1px solid var(--border); padding-top:14px;">
+            <div><div style="font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:0.16em; color:var(--stone); text-transform:uppercase; margin-bottom:3px;">Lofts</div><div style="font-family:'DM Serif Display',serif; font-size:18px; color:var(--ink);">62</div></div>
+            <div><div style="font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:0.16em; color:var(--stone); text-transform:uppercase; margin-bottom:3px;">Tipologia</div><div style="font-family:'DM Serif Display',serif; font-size:18px; color:var(--ink);">48–140 m²</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--paper); border:1px solid var(--border); display:flex; flex-direction:column;">
+        <div style="background:linear-gradient(165deg,#3e3830,#14130f); aspect-ratio:4/3; position:relative; overflow:hidden;">
+          <span style="position:absolute; top:0; left:0; background:var(--black); color:var(--cream); font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.18em; text-transform:uppercase; padding:7px 12px; display:flex; align-items:center; gap:6px;"><span style="width:6px; height:6px; background:var(--cream); border-radius:50%;"></span>Entregue · 2020</span>
+          <span style="position:absolute; top:16px; right:16px; font-family:'DM Serif Display',serif; font-style:italic; font-size:26px; color:rgba(241,235,224,0.35);">05</span>
+        </div>
+        <div style="padding:20px 22px;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.18em; color:var(--graphite); text-transform:uppercase; margin-bottom:8px; padding-bottom:8px; border-bottom:1px solid var(--border);">Residencial · Alphaville SP</div>
+          <div style="font-family:'DM Serif Display',serif; font-size:26px; color:var(--ink); margin-bottom:6px;">Residencial <em style="color:var(--red);">Cauaxi</em></div>
+          <div style="font-size:13px; color:var(--graphite); margin-bottom:16px;">48 apartamentos · 110–185 m² · 12 pavimentos</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; border-top:1px solid var(--border); padding-top:14px;">
+            <div><div style="font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:0.16em; color:var(--stone); text-transform:uppercase; margin-bottom:3px;">Unidades</div><div style="font-family:'DM Serif Display',serif; font-size:18px; color:var(--ink);">48</div></div>
+            <div><div style="font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:0.16em; color:var(--stone); text-transform:uppercase; margin-bottom:3px;">Tipologia</div><div style="font-family:'DM Serif Display',serif; font-size:18px; color:var(--ink);">110–185 m²</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--paper); border:1px solid var(--border); display:flex; flex-direction:column;">
+        <div style="background:linear-gradient(155deg,#5e524a,#1a1612); aspect-ratio:4/3; position:relative; overflow:hidden;">
+          <span style="position:absolute; top:0; left:0; background:var(--bone); color:var(--ink); font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.18em; text-transform:uppercase; padding:7px 12px; display:flex; align-items:center; gap:6px;"><span style="width:6px; height:6px; background:var(--ink); border-radius:50%;"></span>Entregue · 2019</span>
+          <span style="position:absolute; top:16px; right:16px; font-family:'DM Serif Display',serif; font-style:italic; font-size:26px; color:rgba(241,235,224,0.35);">06</span>
+        </div>
+        <div style="padding:20px 22px;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.18em; color:var(--graphite); text-transform:uppercase; margin-bottom:8px; padding-bottom:8px; border-bottom:1px solid var(--border);">Uso misto · Tamboré SP</div>
+          <div style="font-family:'DM Serif Display',serif; font-size:26px; color:var(--ink); margin-bottom:6px;">Tamboré <em style="color:var(--red);">Business Square</em></div>
+          <div style="font-size:13px; color:var(--graphite); margin-bottom:16px;">Torre residencial + Torre comercial · 220 unidades</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; border-top:1px solid var(--border); padding-top:14px;">
+            <div><div style="font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:0.16em; color:var(--stone); text-transform:uppercase; margin-bottom:3px;">Unidades</div><div style="font-family:'DM Serif Display',serif; font-size:18px; color:var(--ink);">220</div></div>
+            <div><div style="font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:0.16em; color:var(--stone); text-transform:uppercase; margin-bottom:3px;">Torres</div><div style="font-family:'DM Serif Display',serif; font-size:18px; color:var(--ink);">2</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--paper); border:1px solid var(--border); display:flex; flex-direction:column;">
+        <div style="background:linear-gradient(165deg,#48403a,#14130f); aspect-ratio:4/3; position:relative; overflow:hidden;">
+          <span style="position:absolute; top:0; left:0; background:var(--black); color:var(--cream); font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.18em; text-transform:uppercase; padding:7px 12px; display:flex; align-items:center; gap:6px;"><span style="width:6px; height:6px; background:var(--cream); border-radius:50%;"></span>Entregue · 2017</span>
+          <span style="position:absolute; top:16px; right:16px; font-family:'DM Serif Display',serif; font-style:italic; font-size:26px; color:rgba(241,235,224,0.35);">07</span>
+        </div>
+        <div style="padding:20px 22px;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.18em; color:var(--graphite); text-transform:uppercase; margin-bottom:8px; padding-bottom:8px; border-bottom:1px solid var(--border);">Residencial · Granja Viana SP</div>
+          <div style="font-family:'DM Serif Display',serif; font-size:26px; color:var(--ink); margin-bottom:6px;">Villa <em style="color:var(--red);">Alpina</em></div>
+          <div style="font-size:13px; color:var(--graphite); margin-bottom:16px;">36 townhouses · 160–220 m² · Condomínio fechado</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; border-top:1px solid var(--border); padding-top:14px;">
+            <div><div style="font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:0.16em; color:var(--stone); text-transform:uppercase; margin-bottom:3px;">Townhouses</div><div style="font-family:'DM Serif Display',serif; font-size:18px; color:var(--ink);">36</div></div>
+            <div><div style="font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:0.16em; color:var(--stone); text-transform:uppercase; margin-bottom:3px;">Tipologia</div><div style="font-family:'DM Serif Display',serif; font-size:18px; color:var(--ink);">160–220 m²</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--paper); border:1px solid var(--border); display:flex; flex-direction:column;">
+        <div style="background:linear-gradient(170deg,#3a3228,#14130f); aspect-ratio:4/3; position:relative; overflow:hidden;">
+          <span style="position:absolute; top:0; left:0; background:var(--red); color:var(--cream); font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.18em; text-transform:uppercase; padding:7px 12px; display:flex; align-items:center; gap:6px;"><span style="width:6px; height:6px; background:var(--cream); border-radius:50%;"></span>Entregue · 2015</span>
+          <span style="position:absolute; top:16px; right:16px; font-family:'DM Serif Display',serif; font-style:italic; font-size:26px; color:rgba(241,235,224,0.35);">08</span>
+        </div>
+        <div style="padding:20px 22px;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.18em; color:var(--graphite); text-transform:uppercase; margin-bottom:8px; padding-bottom:8px; border-bottom:1px solid var(--border);">Residencial · Morumbi SP</div>
+          <div style="font-family:'DM Serif Display',serif; font-size:26px; color:var(--ink); margin-bottom:6px;">Torre <em style="color:var(--red);">Paraíso</em></div>
+          <div style="font-size:13px; color:var(--graphite); margin-bottom:16px;">80 apartamentos · 140–310 m² · 20 pavimentos</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; border-top:1px solid var(--border); padding-top:14px;">
+            <div><div style="font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:0.16em; color:var(--stone); text-transform:uppercase; margin-bottom:3px;">Unidades</div><div style="font-family:'DM Serif Display',serif; font-size:18px; color:var(--ink);">80</div></div>
+            <div><div style="font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:0.16em; color:var(--stone); text-transform:uppercase; margin-bottom:3px;">Tipologia</div><div style="font-family:'DM Serif Display',serif; font-size:18px; color:var(--ink);">140–310 m²</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--paper); border:1px solid var(--border); display:flex; flex-direction:column;">
+        <div style="background:linear-gradient(160deg,#5a5048,#1a1612); aspect-ratio:4/3; position:relative; overflow:hidden;">
+          <span style="position:absolute; top:0; left:0; background:var(--bone); color:var(--ink); font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.18em; text-transform:uppercase; padding:7px 12px; display:flex; align-items:center; gap:6px;"><span style="width:6px; height:6px; background:var(--ink); border-radius:50%;"></span>Entregue · 2013</span>
+          <span style="position:absolute; top:16px; right:16px; font-family:'DM Serif Display',serif; font-style:italic; font-size:26px; color:rgba(241,235,224,0.35);">09</span>
+        </div>
+        <div style="padding:20px 22px;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.18em; color:var(--graphite); text-transform:uppercase; margin-bottom:8px; padding-bottom:8px; border-bottom:1px solid var(--border);">Uso misto · Barueri SP</div>
+          <div style="font-family:'DM Serif Display',serif; font-size:26px; color:var(--ink); margin-bottom:6px;">Alpha <em style="color:var(--red);">Concept</em></div>
+          <div style="font-size:13px; color:var(--graphite); margin-bottom:16px;">Térreo comercial + 5 andares residencial · 60 unidades</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; border-top:1px solid var(--border); padding-top:14px;">
+            <div><div style="font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:0.16em; color:var(--stone); text-transform:uppercase; margin-bottom:3px;">Unidades</div><div style="font-family:'DM Serif Display',serif; font-size:18px; color:var(--ink);">60</div></div>
+            <div><div style="font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:0.16em; color:var(--stone); text-transform:uppercase; margin-bottom:3px;">Uso</div><div style="font-family:'DM Serif Display',serif; font-size:18px; color:var(--ink);">Misto</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--paper); border:1px solid var(--border); display:flex; flex-direction:column;">
+        <div style="background:linear-gradient(165deg,#44403a,#14130f); aspect-ratio:4/3; position:relative; overflow:hidden;">
+          <span style="position:absolute; top:0; left:0; background:var(--black); color:var(--cream); font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.18em; text-transform:uppercase; padding:7px 12px; display:flex; align-items:center; gap:6px;"><span style="width:6px; height:6px; background:var(--cream); border-radius:50%;"></span>Entregue · 2010</span>
+          <span style="position:absolute; top:16px; right:16px; font-family:'DM Serif Display',serif; font-style:italic; font-size:26px; color:rgba(241,235,224,0.35);">10</span>
+        </div>
+        <div style="padding:20px 22px;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.18em; color:var(--graphite); text-transform:uppercase; margin-bottom:8px; padding-bottom:8px; border-bottom:1px solid var(--border);">Residencial · Alphaville SP</div>
+          <div style="font-family:'DM Serif Display',serif; font-size:26px; color:var(--ink); margin-bottom:6px;">Residencial <em style="color:var(--red);">Genesis</em></div>
+          <div style="font-size:13px; color:var(--graphite); margin-bottom:16px;">32 apartamentos · 90–150 m² · Primeiro empreendimento Steel</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; border-top:1px solid var(--border); padding-top:14px;">
+            <div><div style="font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:0.16em; color:var(--stone); text-transform:uppercase; margin-bottom:3px;">Unidades</div><div style="font-family:'DM Serif Display',serif; font-size:18px; color:var(--ink);">32</div></div>
+            <div><div style="font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:0.16em; color:var(--stone); text-transform:uppercase; margin-bottom:3px;">Tipologia</div><div style="font-family:'DM Serif Display',serif; font-size:18px; color:var(--ink);">90–150 m²</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--paper); border:1px solid var(--border); display:flex; flex-direction:column;">
+        <div style="background:linear-gradient(155deg,#504840,#1a1612); aspect-ratio:4/3; position:relative; overflow:hidden;">
+          <span style="position:absolute; top:0; left:0; background:var(--red); color:var(--cream); font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.18em; text-transform:uppercase; padding:7px 12px; display:flex; align-items:center; gap:6px;"><span style="width:6px; height:6px; background:var(--cream); border-radius:50%;"></span>Entregue · 2007</span>
+          <span style="position:absolute; top:16px; right:16px; font-family:'DM Serif Display',serif; font-style:italic; font-size:26px; color:rgba(241,235,224,0.35);">11</span>
+        </div>
+        <div style="padding:20px 22px;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.18em; color:var(--graphite); text-transform:uppercase; margin-bottom:8px; padding-bottom:8px; border-bottom:1px solid var(--border);">Residencial · Tamboré SP</div>
+          <div style="font-family:'DM Serif Display',serif; font-size:26px; color:var(--ink); margin-bottom:6px;">Parque <em style="color:var(--red);">Tamboré</em></div>
+          <div style="font-size:13px; color:var(--graphite); margin-bottom:16px;">24 casas geminadas · 130–180 m² · Condomínio verde</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; border-top:1px solid var(--border); padding-top:14px;">
+            <div><div style="font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:0.16em; color:var(--stone); text-transform:uppercase; margin-bottom:3px;">Casas</div><div style="font-family:'DM Serif Display',serif; font-size:18px; color:var(--ink);">24</div></div>
+            <div><div style="font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:0.16em; color:var(--stone); text-transform:uppercase; margin-bottom:3px;">Tipologia</div><div style="font-family:'DM Serif Display',serif; font-size:18px; color:var(--ink);">130–180 m²</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div>
+      <div class="eyebrow" style="color:var(--red-lt); margin-bottom:20px;">Investir com a Steel</div>
+      <h2 style="font-family:'DM Serif Display',serif; font-size:56px; line-height:1; letter-spacing:-0.025em; color:var(--cream);">Tem um terreno<br/>ou quer <em style="color:var(--red-lt);">investir?</em></h2>
+    </div>
+    <div class="cta-card">
+      <div class="cta-card-row"><span class="cta-card-label">Telefone direto</span><span class="cta-card-value">(11) 4252-5900</span></div>
+      <div class="cta-card-row"><span class="cta-card-label">E-mail comercial</span><span class="cta-card-value">contato@steelconstrucoes.com.br</span></div>
+      <a class="btn btn-red" href="#/contato" onclick="navigate('contato'); return false;" style="width:100%; justify-content:center; margin-top:16px;">Iniciar conversa →</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-name">STEEL</div>
+        <div class="footer-brand-sub">Construções &amp; Empreendimentos</div>
+        <div class="footer-quote">"Construir com intenção, entregar com assinatura."</div>
+      </div>
+      <div>
+        <div class="footer-col-title">Páginas</div>
+        <ul class="footer-links">
+          <li><a href="#/" onclick="navigate('home'); return false;">Início</a></li>
+          <li><a href="#/casas" onclick="navigate('casas'); return false;">Steel Casas</a></li>
+          <li><a href="#/empresas" onclick="navigate('empresas'); return false;">Corporativo</a></li>
+          <li><a href="#/sobre" onclick="navigate('sobre'); return false;">Quem Somos</a></li>
+          <li><a href="#/contato" onclick="navigate('contato'); return false;">Contato</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Serviços</div>
+        <ul class="footer-links">
+          <li><a href="#/casas" onclick="navigate('casas'); return false;">Residencial</a></li>
+          <li><a href="#/empresas" onclick="navigate('empresas'); return false;">Corporativo</a></li>
+          <li><a href="#/empreendimentos" onclick="navigate('empreendimentos'); return false;">Empreendimentos</a></li>
+          <li><a href="#/processo" onclick="navigate('processo'); return false;">Qualidade</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contato</div>
+        <ul class="footer-links">
+          <li><a href="tel:+551142525900">(11) 4252-5900</a></li>
+          <li><a href="mailto:contato@steelconstrucoes.com.br">contato@steelconstrucoes.com.br</a></li>
+          <li>Av. Cauaxi, 350 — Sala 1201<br>Alphaville, Barueri SP</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Steel Construções e Empreendimentos Ltda · CNPJ 58.370.644/0001-51 · Avenida Cauaxi, 350 – Alphaville, Barueri SP
+    </div>
+  </footer>
+</div>
+
 <!-- SCROLL TO TOP -->
 <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Voltar ao topo">↑</button>
 
@@ -2252,7 +2763,7 @@ const CASAS = [
 ];
 
 // ===== ROUTING =====
-const PAGES = ['home','casas','sobre','processo','contato'];
+const PAGES = ['home','casas','empresas','empreendimentos','sobre','processo','contato'];
 
 function navigate(page) {
   if (!PAGES.includes(page)) page = 'home';
@@ -2271,6 +2782,8 @@ function navigate(page) {
   var titles = {
     home: 'Steel Construções e Empreendimentos',
     casas: 'Steel Casas — Portfólio Residencial | Steel',
+    empresas: 'Corporativo & Empresas | Steel Construções',
+    empreendimentos: 'Empreendimentos | Steel Construções',
     sobre: 'Quem Somos | Steel Construções',
     processo: 'Processo & Qualidade | Steel Construções',
     contato: 'Contato | Steel Construções'
