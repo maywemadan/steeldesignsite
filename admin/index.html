@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Steel Admin — Painel de Controle</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --red: #8E1B22; --red-h: #7a1720;
+      --black: #0F0E0D; --cream: #F1EBE0; --paper: #FAFAF7;
+      --ink: #0F0E0D; --graphite: #666666; --stone: #999;
+      --border: #E8E2D8; --border-dark: #D4CCB8;
+      --success: #27AE60; --danger: #C0392B; --warning: #E67E22;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Space Grotesk',sans-serif;background:var(--cream);color:var(--ink);min-height:100vh;}
+    a{text-decoration:none;color:inherit;}
+
+    /* ===== LOGIN ===== */
+    #login-page{min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--black);background-image:radial-gradient(ellipse at 30% 20%,rgba(142,27,34,.18) 0%,transparent 60%);}
+    .login-card{background:var(--paper);padding:56px 48px;width:420px;max-width:92vw;}
+    .login-logo{font-family:'DM Serif Display',serif;font-size:32px;letter-spacing:-.02em;margin-bottom:6px;}
+    .login-logo em{color:var(--red);font-style:italic;}
+    .login-sub{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--graphite);margin-bottom:40px;}
+    .login-hint{font-size:12px;color:var(--graphite);margin-top:20px;padding:14px;background:var(--cream);border-left:3px solid var(--red);}
+    .login-hint b{color:var(--ink);font-weight:600;}
+
+    /* ===== FORMS ===== */
+    .form-group{margin-bottom:20px;}
+    .form-label{display:block;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--graphite);margin-bottom:8px;}
+    .form-input,.form-select,.form-textarea{width:100%;padding:12px 16px;border:1px solid var(--border);background:var(--cream);font-family:'Space Grotesk',sans-serif;font-size:15px;color:var(--ink);outline:none;transition:border-color .2s;border-radius:0;}
+    .form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--red);}
+    .form-input.error{border-color:var(--danger);}
+    .form-textarea{resize:vertical;min-height:80px;}
+    .form-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;cursor:pointer;}
+    .form-error{font-size:12px;color:var(--danger);margin-top:5px;display:none;}
+    .form-error.show{display:block;}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    .img-preview{width:100%;height:120px;object-fit:cover;border:1px solid var(--border);margin-top:8px;display:none;}
+    .img-preview.show{display:block;}
+
+    /* ===== BUTTONS ===== */
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;border:none;transition:all .2s;text-decoration:none;white-space:nowrap;}
+    .btn-primary{background:var(--red);color:#fff;}
+    .btn-primary:hover{background:var(--red-h);}
+    .btn-secondary{background:transparent;color:var(--ink);border:1px solid var(--border);}
+    .btn-secondary:hover{background:var(--cream);}
+    .btn-danger{background:var(--danger);color:#fff;}
+    .btn-danger:hover{opacity:.88;}
+    .btn-ghost{background:transparent;color:var(--graphite);border:1px solid var(--border);}
+    .btn-ghost:hover{color:var(--ink);background:var(--cream);}
+    .btn-full{width:100%;justify-content:center;}
+    .btn-sm{padding:6px 14px;font-size:10px;}
+    .btn-xs{padding:5px 10px;font-size:9px;}
+    .btn[disabled]{opacity:.5;cursor:not-allowed;}
+
+    /* ===== ADMIN LAYOUT ===== */
+    #admin-layout{display:flex;min-height:100vh;}
+
+    /* Sidebar */
+    .sidebar{width:240px;background:var(--black);flex-shrink:0;display:flex;flex-direction:column;position:sticky;top:0;height:100vh;overflow-y:auto;}
+    .sidebar-logo{padding:26px 24px 22px;border-bottom:1px solid rgba(255,255,255,.07);}
+    .sidebar-logo-text{font-family:'DM Serif Display',serif;font-size:22px;color:var(--cream);letter-spacing:-.02em;}
+    .sidebar-logo-text em{color:var(--red);}
+    .sidebar-logo-sub{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;color:rgba(241,235,224,.3);text-transform:uppercase;margin-top:3px;}
+    .sidebar-nav{padding:14px 0;flex:1;}
+    .nav-section{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(241,235,224,.22);padding:14px 24px 5px;}
+    .nav-item{display:flex;align-items:center;gap:12px;padding:10px 24px;color:rgba(241,235,224,.55);font-size:13px;font-weight:500;cursor:pointer;transition:all .15s;user-select:none;border-left:3px solid transparent;}
+    .nav-item:hover{color:var(--cream);background:rgba(255,255,255,.05);}
+    .nav-item.active{color:var(--cream);background:rgba(142,27,34,.25);border-left-color:var(--red);}
+    .nav-icon{font-size:14px;width:18px;text-align:center;flex-shrink:0;}
+    .sidebar-footer{padding:18px 24px;border-top:1px solid rgba(255,255,255,.07);}
+    .sidebar-user{display:flex;align-items:center;gap:11px;margin-bottom:14px;}
+    .sidebar-avatar{width:30px;height:30px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display',serif;font-size:13px;color:#fff;flex-shrink:0;}
+    .sidebar-user-name{font-size:12px;color:var(--cream);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    .sidebar-user-role{font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(241,235,224,.35);text-transform:uppercase;letter-spacing:.12em;}
+    .sidebar-logout{display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(241,235,224,.3);cursor:pointer;transition:color .2s;background:none;border:none;width:100%;text-align:left;padding:4px 0;}
+    .sidebar-logout:hover{color:rgba(241,235,224,.65);}
+
+    /* Main */
+    .main-content{flex:1;display:flex;flex-direction:column;min-width:0;}
+    .topbar{background:var(--paper);border-bottom:1px solid var(--border);padding:0 32px;height:56px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;position:sticky;top:0;z-index:50;}
+    .breadcrumb{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.16em;color:var(--graphite);text-transform:uppercase;}
+    .breadcrumb span{color:var(--ink);}
+    .topbar-right{display:flex;align-items:center;gap:16px;}
+    .session-badge{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--graphite);letter-spacing:.1em;border:1px solid var(--border);padding:4px 10px;}
+    .admin-page{padding:32px;flex:1;}
+
+    /* ===== PAGE COMPONENTS ===== */
+    .page-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:28px;gap:16px;}
+    .page-title{font-family:'DM Serif Display',serif;font-size:34px;color:var(--ink);letter-spacing:-.02em;line-height:1;margin-bottom:6px;}
+    .page-title em{color:var(--red);}
+    .page-sub{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.16em;color:var(--graphite);text-transform:uppercase;}
+    .page-actions{display:flex;gap:10px;flex-shrink:0;margin-top:4px;}
+
+    /* Stat cards */
+    .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px;}
+    .stat-card{background:var(--paper);border:1px solid var(--border);padding:22px;}
+    .stat-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--graphite);margin-bottom:10px;}
+    .stat-value{font-family:'DM Serif Display',serif;font-size:40px;color:var(--ink);line-height:1;margin-bottom:3px;}
+    .stat-sub{font-size:11px;color:var(--graphite);}
+    .stat-card.red{background:var(--red);border-color:var(--red);}
+    .stat-card.red .stat-label{color:rgba(255,255,255,.6);}
+    .stat-card.red .stat-value{color:#fff;}
+    .stat-card.red .stat-sub{color:rgba(255,255,255,.65);}
+    .stat-card.dark{background:var(--black);border-color:var(--black);}
+    .stat-card.dark .stat-label{color:rgba(241,235,224,.4);}
+    .stat-card.dark .stat-value{color:var(--cream);}
+    .stat-card.dark .stat-sub{color:rgba(241,235,224,.5);}
+
+    /* Table */
+    .table-wrap{background:var(--paper);border:1px solid var(--border);overflow-x:auto;}
+    .table-toolbar{padding:18px 22px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;}
+    .table-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--graphite);}
+    .table-controls{display:flex;align-items:center;gap:10px;}
+    .search-input{padding:8px 14px;border:1px solid var(--border);background:var(--cream);font-family:'Space Grotesk',sans-serif;font-size:13px;color:var(--ink);outline:none;width:220px;transition:border-color .2s;}
+    .search-input:focus{border-color:var(--red);}
+    table{width:100%;border-collapse:collapse;}
+    th{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--graphite);text-align:left;padding:11px 22px;border-bottom:2px solid var(--border-dark);background:var(--cream);white-space:nowrap;}
+    td{padding:13px 22px;border-bottom:1px solid var(--border);font-size:13px;color:var(--ink);vertical-align:middle;}
+    tr:last-child td{border-bottom:none;}
+    tr:hover td{background:rgba(241,235,224,.4);}
+    .td-name{font-weight:500;font-size:14px;}
+    .td-mono{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--graphite);}
+    .td-thumb{width:52px;height:38px;object-fit:cover;border:1px solid var(--border);}
+    .td-actions{display:flex;align-items:center;gap:6px;}
+    .table-empty{padding:48px;text-align:center;color:var(--graphite);font-size:14px;}
+
+    /* Badges */
+    .badge{display:inline-flex;align-items:center;padding:3px 10px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;border-radius:100px;}
+    .badge-green{background:rgba(39,174,96,.12);color:#27AE60;}
+    .badge-blue{background:rgba(52,152,219,.12);color:#2980B9;}
+    .badge-yellow{background:rgba(230,126,34,.12);color:#E67E22;}
+    .badge-red{background:rgba(142,27,34,.12);color:var(--red);}
+    .badge-gray{background:rgba(102,102,102,.12);color:var(--graphite);}
+
+    /* Modal */
+    .modal-overlay{position:fixed;inset:0;background:rgba(15,14,13,.72);z-index:1000;display:flex;align-items:center;justify-content:center;padding:24px;}
+    .modal-box{background:var(--paper);width:100%;max-width:580px;max-height:92vh;overflow-y:auto;animation:modalIn .2s ease;}
+    .modal-box.sm{max-width:400px;}
+    @keyframes modalIn{from{transform:scale(.96) translateY(8px);opacity:0;}to{transform:scale(1) translateY(0);opacity:1;}}
+    .modal-head{padding:22px 26px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:var(--paper);z-index:1;}
+    .modal-title{font-family:'DM Serif Display',serif;font-size:22px;color:var(--ink);}
+    .modal-close{width:28px;height:28px;background:none;border:none;cursor:pointer;color:var(--graphite);font-size:20px;display:flex;align-items:center;justify-content:center;transition:background .15s;border-radius:2px;}
+    .modal-close:hover{background:var(--cream);}
+    .modal-body{padding:22px 26px;}
+    .modal-footer{padding:16px 26px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:10px;background:var(--paper);}
+
+    /* Toast */
+    .toast-container{position:fixed;bottom:22px;right:22px;z-index:9999;display:flex;flex-direction:column;gap:8px;pointer-events:none;}
+    .toast{background:var(--ink);color:var(--cream);padding:12px 18px;font-size:13px;display:flex;align-items:center;gap:10px;min-width:230px;max-width:340px;animation:toastIn .28s ease;pointer-events:auto;}
+    .toast-icon{font-size:16px;flex-shrink:0;}
+    .toast.s{background:var(--success);}
+    .toast.e{background:var(--danger);}
+    .toast.w{background:var(--warning);}
+    @keyframes toastIn{from{transform:translateX(110%);opacity:0;}to{transform:translateX(0);opacity:1;}}
+
+    /* Media grid */
+    .media-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+    .media-item{position:relative;aspect-ratio:4/3;overflow:hidden;border:2px solid transparent;cursor:pointer;transition:border-color .2s;}
+    .media-item:hover{border-color:var(--red);}
+    .media-item img{width:100%;height:100%;object-fit:cover;}
+    .media-overlay{position:absolute;bottom:0;left:0;right:0;background:rgba(15,14,13,.8);color:var(--cream);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:6px 10px;opacity:0;transition:opacity .2s;}
+    .media-item:hover .media-overlay{opacity:1;}
+
+    /* Activity */
+    .activity-item{display:flex;align-items:flex-start;gap:14px;padding:13px 0;border-bottom:1px solid var(--border);}
+    .activity-item:last-child{border-bottom:none;}
+    .activity-dot{width:8px;height:8px;border-radius:50%;background:var(--red);margin-top:5px;flex-shrink:0;}
+    .activity-text{font-size:13px;color:var(--ink);line-height:1.5;}
+    .activity-time{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--graphite);margin-top:3px;}
+
+    /* Two col */
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:28px;}
+    .card{background:var(--paper);border:1px solid var(--border);padding:22px;}
+    .card-head{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--graphite);margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--border);}
+
+    /* Session expired */
+    .session-expired{position:fixed;inset:0;background:rgba(15,14,13,.85);z-index:9997;display:flex;align-items:center;justify-content:center;}
+    .session-expired-card{background:var(--paper);padding:40px;text-align:center;max-width:340px;}
+    .session-expired-card h3{font-family:'DM Serif Display',serif;font-size:26px;margin-bottom:12px;}
+    .session-expired-card p{font-size:14px;color:var(--graphite);margin-bottom:24px;line-height:1.6;}
+
+    /* Misc */
+    .divider{border:none;border-top:1px solid var(--border);margin:20px 0;}
+    .text-muted{color:var(--graphite);}
+    .inline-flex{display:inline-flex;align-items:center;gap:8px;}
+    .role-selector{display:flex;gap:8px;flex-wrap:wrap;}
+    .role-chip{padding:6px 14px;border:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:all .15s;color:var(--graphite);background:var(--cream);}
+    .role-chip.selected{background:var(--red);border-color:var(--red);color:#fff;}
+
+    @media(max-width:900px){
+      .sidebar{width:200px;}
+      .stats-grid{grid-template-columns:repeat(2,1fr);}
+      .form-row{grid-template-columns:1fr;}
+      .two-col{grid-template-columns:1fr;}
+      .media-grid{grid-template-columns:repeat(3,1fr);}
+    }
+    @media(max-width:600px){
+      .admin-page{padding:16px;}
+      .sidebar{width:56px;overflow:hidden;}
+      .sidebar-logo-text,.sidebar-logo-sub,.nav-item span,.sidebar-user-name,.sidebar-user-role,.sidebar-logout span{display:none;}
+      .nav-item{padding:14px;justify-content:center;}
+      .media-grid{grid-template-columns:repeat(2,1fr);}
+    }
+    ::-webkit-scrollbar{width:5px;height:5px;}
+    ::-webkit-scrollbar-track{background:transparent;}
+    ::-webkit-scrollbar-thumb{background:rgba(15,14,13,.18);border-radius:3px;}
+  </style>
+</head>
+<body>
+
+<!-- ===== LOGIN PAGE ===== -->
+<div id="login-page">
+  <div class="login-card">
+    <div class="login-logo">Steel <em>Admin</em></div>
+    <div class="login-sub">Painel de Controle</div>
+    <form id="loginForm" onsubmit="handleLogin(event)">
+      <div class="form-group">
+        <label class="form-label" for="login-email">E-mail</label>
+        <input class="form-input" type="email" id="login-email" placeholder="admin@steel.com" autocomplete="email" required aria-label="E-mail de acesso">
+        <div class="form-error" id="email-error">E-mail inválido</div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="login-pass">Senha</label>
+        <input class="form-input" type="password" id="login-pass" placeholder="••••••••" autocomplete="current-password" required aria-label="Senha de acesso">
+        <div class="form-error" id="pass-error">Credenciais inválidas</div>
+      </div>
+      <button type="submit" class="btn btn-primary btn-full" id="login-btn">Entrar →</button>
+    </form>
+    <div class="login-hint" style="margin-top:24px;">
+      <b>Demo:</b> admin@steel.com / admin123<br>
+      <b>Editor:</b> editor@steel.com / editor123<br>
+      <b>Viewer:</b> viewer@steel.com / viewer123
+    </div>
+  </div>
+</div>
+
+<!-- ===== ADMIN LAYOUT ===== -->
+<div id="admin-layout" hidden>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-text">Steel <em style="color:var(--red);">Admin</em></div>
+      <div class="sidebar-logo-sub">Painel de controle</div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section">Principal</div>
+      <div class="nav-item active" data-route="dashboard" onclick="navigate('dashboard')">
+        <span class="nav-icon">▣</span><span>Dashboard</span>
+      </div>
+      <div class="nav-section">Conteúdo</div>
+      <div class="nav-item" data-route="empreendimentos" onclick="navigate('empreendimentos')">
+        <span class="nav-icon">⬡</span><span>Empreendimentos</span>
+      </div>
+      <div class="nav-item" data-route="casas" onclick="navigate('casas')">
+        <span class="nav-icon">⌂</span><span>Steel Casas</span>
+      </div>
+      <div class="nav-item" data-route="empresas" onclick="navigate('empresas')">
+        <span class="nav-icon">◧</span><span>Corporativo</span>
+      </div>
+      <div class="nav-section">Sistema</div>
+      <div class="nav-item" data-route="midia" onclick="navigate('midia')">
+        <span class="nav-icon">⊞</span><span>Biblioteca de Mídia</span>
+      </div>
+      <div class="nav-item" data-route="usuarios" onclick="navigate('usuarios')">
+        <span class="nav-icon">◉</span><span>Usuários</span>
+      </div>
+      <div class="nav-item" data-route="auditoria" onclick="navigate('auditoria')">
+        <span class="nav-icon">≡</span><span>Auditoria</span>
+      </div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-avatar" id="sidebar-avatar">A</div>
+        <div class="sidebar-user-info">
+          <div class="sidebar-user-name" id="sidebar-name">Admin</div>
+          <div class="sidebar-user-role" id="sidebar-role">Admin</div>
+        </div>
+      </div>
+      <button class="sidebar-logout" onclick="logout()">
+        <span>⟵</span><span>Sair da conta</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <div class="topbar">
+      <div class="breadcrumb">Steel / <span id="breadcrumb-label">Dashboard</span></div>
+      <div class="topbar-right">
+        <a href="../index.html" target="_blank" class="btn btn-ghost btn-sm">Ver site ↗</a>
+        <div class="session-badge" id="session-timer">Sessão: 30:00</div>
+      </div>
+    </div>
+
+    <!-- Pages -->
+    <div class="admin-page" id="page-dashboard"></div>
+    <div class="admin-page" id="page-empreendimentos" hidden></div>
+    <div class="admin-page" id="page-casas" hidden></div>
+    <div class="admin-page" id="page-empresas" hidden></div>
+    <div class="admin-page" id="page-midia" hidden></div>
+    <div class="admin-page" id="page-usuarios" hidden></div>
+    <div class="admin-page" id="page-auditoria" hidden></div>
+  </div>
+</div>
+
+<!-- ===== MODAL ===== -->
+<div class="modal-overlay" id="modal-overlay" hidden onclick="handleOverlayClick(event)">
+  <div class="modal-box" id="modal-box">
+    <div class="modal-head">
+      <div class="modal-title" id="modal-title">Título</div>
+      <button class="modal-close" onclick="closeModal()" aria-label="Fechar">×</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+    <div class="modal-footer" id="modal-footer"></div>
+  </div>
+</div>
+
+<!-- ===== TOASTS ===== -->
+<div class="toast-container" id="toasts"></div>
+
+<!-- ===== SESSION EXPIRED ===== -->
+<div class="session-expired" id="session-expired" hidden>
+  <div class="session-expired-card">
+    <h3>Sessão expirada</h3>
+    <p>Por segurança, sua sessão expirou após 30 minutos de inatividade.</p>
+    <button class="btn btn-primary btn-full" onclick="forceLogout()">Fazer login novamente →</button>
+  </div>
+</div>
+
+<script>
+// ===================================================================
+//  DEFAULT DATA
+// ===================================================================
+var DEFAULT_EMPREENDIMENTOS = [
+  {id:1,nome:'Aurora',tipo:'Residencial',local:'Pinheiros, SP',ano:2024,unidades:128,tipologia:'84–212 m²',detalhes:'24 pavimentos',status:'Entregue',img:'https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1768243311/18_s1q0he.png'},
+  {id:2,nome:'Steel Pier Office Tower',tipo:'Corporativo',local:'Belo Horizonte, MG',ano:2023,unidades:null,pavimentos:18,area:'12.000 m² locáveis',detalhes:'Roof garden',status:'Entregue',img:'https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1768827115/01_pjonpf.png'},
+  {id:3,nome:'Vivienda Margens',tipo:'Residencial',local:'Brasília, DF',ano:2022,unidades:14,tipologia:'240–360 m²',detalhes:'Lago Paranoá',status:'Entregue',img:'https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1753727611/empreendimentos/Lago_dos_Patos_05_cflwpl.jpg'},
+  {id:4,nome:'Fábrica Plaza',tipo:'Uso Misto',local:'São Paulo, SP',ano:2021,unidades:62,tipologia:'48–140 m²',detalhes:'Área industrial reconvertida',status:'Entregue',img:'https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto,w_800/v1607641210/empreendimentos/mobi-liberdade/fce85107-440f-4607-84cc-b05d8fb13038_j2cdjv.jpg'},
+  {id:5,nome:'Residencial Cauaxi',tipo:'Residencial',local:'Alphaville, SP',ano:2020,unidades:48,tipologia:'110–185 m²',detalhes:'12 pavimentos',status:'Entregue',img:'https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1640001617/empreendimentos/sonhare/sonhare%201%20e%202%20pronto/MicrosoftTeams-image_4_uxt2dq.jpg'},
+  {id:6,nome:'Tamboré Business Square',tipo:'Uso Misto',local:'Tamboré, SP',ano:2019,unidades:220,tipologia:null,detalhes:'Torre residencial + Torre comercial',status:'Entregue',img:'https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1716226135/capa_cardon_yl345w.jpg'},
+  {id:7,nome:'Villa Alpina',tipo:'Residencial',local:'Granja Viana, SP',ano:2017,unidades:36,tipologia:'160–220 m²',detalhes:'Condomínio fechado, townhouses',status:'Entregue',img:'https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto,w_800/v1607641046/empreendimentos/finezzi-1/FINEZZI_DE_LONGE_ftjqz5.jpg'},
+  {id:8,nome:'Torre Paraíso',tipo:'Residencial',local:'Morumbi, SP',ano:2015,unidades:80,tipologia:'140–310 m²',detalhes:'20 pavimentos',status:'Entregue',img:'https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1768825036/Sonhare_Arapongas_01_ohvsw4.png'},
+  {id:9,nome:'Alpha Concept',tipo:'Uso Misto',local:'Barueri, SP',ano:2013,unidades:60,tipologia:null,detalhes:'Térreo comercial + 5 andares residencial',status:'Entregue',img:'https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1768825741/01_tyu7xq.png'},
+  {id:10,nome:'Residencial Genesis',tipo:'Residencial',local:'Alphaville, SP',ano:2010,unidades:32,tipologia:'90–150 m²',detalhes:'Primeiro empreendimento Steel',status:'Entregue',img:'https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto,w_800/v1607641450/empreendimentos/recanto-passaros-1-2/IMG_4890_yph23a.jpg'},
+  {id:11,nome:'Parque Tamboré',tipo:'Residencial',local:'Tamboré, SP',ano:2007,unidades:24,tipologia:'130–180 m²',detalhes:'24 casas geminadas, condomínio verde',status:'Entregue',img:'https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto,w_800/v1607102675/empreendimentos/victoria/victoria2_i0rci3.jpg'}
+];
+
+var DEFAULT_EMPRESAS = [
+  {id:1,nome:'Projeto Comercial 1',tipo:'Corporativo',local:'',ano:null,area:'',status:'Concluída',img:'https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1767799996/06_cu7j2r.jpg'},
+  {id:2,nome:'Projeto Comercial 2',tipo:'Corporativo',local:'',ano:null,area:'',status:'Concluída',img:'https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1651759556/PORTARIA_ss5mio.jpg'},
+  {id:3,nome:'T Palmeiras',tipo:'Corporativo',local:'',ano:null,area:'',status:'Concluída',img:'https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1768500553/01_T_Palmeiras_mfu1vq.png'},
+  {id:4,nome:'Flytour',tipo:'Corporativo',local:'',ano:null,area:'',status:'Concluída',img:'https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1768505210/Flytour_01_yzazgi.png'},
+  {id:5,nome:'Pier Flytour',tipo:'Corporativo',local:'',ano:null,area:'',status:'Concluída',img:'https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1768824779/Pier_Flytour_1_2_fchfcj.jpg'},
+  {id:6,nome:'Kioto',tipo:'Corporativo',local:'',ano:null,area:'',status:'Concluída',img:'https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto,w_800/v1607113674/empresas/kioto_eus3yc.jpg'},
+  {id:7,nome:'Black Horse',tipo:'Corporativo',local:'',ano:null,area:'',status:'Concluída',img:'https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto,w_800/v1607113507/empresas/blackhorse_gb2vrj.jpg'},
+  {id:8,nome:'Maria João',tipo:'Corporativo',local:'',ano:null,area:'',status:'Concluída',img:'https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto,w_800/v1607113383/empresas/mariajoao_krvvwt.jpg'},
+  {id:9,nome:'Espaço 18',tipo:'Corporativo',local:'',ano:null,area:'',status:'Concluída',img:'https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto,w_800/v1607113315/empresas/espaco18_wcrj37.jpg'}
+];
+
+var MOCK_USERS = [
+  {id:1,name:'Administrador Steel',email:'admin@steel.com',password:'admin123',role:'Admin',since:'2024-01-01'},
+  {id:2,name:'Editor Steel',email:'editor@steel.com',password:'editor123',role:'Editor',since:'2024-03-15'},
+  {id:3,name:'Visualizador',email:'viewer@steel.com',password:'viewer123',role:'Viewer',since:'2024-06-01'}
+];
+
+// ===================================================================
+//  AUTH
+// ===================================================================
+function createToken(user){
+  return btoa(JSON.stringify({sub:user.id,email:user.email,role:user.role,name:user.name,exp:Date.now()+30*60*1000}));
+}
+function getTokenPayload(){
+  var t=localStorage.getItem('steel_admin_token');
+  if(!t)return null;
+  try{return JSON.parse(atob(t));}catch(e){return null;}
+}
+function isAuthenticated(){
+  var p=getTokenPayload();
+  if(!p)return false;
+  if(p.exp<Date.now()){forceLogout();return false;}
+  return true;
+}
+function getCurrentUser(){return getTokenPayload();}
+function login(email,password){
+  var u=MOCK_USERS.find(function(u){return u.email===email&&u.password===password;});
+  if(!u)return false;
+  localStorage.setItem('steel_admin_token',createToken(u));
+  addAudit('Login','Usuário '+u.name+' entrou no sistema');
+  return true;
+}
+function logout(){
+  var u=getCurrentUser();
+  if(u)addAudit('Logout','Usuário '+u.name+' encerrou a sessão');
+  localStorage.removeItem('steel_admin_token');
+  location.reload();
+}
+function forceLogout(){
+  localStorage.removeItem('steel_admin_token');
+  location.reload();
+}
+
+// ===================================================================
+//  DATA
+// ===================================================================
+function getData(key,def){
+  var s=localStorage.getItem(key);
+  if(s){try{return JSON.parse(s);}catch(e){}}
+  return def;
+}
+function saveData(key,data){
+  localStorage.setItem(key,JSON.stringify(data));
+}
+function initData(){
+  if(!localStorage.getItem('steel_empreendimentos'))saveData('steel_empreendimentos',DEFAULT_EMPREENDIMENTOS);
+  if(!localStorage.getItem('steel_empresas'))saveData('steel_empresas',DEFAULT_EMPRESAS);
+  if(!localStorage.getItem('steel_audit'))saveData('steel_audit',[]);
+}
+
+// ===================================================================
+//  AUDIT
+// ===================================================================
+function addAudit(action,desc){
+  var log=getData('steel_audit',[]);
+  log.unshift({action:action,desc:desc,user:(getCurrentUser()||{name:'Sistema'}).name,time:new Date().toISOString()});
+  if(log.length>100)log=log.slice(0,100);
+  saveData('steel_audit',log);
+}
+function fmtTime(iso){
+  var d=new Date(iso);
+  return d.toLocaleDateString('pt-BR')+' '+d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
+}
+
+// ===================================================================
+//  ROUTER
+// ===================================================================
+var ROUTES=['dashboard','empreendimentos','casas','empresas','midia','usuarios','auditoria'];
+var LABELS={dashboard:'Dashboard',empreendimentos:'Empreendimentos',casas:'Steel Casas',empresas:'Corporativo',midia:'Biblioteca de Mídia',usuarios:'Usuários',auditoria:'Auditoria'};
+var currentRoute='dashboard';
+
+function navigate(route){
+  if(!isAuthenticated()){showLogin();return;}
+  if(!ROUTES.includes(route))route='dashboard';
+  currentRoute=route;
+  ROUTES.forEach(function(r){
+    var el=document.getElementById('page-'+r);
+    if(el)el.hidden=(r!==route);
+  });
+  document.querySelectorAll('.nav-item').forEach(function(el){
+    el.classList.toggle('active',el.dataset.route===route);
+  });
+  var label=LABELS[route]||route;
+  document.getElementById('breadcrumb-label').textContent=label;
+  resetTimer();
+  switch(route){
+    case 'dashboard': renderDashboard(); break;
+    case 'empreendimentos': renderEmpreendimentos(); break;
+    case 'casas': renderCasas(); break;
+    case 'empresas': renderEmpresas(); break;
+    case 'midia': renderMidia(); break;
+    case 'usuarios': renderUsuarios(); break;
+    case 'auditoria': renderAuditoria(); break;
+  }
+}
+
+// ===================================================================
+//  SESSION TIMER
+// ===================================================================
+var timerInterval=null;
+var timerSec=30*60;
+function startTimer(){
+  clearInterval(timerInterval);
+  timerSec=30*60;
+  timerInterval=setInterval(function(){
+    timerSec--;
+    if(timerSec<=0){clearInterval(timerInterval);showSessionExpired();return;}
+    var m=Math.floor(timerSec/60),s=timerSec%60;
+    var el=document.getElementById('session-timer');
+    if(el)el.textContent='Sessão: '+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+    if(timerSec===300){showToast('Sessão expira em 5 minutos','w');}
+  },1000);
+}
+function resetTimer(){
+  timerSec=30*60;
+  var p=getTokenPayload();
+  if(p)localStorage.setItem('steel_admin_token',btoa(JSON.stringify(Object.assign({},p,{exp:Date.now()+30*60*1000}))));
+}
+function showSessionExpired(){
+  document.getElementById('session-expired').hidden=false;
+}
+
+// ===================================================================
+//  DASHBOARD
+// ===================================================================
+function renderDashboard(){
+  var emp=getData('steel_empreendimentos',DEFAULT_EMPREENDIMENTOS);
+  var cas=getData('steel_casas',[]);
+  var emps=getData('steel_empresas',DEFAULT_EMPRESAS);
+  var audit=getData('steel_audit',[]);
+  var p=document.getElementById('page-dashboard');
+  p.innerHTML=
+    '<div class="page-head"><div><div class="page-title">Steel <em>Dashboard</em></div><div class="page-sub">Visão geral do sistema</div></div><div class="page-actions"><button class="btn btn-secondary btn-sm" onclick="exportAll()">Exportar dados ↓</button></div></div>'+
+    '<div class="stats-grid">'+
+      statCard(cas.length||56,'Steel Casas','residências concluídas','')+
+      statCard(emps.length,'Corporativo','obras entregues','red')+
+      statCard(emp.length,'Empreendimentos','incorporações concluídas','dark')+
+      statCard('163k','m² construídos','área total estimada','')+
+    '</div>'+
+    '<div class="two-col">'+
+      '<div class="card"><div class="card-head">Atividade recente</div>'+
+        '<div>'+
+          (audit.slice(0,6).map(function(a){return '<div class="activity-item"><div class="activity-dot"></div><div><div class="activity-text">'+a.desc+'</div><div class="activity-time">'+fmtTime(a.time)+' · '+a.user+'</div></div></div>';}).join('')||'<p style="color:var(--graphite);font-size:13px;">Nenhuma atividade registrada.</p>')+
+        '</div>'+
+      '</div>'+
+      '<div class="card"><div class="card-head">Últimos empreendimentos</div>'+
+        '<div>'+
+          emp.slice(0,5).map(function(e){return '<div class="activity-item"><div style="width:36px;height:28px;overflow:hidden;border:1px solid var(--border);flex-shrink:0;"><img src="'+e.img+'" style="width:100%;height:100%;object-fit:cover;" loading="lazy" alt="'+e.nome+'"></div><div><div class="activity-text" style="font-weight:500;">'+e.nome+'</div><div class="activity-time">'+e.local+' · '+e.ano+'</div></div></div>';}).join('')+
+        '</div>'+
+      '</div>'+
+    '</div>'+
+    '<div class="card"><div class="card-head">Acesso rápido</div><div style="display:flex;gap:10px;flex-wrap:wrap;">'+
+      '<button class="btn btn-primary btn-sm" onclick="navigate(\'empreendimentos\')">Gerenciar Empreendimentos</button>'+
+      '<button class="btn btn-secondary btn-sm" onclick="navigate(\'empresas\')">Gerenciar Corporativo</button>'+
+      '<button class="btn btn-secondary btn-sm" onclick="navigate(\'midia\')">Biblioteca de Mídia</button>'+
+      '<button class="btn btn-secondary btn-sm" onclick="navigate(\'auditoria\')">Ver Auditoria</button>'+
+    '</div></div>';
+}
+
+function statCard(v,label,sub,mod){
+  return '<div class="stat-card '+mod+'"><div class="stat-label">'+label+'</div><div class="stat-value">'+v+'</div><div class="stat-sub">'+sub+'</div></div>';
+}
+
+// ===================================================================
+//  EMPREENDIMENTOS
+// ===================================================================
+function renderEmpreendimentos(){
+  var data=getData('steel_empreendimentos',DEFAULT_EMPREENDIMENTOS);
+  var p=document.getElementById('page-empreendimentos');
+  var role=(getCurrentUser()||{}).role;
+  var canEdit=role==='Admin'||role==='Editor';
+  p.innerHTML=
+    '<div class="page-head"><div><div class="page-title">Steel <em>Empreendimentos</em></div><div class="page-sub">'+data.length+' incorporações gerenciadas</div></div>'+
+    (canEdit?'<div class="page-actions"><button class="btn btn-primary" onclick="newEmpreendimento()">+ Novo empreendimento</button></div>':'')+
+    '</div>'+
+    '<div class="table-wrap">'+
+      '<div class="table-toolbar"><div class="table-label">'+data.length+' registros</div>'+
+        '<div class="table-controls"><input class="search-input" placeholder="Buscar empreendimento…" oninput="filterTable(this,\'emp-tbody\')" aria-label="Buscar empreendimento"></div>'+
+      '</div>'+
+      '<table><thead><tr>'+
+        '<th></th><th>Nome</th><th>Tipo</th><th>Local</th><th>Ano</th><th>Unidades</th><th>Status</th><th>Ações</th>'+
+      '</tr></thead>'+
+      '<tbody id="emp-tbody">'+buildEmpRows(data,canEdit)+'</tbody>'+
+      '</table>'+
+    '</div>';
+}
+
+function buildEmpRows(data,canEdit){
+  return data.map(function(e){
+    var badge=e.status==='Entregue'?'badge-green':e.status==='Em andamento'?'badge-yellow':'badge-gray';
+    return '<tr>'+
+      '<td><img class="td-thumb" src="'+e.img+'" alt="'+e.nome+'" loading="lazy"></td>'+
+      '<td class="td-name">'+e.nome+'</td>'+
+      '<td><span class="badge '+(e.tipo==='Residencial'?'badge-blue':e.tipo==='Corporativo'?'badge-red':'badge-gray')+'">'+e.tipo+'</span></td>'+
+      '<td class="td-mono">'+e.local+'</td>'+
+      '<td class="td-mono">'+e.ano+'</td>'+
+      '<td class="td-mono">'+(e.unidades?e.unidades+' un.':e.pavimentos?e.pavimentos+' pav.':'—')+'</td>'+
+      '<td><span class="badge '+badge+'">'+e.status+'</span></td>'+
+      '<td class="td-actions">'+
+        (canEdit?'<button class="btn btn-ghost btn-xs" onclick="editEmpreendimento('+e.id+')" aria-label="Editar '+e.nome+'">Editar</button>'+
+        '<button class="btn btn-danger btn-xs" onclick="confirmDelete('+e.id+',\'empreendimento\')">✕</button>':'<span style="color:var(--graphite);font-size:12px;">—</span>')+
+      '</td>'+
+    '</tr>';
+  }).join('');
+}
+
+function newEmpreendimento(){
+  openEmpModal(null);
+}
+function editEmpreendimento(id){
+  var data=getData('steel_empreendimentos',DEFAULT_EMPREENDIMENTOS);
+  var e=data.find(function(x){return x.id===id;});
+  if(e)openEmpModal(e);
+}
+function openEmpModal(e){
+  var isNew=!e;
+  e=e||{id:null,nome:'',tipo:'Residencial',local:'',ano:new Date().getFullYear(),unidades:'',tipologia:'',detalhes:'',status:'Entregue',img:''};
+  document.getElementById('modal-title').textContent=isNew?'Novo Empreendimento':'Editar: '+e.nome;
+  document.getElementById('modal-box').className='modal-box';
+  document.getElementById('modal-body').innerHTML=
+    '<div class="form-group"><label class="form-label" for="ef-nome">Nome *</label>'+
+    '<input class="form-input" id="ef-nome" value="'+esc(e.nome)+'" placeholder="Ex: Aurora" aria-label="Nome do empreendimento"></div>'+
+    '<div class="form-row">'+
+      '<div class="form-group"><label class="form-label" for="ef-tipo">Tipo</label>'+
+      '<select class="form-select" id="ef-tipo" aria-label="Tipo do empreendimento">'+
+        '<option'+(e.tipo==='Residencial'?' selected':'')+'>Residencial</option>'+
+        '<option'+(e.tipo==='Corporativo'?' selected':'')+'>Corporativo</option>'+
+        '<option'+(e.tipo==='Uso Misto'?' selected':'')+'>Uso Misto</option>'+
+      '</select></div>'+
+      '<div class="form-group"><label class="form-label" for="ef-status">Status</label>'+
+      '<select class="form-select" id="ef-status" aria-label="Status do empreendimento">'+
+        '<option'+(e.status==='Entregue'?' selected':'')+'>Entregue</option>'+
+        '<option'+(e.status==='Em andamento'?' selected':'')+'>Em andamento</option>'+
+        '<option'+(e.status==='Planejado'?' selected':'')+'>Planejado</option>'+
+      '</select></div>'+
+    '</div>'+
+    '<div class="form-row">'+
+      '<div class="form-group"><label class="form-label" for="ef-local">Cidade / Estado</label>'+
+      '<input class="form-input" id="ef-local" value="'+esc(e.local)+'" placeholder="Ex: Pinheiros, SP" aria-label="Localização"></div>'+
+      '<div class="form-group"><label class="form-label" for="ef-ano">Ano</label>'+
+      '<input class="form-input" id="ef-ano" type="number" value="'+e.ano+'" placeholder="2024" aria-label="Ano de entrega"></div>'+
+    '</div>'+
+    '<div class="form-row">'+
+      '<div class="form-group"><label class="form-label" for="ef-unidades">Unidades</label>'+
+      '<input class="form-input" id="ef-unidades" type="number" value="'+(e.unidades||'')+'" placeholder="Ex: 128" aria-label="Número de unidades"></div>'+
+      '<div class="form-group"><label class="form-label" for="ef-tipologia">Tipologia</label>'+
+      '<input class="form-input" id="ef-tipologia" value="'+esc(e.tipologia||'')+'" placeholder="Ex: 84–212 m²" aria-label="Tipologia"></div>'+
+    '</div>'+
+    '<div class="form-group"><label class="form-label" for="ef-detalhes">Detalhes</label>'+
+    '<input class="form-input" id="ef-detalhes" value="'+esc(e.detalhes||'')+'" placeholder="Ex: 24 pavimentos" aria-label="Detalhes"></div>'+
+    '<div class="form-group"><label class="form-label" for="ef-img">URL da Imagem</label>'+
+    '<input class="form-input" id="ef-img" value="'+esc(e.img)+'" placeholder="https://..." oninput="previewImg(this,\'ef-preview\')" aria-label="URL da imagem">'+
+    '<img class="img-preview'+(e.img?' show':'')+'" id="ef-preview" src="'+esc(e.img)+'" alt="Preview">'+
+    '</div>';
+  document.getElementById('modal-footer').innerHTML=
+    '<button class="btn btn-secondary" onclick="closeModal()">Cancelar</button>'+
+    '<button class="btn btn-primary" onclick="saveEmpreendimento('+e.id+')">'+( isNew?'Criar empreendimento':'Salvar alterações')+'</button>';
+  showModal();
+}
+function saveEmpreendimento(id){
+  var nome=document.getElementById('ef-nome').value.trim();
+  if(!nome){showToast('Nome é obrigatório','e');return;}
+  var data=getData('steel_empreendimentos',DEFAULT_EMPREENDIMENTOS);
+  var isNew=!id;
+  var obj={
+    id:isNew?Date.now():id,
+    nome:nome,
+    tipo:document.getElementById('ef-tipo').value,
+    status:document.getElementById('ef-status').value,
+    local:document.getElementById('ef-local').value.trim(),
+    ano:parseInt(document.getElementById('ef-ano').value)||null,
+    unidades:parseInt(document.getElementById('ef-unidades').value)||null,
+    tipologia:document.getElementById('ef-tipologia').value.trim(),
+    detalhes:document.getElementById('ef-detalhes').value.trim(),
+    img:document.getElementById('ef-img').value.trim()
+  };
+  if(isNew){
+    data.push(obj);
+    addAudit('Criação','Empreendimento criado: '+obj.nome);
+  } else {
+    var idx=data.findIndex(function(x){return x.id===id;});
+    if(idx>=0){data[idx]=obj;addAudit('Edição','Empreendimento editado: '+obj.nome);}
+  }
+  saveData('steel_empreendimentos',data);
+  closeModal();
+  renderEmpreendimentos();
+  showToast(isNew?'Empreendimento criado!':'Alterações salvas!','s');
+}
+function deleteEmpreendimento(id){
+  var data=getData('steel_empreendimentos',DEFAULT_EMPREENDIMENTOS);
+  var e=data.find(function(x){return x.id===id;});
+  data=data.filter(function(x){return x.id!==id;});
+  saveData('steel_empreendimentos',data);
+  if(e)addAudit('Exclusão','Empreendimento excluído: '+e.nome);
+  closeModal();
+  renderEmpreendimentos();
+  showToast('Empreendimento excluído','w');
+}
+
+// ===================================================================
+//  CASAS
+// ===================================================================
+function renderCasas(){
+  var data=getData('steel_casas',[]);
+  var p=document.getElementById('page-casas');
+  var role=(getCurrentUser()||{}).role;
+  var canEdit=role==='Admin'||role==='Editor';
+  if(!data||!data.length){
+    p.innerHTML='<div class="page-head"><div><div class="page-title">Steel <em>Casas</em></div><div class="page-sub">56 residências</div></div></div>'+
+      '<div class="card" style="text-align:center;padding:48px;">'+
+        '<div style="font-size:32px;margin-bottom:16px;">⌂</div>'+
+        '<div style="font-family:\'DM Serif Display\',serif;font-size:24px;margin-bottom:12px;">Dados carregados do site principal</div>'+
+        '<p style="color:var(--graphite);font-size:14px;max-width:440px;margin:0 auto 24px;">Visite o <a href="../index.html" target="_blank" style="color:var(--red);">site principal</a> uma vez para sincronizar os 56 projetos de casas aqui.</p>'+
+        '<a href="../index.html" target="_blank" class="btn btn-primary">Abrir site para sincronizar →</a>'+
+      '</div>';
+    return;
+  }
+  p.innerHTML=
+    '<div class="page-head"><div><div class="page-title">Steel <em>Casas</em></div><div class="page-sub">'+data.length+' residências no portfólio</div></div></div>'+
+    '<div class="table-wrap">'+
+      '<div class="table-toolbar"><div class="table-label">'+data.length+' registros</div>'+
+        '<div class="table-controls"><input class="search-input" placeholder="Buscar casa…" oninput="filterTable(this,\'casas-tbody\')" aria-label="Buscar projeto"></div>'+
+      '</div>'+
+      '<table><thead><tr><th></th><th>Nome</th><th>Arquiteto</th><th>Área</th><th>Ações</th></tr></thead>'+
+      '<tbody id="casas-tbody">'+
+        data.map(function(c){return '<tr>'+
+          '<td><img class="td-thumb" src="'+c.img+'" alt="'+c.nome+'" loading="lazy"></td>'+
+          '<td class="td-name">'+c.nome+'</td>'+
+          '<td class="td-mono">'+(c.arquiteto||'—')+'</td>'+
+          '<td class="td-mono">'+(c.area||'—')+'</td>'+
+          '<td class="td-actions">'+(canEdit?'<button class="btn btn-ghost btn-xs" onclick="editCasa('+c.id+')">Editar</button>':'<span style="color:var(--graphite);font-size:12px;">—</span>')+'</td>'+
+        '</tr>';}).join('')+
+      '</tbody></table>'+
+    '</div>';
+}
+
+function editCasa(id){
+  var data=getData('steel_casas',[]);
+  var c=data.find(function(x){return x.id===id;});
+  if(!c)return;
+  document.getElementById('modal-title').textContent='Editar: '+c.nome;
+  document.getElementById('modal-box').className='modal-box';
+  document.getElementById('modal-body').innerHTML=
+    '<div class="form-group"><label class="form-label">Nome</label><input class="form-input" id="cf-nome" value="'+esc(c.nome)+'" aria-label="Nome"></div>'+
+    '<div class="form-row">'+
+      '<div class="form-group"><label class="form-label">Arquiteto</label><input class="form-input" id="cf-arq" value="'+esc(c.arquiteto||'')+'" aria-label="Arquiteto"></div>'+
+      '<div class="form-group"><label class="form-label">Área</label><input class="form-input" id="cf-area" value="'+esc(c.area||'')+'" aria-label="Área"></div>'+
+    '</div>'+
+    '<div class="form-group"><label class="form-label">URL da Imagem</label>'+
+    '<input class="form-input" id="cf-img" value="'+esc(c.img||'')+'" oninput="previewImg(this,\'cf-preview\')" aria-label="URL da imagem">'+
+    '<img class="img-preview'+(c.img?' show':'')+'" id="cf-preview" src="'+esc(c.img||'')+'" alt="Preview"></div>';
+  document.getElementById('modal-footer').innerHTML=
+    '<button class="btn btn-secondary" onclick="closeModal()">Cancelar</button>'+
+    '<button class="btn btn-primary" onclick="saveCasa('+id+')">Salvar</button>';
+  showModal();
+}
+function saveCasa(id){
+  var data=getData('steel_casas',[]);
+  var idx=data.findIndex(function(x){return x.id===id;});
+  if(idx<0)return;
+  data[idx].nome=document.getElementById('cf-nome').value.trim();
+  data[idx].arquiteto=document.getElementById('cf-arq').value.trim();
+  data[idx].area=document.getElementById('cf-area').value.trim();
+  data[idx].img=document.getElementById('cf-img').value.trim();
+  saveData('steel_casas',data);
+  addAudit('Edição','Casa editada: '+data[idx].nome);
+  closeModal();
+  renderCasas();
+  showToast('Casa atualizada!','s');
+}
+
+// ===================================================================
+//  EMPRESAS
+// ===================================================================
+function renderEmpresas(){
+  var data=getData('steel_empresas',DEFAULT_EMPRESAS);
+  var p=document.getElementById('page-empresas');
+  var role=(getCurrentUser()||{}).role;
+  var canEdit=role==='Admin'||role==='Editor';
+  p.innerHTML=
+    '<div class="page-head"><div><div class="page-title">Steel <em>Corporativo</em></div><div class="page-sub">'+data.length+' obras gerenciadas</div></div>'+
+    (canEdit?'<div class="page-actions"><button class="btn btn-primary" onclick="newEmpresa()">+ Nova obra</button></div>':'')+
+    '</div>'+
+    '<div class="table-wrap">'+
+      '<div class="table-toolbar"><div class="table-label">'+data.length+' registros</div>'+
+        '<div class="table-controls"><input class="search-input" placeholder="Buscar obra…" oninput="filterTable(this,\'emps-tbody\')" aria-label="Buscar obra"></div>'+
+      '</div>'+
+      '<table><thead><tr><th></th><th>Nome</th><th>Tipo</th><th>Status</th><th>Ações</th></tr></thead>'+
+      '<tbody id="emps-tbody">'+
+        data.map(function(e){return '<tr>'+
+          '<td><img class="td-thumb" src="'+e.img+'" alt="'+e.nome+'" loading="lazy"></td>'+
+          '<td class="td-name">'+e.nome+'</td>'+
+          '<td><span class="badge badge-red">'+e.tipo+'</span></td>'+
+          '<td><span class="badge badge-green">'+e.status+'</span></td>'+
+          '<td class="td-actions">'+(canEdit?
+            '<button class="btn btn-ghost btn-xs" onclick="editEmpresa('+e.id+')" aria-label="Editar '+e.nome+'">Editar</button>'+
+            '<button class="btn btn-danger btn-xs" onclick="confirmDelete('+e.id+',\'empresa\')" aria-label="Excluir '+e.nome+'">✕</button>':
+            '<span style="color:var(--graphite);font-size:12px;">—</span>')+
+          '</td>'+
+        '</tr>';}).join('')+
+      '</tbody></table>'+
+    '</div>';
+}
+
+function newEmpresa(){openEmpresaModal(null);}
+function editEmpresa(id){
+  var data=getData('steel_empresas',DEFAULT_EMPRESAS);
+  var e=data.find(function(x){return x.id===id;});
+  if(e)openEmpresaModal(e);
+}
+function openEmpresaModal(e){
+  var isNew=!e;
+  e=e||{id:null,nome:'',tipo:'Corporativo',local:'',ano:null,area:'',status:'Concluída',img:''};
+  document.getElementById('modal-title').textContent=isNew?'Nova Obra Corporativa':'Editar: '+e.nome;
+  document.getElementById('modal-box').className='modal-box';
+  document.getElementById('modal-body').innerHTML=
+    '<div class="form-group"><label class="form-label">Nome *</label><input class="form-input" id="es-nome" value="'+esc(e.nome)+'" aria-label="Nome da obra"></div>'+
+    '<div class="form-row">'+
+      '<div class="form-group"><label class="form-label">Local</label><input class="form-input" id="es-local" value="'+esc(e.local||'')+'" aria-label="Local"></div>'+
+      '<div class="form-group"><label class="form-label">Área</label><input class="form-input" id="es-area" value="'+esc(e.area||'')+'" placeholder="Ex: 5.000 m²" aria-label="Área"></div>'+
+    '</div>'+
+    '<div class="form-group"><label class="form-label">URL da Imagem</label>'+
+    '<input class="form-input" id="es-img" value="'+esc(e.img||'')+'" oninput="previewImg(this,\'es-preview\')" aria-label="URL da imagem">'+
+    '<img class="img-preview'+(e.img?' show':'')+'" id="es-preview" src="'+esc(e.img||'')+'" alt="Preview"></div>';
+  document.getElementById('modal-footer').innerHTML=
+    '<button class="btn btn-secondary" onclick="closeModal()">Cancelar</button>'+
+    '<button class="btn btn-primary" onclick="saveEmpresa('+e.id+')">'+( isNew?'Criar obra':'Salvar')+'</button>';
+  showModal();
+}
+function saveEmpresa(id){
+  var nome=document.getElementById('es-nome').value.trim();
+  if(!nome){showToast('Nome é obrigatório','e');return;}
+  var data=getData('steel_empresas',DEFAULT_EMPRESAS);
+  var isNew=!id;
+  var obj={id:isNew?Date.now():id,nome:nome,tipo:'Corporativo',local:document.getElementById('es-local').value.trim(),area:document.getElementById('es-area').value.trim(),status:'Concluída',img:document.getElementById('es-img').value.trim()};
+  if(isNew){data.push(obj);addAudit('Criação','Obra corporativa criada: '+obj.nome);}
+  else{var idx=data.findIndex(function(x){return x.id===id;});if(idx>=0){data[idx]=obj;addAudit('Edição','Obra editada: '+obj.nome);}}
+  saveData('steel_empresas',data);
+  closeModal();
+  renderEmpresas();
+  showToast(isNew?'Obra criada!':'Alterações salvas!','s');
+}
+function deleteEmpresa(id){
+  var data=getData('steel_empresas',DEFAULT_EMPRESAS);
+  var e=data.find(function(x){return x.id===id;});
+  data=data.filter(function(x){return x.id!==id;});
+  saveData('steel_empresas',data);
+  if(e)addAudit('Exclusão','Obra excluída: '+e.nome);
+  closeModal();
+  renderEmpresas();
+  showToast('Obra excluída','w');
+}
+
+// ===================================================================
+//  CONFIRM DELETE
+// ===================================================================
+function confirmDelete(id,type){
+  document.getElementById('modal-title').textContent='Confirmar exclusão';
+  document.getElementById('modal-box').className='modal-box sm';
+  document.getElementById('modal-body').innerHTML=
+    '<p style="font-size:15px;color:var(--ink);line-height:1.6;">Esta ação não pode ser desfeita. Deseja realmente excluir este registro?</p>';
+  document.getElementById('modal-footer').innerHTML=
+    '<button class="btn btn-secondary" onclick="closeModal()">Cancelar</button>'+
+    '<button class="btn btn-danger" onclick="'+(type==='empreendimento'?'deleteEmpreendimento':'deleteEmpresa')+'('+id+')">Excluir</button>';
+  showModal();
+}
+
+// ===================================================================
+//  MIDIA
+// ===================================================================
+function renderMidia(){
+  var emp=getData('steel_empreendimentos',DEFAULT_EMPREENDIMENTOS);
+  var emps=getData('steel_empresas',DEFAULT_EMPRESAS);
+  var cas=getData('steel_casas',[]);
+  var all=[];
+  emp.forEach(function(e){if(e.img)all.push({url:e.img,label:e.nome,cat:'Empreendimento'});});
+  emps.forEach(function(e){if(e.img)all.push({url:e.img,label:e.nome,cat:'Corporativo'});});
+  cas.forEach(function(c){if(c.img)all.push({url:c.img,label:c.nome,cat:'Casa'});});
+  var p=document.getElementById('page-midia');
+  p.innerHTML=
+    '<div class="page-head"><div><div class="page-title">Biblioteca de <em>Mídia</em></div><div class="page-sub">'+all.length+' imagens indexadas</div></div>'+
+    '<div class="page-actions">'+
+      '<button class="btn btn-primary btn-sm" onclick="addMediaModal()">+ Adicionar URL</button>'+
+    '</div></div>'+
+    '<div class="table-toolbar" style="background:var(--paper);border:1px solid var(--border);border-bottom:0;padding:14px 20px;">'+
+      '<input class="search-input" style="width:100%;" placeholder="Filtrar por nome…" oninput="filterMedia(this)" aria-label="Filtrar mídia">'+
+    '</div>'+
+    '<div class="media-grid" id="media-grid" style="background:var(--paper);border:1px solid var(--border);padding:16px;gap:10px;">'+
+      all.map(function(m){
+        return '<div class="media-item" onclick="copyUrl(\''+esc(m.url)+'\')">'+
+          '<img src="'+m.url+'" alt="'+m.label+'" loading="lazy">'+
+          '<div class="media-overlay">'+m.cat+' · '+m.label+'</div>'+
+        '</div>';
+      }).join('')+
+      (!all.length?'<p class="table-empty">Nenhuma imagem encontrada.</p>':'')+
+    '</div>'+
+    '<p style="font-size:12px;color:var(--graphite);margin-top:10px;">Clique em uma imagem para copiar a URL.</p>';
+}
+
+function addMediaModal(){
+  document.getElementById('modal-title').textContent='Adicionar imagem por URL';
+  document.getElementById('modal-box').className='modal-box sm';
+  document.getElementById('modal-body').innerHTML=
+    '<div class="form-group"><label class="form-label">URL da Imagem (Cloudinary)</label>'+
+    '<input class="form-input" id="add-img-url" placeholder="https://res.cloudinary.com/…" oninput="previewImg(this,\'add-img-prev\')" aria-label="URL da imagem">'+
+    '<img class="img-preview" id="add-img-prev" alt="Preview"></div>'+
+    '<p style="font-size:12px;color:var(--graphite);margin-top:8px;">A URL será adicionada à biblioteca mas deve ser associada a um projeto para aparecer no site.</p>';
+  document.getElementById('modal-footer').innerHTML=
+    '<button class="btn btn-secondary" onclick="closeModal()">Fechar</button>'+
+    '<button class="btn btn-primary" onclick="copyUrl(document.getElementById(\'add-img-url\').value)">Copiar URL</button>';
+  showModal();
+}
+
+function copyUrl(url){
+  if(!url)return;
+  navigator.clipboard&&navigator.clipboard.writeText(url).then(function(){showToast('URL copiada!','s');}).catch(function(){showToast('URL: '+url.slice(0,40)+'…');});
+}
+
+function filterMedia(input){
+  var q=input.value.toLowerCase();
+  document.querySelectorAll('#media-grid .media-item').forEach(function(el){
+    var label=el.querySelector('.media-overlay');
+    el.style.display=(!q||label.textContent.toLowerCase().includes(q))?'':'none';
+  });
+}
+
+// ===================================================================
+//  USUÁRIOS
+// ===================================================================
+function renderUsuarios(){
+  var role=(getCurrentUser()||{}).role;
+  var p=document.getElementById('page-usuarios');
+  p.innerHTML=
+    '<div class="page-head"><div><div class="page-title">Gestão de <em>Usuários</em></div><div class="page-sub">Roles: Admin · Editor · Viewer</div></div>'+
+    (role==='Admin'?'<div class="page-actions"><button class="btn btn-primary btn-sm" onclick="newUserModal()">+ Novo usuário</button></div>':'')+
+    '</div>'+
+    '<div class="table-wrap">'+
+      '<table><thead><tr><th>Avatar</th><th>Nome</th><th>E-mail</th><th>Role</th><th>Desde</th><th>Ações</th></tr></thead><tbody>'+
+        MOCK_USERS.map(function(u){
+          var rc=u.role==='Admin'?'badge-red':u.role==='Editor'?'badge-blue':'badge-gray';
+          var init=u.name.charAt(0).toUpperCase();
+          return '<tr>'+
+            '<td><div style="width:32px;height:32px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-family:\'DM Serif Display\',serif;font-size:14px;color:#fff;">'+init+'</div></td>'+
+            '<td class="td-name">'+u.name+'</td>'+
+            '<td class="td-mono">'+u.email+'</td>'+
+            '<td><span class="badge '+rc+'">'+u.role+'</span></td>'+
+            '<td class="td-mono">'+u.since+'</td>'+
+            '<td class="td-actions">'+(role==='Admin'?'<button class="btn btn-ghost btn-xs">Editar role</button>':'<span style="color:var(--graphite);font-size:12px;">—</span>')+'</td>'+
+          '</tr>';
+        }).join('')+
+      '</tbody></table>'+
+    '</div>'+
+    '<div class="card" style="margin-top:20px;"><div class="card-head">Permissões por role</div>'+
+      '<table><thead><tr><th>Funcionalidade</th><th>Admin</th><th>Editor</th><th>Viewer</th></tr></thead><tbody>'+
+        permRow('Ver projetos','✓','✓','✓')+
+        permRow('Editar projetos','✓','✓','—')+
+        permRow('Criar projetos','✓','✓','—')+
+        permRow('Excluir projetos','✓','—','—')+
+        permRow('Gerenciar usuários','✓','—','—')+
+        permRow('Ver auditoria','✓','✓','—')+
+        permRow('Exportar dados','✓','✓','—')+
+      '</tbody></table>'+
+    '</div>';
+}
+
+function permRow(f,a,e,v){
+  return '<tr><td>'+f+'</td>'+
+    '<td style="color:'+(a==='✓'?'var(--success)':'var(--graphite)')+';">'+a+'</td>'+
+    '<td style="color:'+(e==='✓'?'var(--success)':'var(--graphite)')+';">'+e+'</td>'+
+    '<td style="color:'+(v==='✓'?'var(--success)':'var(--graphite)')+';">'+v+'</td>'+
+  '</tr>';
+}
+
+function newUserModal(){
+  document.getElementById('modal-title').textContent='Novo Usuário';
+  document.getElementById('modal-box').className='modal-box sm';
+  document.getElementById('modal-body').innerHTML=
+    '<p style="font-size:13px;color:var(--graphite);margin-bottom:20px;line-height:1.6;">Em produção, novos usuários seriam criados via Firebase Auth ou backend. Neste ambiente demo, os usuários são fixos.</p>'+
+    '<div class="form-group"><label class="form-label">Nome</label><input class="form-input" placeholder="Nome completo" aria-label="Nome"></div>'+
+    '<div class="form-group"><label class="form-label">E-mail</label><input class="form-input" type="email" placeholder="email@steel.com" aria-label="E-mail"></div>'+
+    '<div class="form-group"><label class="form-label">Role</label>'+
+    '<div class="role-selector"><div class="role-chip selected" onclick="selectRole(this)">Admin</div><div class="role-chip" onclick="selectRole(this)">Editor</div><div class="role-chip" onclick="selectRole(this)">Viewer</div></div></div>';
+  document.getElementById('modal-footer').innerHTML=
+    '<button class="btn btn-secondary" onclick="closeModal()">Cancelar</button>'+
+    '<button class="btn btn-primary" onclick="closeModal();showToast(\'Funcionalidade disponível com backend real\',\'w\')">Criar usuário</button>';
+  showModal();
+}
+function selectRole(el){
+  el.parentElement.querySelectorAll('.role-chip').forEach(function(c){c.classList.remove('selected');});
+  el.classList.add('selected');
+}
+
+// ===================================================================
+//  AUDITORIA
+// ===================================================================
+function renderAuditoria(){
+  var log=getData('steel_audit',[]);
+  var p=document.getElementById('page-auditoria');
+  p.innerHTML=
+    '<div class="page-head"><div><div class="page-title">Log de <em>Auditoria</em></div><div class="page-sub">'+log.length+' eventos registrados</div></div>'+
+    '<div class="page-actions"><button class="btn btn-danger btn-sm" onclick="clearAudit()">Limpar log</button></div>'+
+    '</div>'+
+    '<div class="table-wrap">'+
+      '<div class="table-toolbar"><div class="table-label">Registro completo de ações</div></div>'+
+      '<table><thead><tr><th>Ação</th><th>Descrição</th><th>Usuário</th><th>Data/Hora</th></tr></thead><tbody>'+
+        (log.length?log.map(function(a){
+          var c=a.action==='Criação'?'badge-green':a.action==='Exclusão'?'badge-red':a.action==='Login'?'badge-blue':'badge-yellow';
+          return '<tr><td><span class="badge '+c+'">'+a.action+'</span></td>'+
+            '<td style="font-size:13px;">'+a.desc+'</td>'+
+            '<td class="td-mono">'+a.user+'</td>'+
+            '<td class="td-mono">'+fmtTime(a.time)+'</td></tr>';
+        }).join(''):
+        '<tr><td colspan="4" class="table-empty">Nenhum evento registrado ainda.</td></tr>')+
+      '</tbody></table>'+
+    '</div>';
+}
+
+function clearAudit(){
+  saveData('steel_audit',[]);
+  renderAuditoria();
+  showToast('Log de auditoria limpo','w');
+}
+
+// ===================================================================
+//  EXPORT
+// ===================================================================
+function exportAll(){
+  var emp=getData('steel_empreendimentos',DEFAULT_EMPREENDIMENTOS);
+  var emps=getData('steel_empresas',DEFAULT_EMPRESAS);
+  var cas=getData('steel_casas',[]);
+  var out={empreendimentos:emp,empresas:emps,casas:cas,exportedAt:new Date().toISOString()};
+  var blob=new Blob([JSON.stringify(out,null,2)],{type:'application/json'});
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='steel-data-'+Date.now()+'.json';
+  a.click();
+  addAudit('Exportação','Dados exportados em JSON');
+  showToast('Dados exportados!','s');
+}
+
+// ===================================================================
+//  MODAL HELPERS
+// ===================================================================
+function showModal(){document.getElementById('modal-overlay').hidden=false;}
+function closeModal(){document.getElementById('modal-overlay').hidden=true;}
+function handleOverlayClick(e){if(e.target===document.getElementById('modal-overlay'))closeModal();}
+function previewImg(input,previewId){
+  var img=document.getElementById(previewId);
+  if(!img)return;
+  var url=input.value.trim();
+  if(url){img.src=url;img.classList.add('show');}
+  else{img.classList.remove('show');}
+}
+
+// ===================================================================
+//  TABLE FILTER
+// ===================================================================
+function filterTable(input,tbodyId){
+  var q=input.value.toLowerCase();
+  var tbody=document.getElementById(tbodyId);
+  if(!tbody)return;
+  tbody.querySelectorAll('tr').forEach(function(row){
+    row.style.display=(!q||row.textContent.toLowerCase().includes(q))?'':'none';
+  });
+}
+
+// ===================================================================
+//  TOAST
+// ===================================================================
+function showToast(msg,type){
+  var icons={s:'✓',e:'✕',w:'⚠'};
+  var t=document.createElement('div');
+  t.className='toast'+(type?' '+type:'');
+  t.innerHTML='<span class="toast-icon">'+(icons[type]||'•')+'</span><span>'+msg+'</span>';
+  var c=document.getElementById('toasts');
+  c.appendChild(t);
+  setTimeout(function(){t.style.animation='toastIn .28s ease reverse';setTimeout(function(){c.removeChild(t);},280);},3200);
+}
+
+// ===================================================================
+//  UI HELPERS
+// ===================================================================
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+function showLogin(){
+  document.getElementById('login-page').hidden=false;
+  document.getElementById('admin-layout').hidden=true;
+}
+
+function showAdmin(){
+  document.getElementById('login-page').hidden=true;
+  document.getElementById('admin-layout').hidden=false;
+  var u=getCurrentUser();
+  if(u){
+    document.getElementById('sidebar-name').textContent=u.name;
+    document.getElementById('sidebar-role').textContent=u.role;
+    document.getElementById('sidebar-avatar').textContent=u.name.charAt(0).toUpperCase();
+  }
+}
+
+// ===================================================================
+//  LOGIN HANDLER
+// ===================================================================
+function handleLogin(e){
+  e.preventDefault();
+  var email=document.getElementById('login-email').value.trim();
+  var pass=document.getElementById('login-pass').value;
+  var btn=document.getElementById('login-btn');
+  btn.textContent='Entrando…';
+  btn.disabled=true;
+  setTimeout(function(){
+    if(login(email,pass)){
+      showAdmin();
+      initData();
+      navigate('dashboard');
+      startTimer();
+    } else {
+      document.getElementById('login-email').classList.add('error');
+      document.getElementById('login-pass').classList.add('error');
+      document.getElementById('pass-error').classList.add('show');
+      document.getElementById('pass-error').textContent='E-mail ou senha incorretos.';
+    }
+    btn.textContent='Entrar →';
+    btn.disabled=false;
+  },400);
+}
+
+// ===================================================================
+//  INIT
+// ===================================================================
+document.addEventListener('DOMContentLoaded',function(){
+  if(isAuthenticated()){
+    showAdmin();
+    initData();
+    var hash=location.hash.replace('#/','');
+    navigate(ROUTES.includes(hash)?hash:'dashboard');
+    startTimer();
+  } else {
+    showLogin();
+  }
+  // Reset timer on activity
+  document.addEventListener('click',resetTimer);
+  document.addEventListener('keydown',resetTimer);
+});
+</script>
+</body>
+</html>
