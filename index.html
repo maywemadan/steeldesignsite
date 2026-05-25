@@ -1,0 +1,2354 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Steel Construções e Empreendimentos</title>
+<meta name="description" content="Fundada em 1987, a Steel Construções e Empreendimentos tem em seu currículo inúmeras obras residenciais, comerciais e empreendimentos de alto padrão. ISO 9001 · PBQP-H Nível A.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red: #8E1B22;
+  --red-dk: #5C0F14;
+  --red-lt: #C24E54;
+  --black: #0F0E0D;
+  --ink: #1C1A17;
+  --coal: #2A2622;
+  --graphite: #5A524B;
+  --stone: #8C857D;
+  --bone: #E8DFD0;
+  --cream: #F1EBE0;
+  --paper: #F7F2E9;
+  --border: rgba(15,14,13,0.08);
+  --border-mid: rgba(15,14,13,0.15);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a { text-decoration: none; color: inherit; }
+img { display: block; max-width: 100%; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+/* ===== TYPOGRAPHY ===== */
+.font-anton { font-family: 'Anton', sans-serif; }
+.font-dm { font-family: 'DM Serif Display', serif; }
+.font-dm-i { font-family: 'DM Serif Display', serif; font-style: italic; }
+.font-mono { font-family: 'JetBrains Mono', monospace; }
+.font-body { font-family: 'Space Grotesk', sans-serif; }
+
+/* ===== EYEBROW ===== */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 20px;
+}
+.eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  background: var(--red);
+  flex-shrink: 0;
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 24px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.btn-red {
+  background: var(--red);
+  color: var(--cream);
+}
+.btn-red:hover { background: var(--red-dk); }
+.btn-black {
+  background: var(--black);
+  color: var(--cream);
+}
+.btn-black:hover { background: var(--coal); }
+.btn-outline {
+  border: 1.5px solid var(--ink);
+  color: var(--ink);
+  background: transparent;
+}
+.btn-outline:hover { background: var(--ink); color: var(--cream); }
+.btn-outline-cream {
+  border: 1.5px solid var(--cream);
+  color: var(--cream);
+  background: transparent;
+}
+.btn-outline-cream:hover { background: var(--cream); color: var(--ink); }
+
+/* ===== TOP BAR ===== */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 48px;
+  background: var(--black);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cream);
+  opacity: 0.9;
+}
+.topbar-left, .topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.topbar-sep {
+  width: 1px;
+  height: 12px;
+  background: rgba(248,242,233,0.2);
+}
+.topbar .dot {
+  color: var(--red-lt);
+  margin-right: 4px;
+}
+
+/* ===== NAVIGATION ===== */
+.navbar {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 48px;
+  align-items: center;
+  padding: 22px 48px;
+  background: var(--cream);
+  border-bottom: 1px solid var(--border-mid);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: box-shadow 0.3s ease;
+}
+.navbar.scrolled {
+  box-shadow: 0 4px 24px rgba(15,14,13,0.08);
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+}
+.logo-mark {
+  width: 48px;
+  height: 48px;
+  background: var(--red);
+  position: relative;
+  flex-shrink: 0;
+}
+.logo-mark::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 12px;
+  height: 12px;
+  background: var(--cream);
+}
+.logo-mark::after {
+  content: '';
+  position: absolute;
+  bottom: 6px;
+  left: 6px;
+  width: 8px;
+  height: 8px;
+  background: rgba(248,242,233,0.5);
+}
+.logo-mark-line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 28px;
+  height: 1.5px;
+  background: rgba(248,242,233,0.6);
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.logo-text { display: flex; flex-direction: column; }
+.logo-title {
+  font-family: 'Anton', sans-serif;
+  font-size: 30px;
+  color: var(--black);
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+.logo-sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--graphite);
+  margin-top: 3px;
+}
+
+/* Nav Links */
+.nav-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 36px;
+  list-style: none;
+}
+.nav-links a {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--graphite);
+  transition: color 0.2s ease;
+  position: relative;
+  padding-bottom: 4px;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--red);
+  transition: width 0.25s ease;
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-links a:hover::after,
+.nav-links a.active::after { width: 100%; }
+.nav-links a.active { color: var(--ink); }
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+}
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--ink);
+  transition: all 0.3s ease;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile menu */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  gap: 0;
+  background: var(--cream);
+  border-top: 1px solid var(--border-mid);
+  position: sticky;
+  top: 93px;
+  z-index: 99;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  padding: 16px 48px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--graphite);
+  border-bottom: 1px solid var(--border);
+  transition: color 0.2s ease, background 0.2s ease;
+}
+.mobile-menu a:hover, .mobile-menu a.active {
+  color: var(--red);
+  background: var(--paper);
+}
+
+/* ===== PAGES ===== */
+.page { display: block; }
+.page[hidden] { display: none; }
+
+/* ===== HERO ===== */
+.hero {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  min-height: calc(100vh - 93px - 44px);
+}
+.hero-left {
+  padding: 60px 64px 60px 64px;
+  background: var(--cream);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--graphite);
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+}
+.hero-meta-dot {
+  color: var(--red);
+  font-size: 8px;
+}
+.hero-meta-sep { color: var(--border-mid); }
+.hero-h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 88px;
+  line-height: 1.0;
+  color: var(--black);
+  margin-bottom: 40px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.hero-h1 em {
+  font-style: italic;
+}
+.hero-highlight {
+  display: inline;
+  background: var(--red);
+  color: var(--cream);
+  padding: 0 8px;
+  line-height: 1.15;
+}
+.hero-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.hero-desc {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--graphite);
+  line-height: 1.6;
+  max-width: 460px;
+}
+.hero-ctas {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Hero Right */
+.hero-right {
+  background: var(--red);
+  padding: 60px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+.hero-right-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(248,242,233,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(248,242,233,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+.hero-right-heading {
+  font-family: 'DM Serif Display', serif;
+  font-size: 42px;
+  line-height: 1.15;
+  color: var(--cream);
+  position: relative;
+  z-index: 1;
+}
+.hero-right-heading em { font-style: italic; }
+.hero-right-heading span {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+}
+.hero-featured-card {
+  background: var(--cream);
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+}
+.hero-featured-card .img-wrap {
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+.hero-featured-card .img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.hero-featured-card:hover .img-wrap img { transform: scale(1.03); }
+.hero-featured-card-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--graphite);
+}
+.hero-featured-card-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 20px;
+  color: var(--ink);
+  margin: 4px 0 6px;
+}
+.hero-right-sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(248,242,233,0.6);
+  position: relative;
+  z-index: 1;
+  margin-bottom: 16px;
+}
+
+/* ===== STATS BAR ===== */
+.stats-bar {
+  background: var(--black);
+  padding: 48px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+.stat-item {
+  padding: 24px 32px;
+  border-right: 1px solid rgba(248,242,233,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.stat-item:last-child { border-right: none; }
+.stat-number {
+  font-family: 'DM Serif Display', serif;
+  font-size: 46px;
+  line-height: 1;
+  color: var(--cream);
+}
+.stat-number em { font-style: italic; }
+.stat-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+
+/* ===== SECTIONS ===== */
+.c-section {
+  padding: 96px 64px;
+}
+.section-header {
+  margin-bottom: 56px;
+}
+.section-h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 52px;
+  line-height: 1.1;
+  color: var(--black);
+}
+.section-h2 em { font-style: italic; }
+
+/* ===== PORTFOLIO SECTION ===== */
+.portfolio-section {
+  background: var(--cream);
+  padding: 96px 64px;
+}
+.portfolio-grid-home {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 48px;
+}
+.portfolio-card {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+}
+.portfolio-card:hover { border-color: var(--red); }
+.portfolio-card .img-wrap {
+  aspect-ratio: 4/3;
+  overflow: hidden;
+}
+.portfolio-card .img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.portfolio-card:hover .img-wrap img { transform: scale(1.04); }
+.portfolio-card-info {
+  padding: 20px 24px;
+}
+.portfolio-card-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--stone);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.portfolio-card-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.portfolio-card-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--graphite);
+  text-transform: uppercase;
+}
+.portfolio-cta-wrap {
+  text-align: center;
+}
+
+/* ===== ABOUT / MANIFESTO ===== */
+.about-section {
+  background: var(--bone);
+  padding: 96px 64px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.about-h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 48px;
+  line-height: 1.15;
+  color: var(--black);
+  margin-bottom: 24px;
+}
+.about-h2 em { font-style: italic; }
+.about-body {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--graphite);
+  margin-bottom: 32px;
+}
+.about-card {
+  background: var(--coal);
+  padding: 48px 40px;
+}
+.about-quote {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-size: 24px;
+  line-height: 1.5;
+  color: var(--cream);
+  margin-bottom: 32px;
+}
+.about-quote-attr {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+
+/* ===== SERVICES ===== */
+.services-section {
+  background: var(--cream);
+  padding: 96px 64px;
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 1px solid var(--border-mid);
+}
+.service-col {
+  padding: 48px 40px;
+  border-right: 1px solid var(--border-mid);
+}
+.service-col:last-child { border-right: none; }
+.service-col.red {
+  background: var(--red);
+}
+.service-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-bottom: 32px;
+  display: block;
+}
+.service-col.red .service-num { color: rgba(248,242,233,0.5); }
+.service-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 30px;
+  color: var(--ink);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+.service-col.red .service-title { color: var(--cream); }
+.service-body {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--graphite);
+}
+.service-col.red .service-body { color: rgba(248,242,233,0.7); }
+
+/* ===== PROCESS TIMELINE ===== */
+.process-section {
+  background: var(--paper);
+  padding: 96px 64px;
+}
+.process-timeline {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  margin-top: 56px;
+  border: 1px solid var(--border-mid);
+}
+.process-step {
+  padding: 40px 32px;
+  border-right: 1px solid var(--border-mid);
+  position: relative;
+}
+.process-step:last-child { border-right: none; }
+.process-step-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-bottom: 24px;
+  display: block;
+}
+.process-step-arrow {
+  position: absolute;
+  top: 40px;
+  right: -12px;
+  width: 24px;
+  height: 24px;
+  background: var(--red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  font-size: 10px;
+  color: var(--cream);
+}
+.process-step:last-child .process-step-arrow { display: none; }
+.process-step-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 20px;
+  color: var(--ink);
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+.process-step-body {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--graphite);
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+
+/* ===== CERTIFICATIONS ===== */
+.certs-section {
+  background: var(--black);
+  padding: 48px 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 64px;
+  flex-wrap: wrap;
+}
+.cert-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.cert-badge {
+  width: 64px;
+  height: 64px;
+  border: 1.5px solid rgba(248,242,233,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.cert-badge::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 1px solid rgba(248,242,233,0.1);
+}
+.cert-badge-inner {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  color: var(--cream);
+  text-align: center;
+  line-height: 1.3;
+  font-weight: 500;
+}
+.cert-name {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+.cert-sep {
+  width: 1px;
+  height: 48px;
+  background: rgba(248,242,233,0.1);
+}
+
+/* ===== HOME CTA ===== */
+.home-cta-section {
+  background: var(--black);
+  padding: 96px 64px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.home-cta-accent {
+  position: absolute;
+  top: -60px;
+  right: 360px;
+  width: 120px;
+  height: 120px;
+  background: var(--red);
+  opacity: 0.15;
+}
+.home-cta-accent::after {
+  content: '';
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  width: 60px;
+  height: 60px;
+  background: var(--red);
+  opacity: 0.4;
+}
+.home-cta-h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 52px;
+  line-height: 1.1;
+  color: var(--cream);
+  position: relative;
+  z-index: 1;
+}
+.home-cta-h2 em { font-style: italic; }
+.contact-card {
+  background: var(--cream);
+  padding: 40px;
+  position: relative;
+  z-index: 1;
+}
+.contact-card-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border-mid);
+}
+.contact-card-item:last-of-type {
+  margin-bottom: 32px;
+  border-bottom: none;
+}
+.contact-card-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+.contact-card-value {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  background: var(--black);
+  padding: 80px 64px 0;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 64px;
+  padding-bottom: 64px;
+  border-bottom: 1px solid rgba(248,242,233,0.1);
+}
+.footer-brand .footer-name {
+  font-family: 'Anton', sans-serif;
+  font-size: 52px;
+  color: var(--cream);
+  letter-spacing: 0.02em;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.footer-brand-sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-bottom: 24px;
+}
+.footer-quote {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-size: 16px;
+  color: rgba(248,242,233,0.5);
+  line-height: 1.5;
+  max-width: 280px;
+}
+.footer-col-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-bottom: 24px;
+}
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  list-style: none;
+}
+.footer-links a {
+  font-size: 13px;
+  color: rgba(248,242,233,0.6);
+  transition: color 0.2s ease;
+}
+.footer-links a:hover { color: var(--cream); }
+.footer-bottom {
+  padding: 24px 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--graphite);
+  text-align: center;
+}
+
+/* ===== CASAS PAGE ===== */
+.page-header {
+  background: var(--cream);
+  padding: 80px 64px 56px;
+  border-bottom: 1px solid var(--border-mid);
+}
+.page-h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 80px;
+  line-height: 1.05;
+  color: var(--black);
+  margin-bottom: 20px;
+}
+.page-h1 em { font-style: italic; }
+.page-desc {
+  font-size: 16px;
+  color: var(--graphite);
+  line-height: 1.6;
+  max-width: 560px;
+}
+.page-count {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-bottom: 16px;
+}
+
+.casas-gallery {
+  padding: 64px;
+  background: var(--cream);
+}
+.casas-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.casa-card {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+  position: relative;
+}
+.casa-card:hover { border-color: var(--stone); }
+.casa-card .img-wrap {
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  position: relative;
+}
+.casa-card .img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.casa-card:hover .img-wrap img { transform: scale(1.04); }
+.casa-card-num {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(15,14,13,0.7);
+  color: var(--cream);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  padding: 4px 8px;
+  z-index: 1;
+}
+.casa-card-info {
+  padding: 20px 24px;
+}
+.casa-card-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 20px;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.casa-card-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--graphite);
+  text-transform: uppercase;
+}
+
+/* ===== SOBRE PAGE ===== */
+.sobre-hero {
+  background: var(--bone);
+  padding: 96px 64px;
+  border-bottom: 1px solid var(--border-mid);
+}
+.sobre-story {
+  padding: 96px 64px;
+  background: var(--cream);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.story-h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 40px;
+  line-height: 1.15;
+  color: var(--black);
+  margin-bottom: 24px;
+}
+.story-body {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--graphite);
+  margin-bottom: 20px;
+}
+.story-data-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+}
+.story-data-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+.story-data-value {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+}
+.values-section {
+  background: var(--black);
+  padding: 96px 64px;
+}
+.values-section .section-h2 { color: var(--cream); margin-bottom: 56px; }
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+.value-item {
+  padding: 40px 32px;
+  border-right: 1px solid rgba(248,242,233,0.08);
+}
+.value-item:last-child { border-right: none; }
+.value-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: var(--red-lt);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  display: block;
+}
+.value-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 28px;
+  color: var(--cream);
+  margin-bottom: 12px;
+}
+.value-body {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--stone);
+}
+.timeline-section {
+  background: var(--paper);
+  padding: 96px 64px;
+}
+.timeline-items {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-top: 56px;
+  border: 1px solid var(--border-mid);
+}
+.timeline-item {
+  padding: 40px 32px;
+  border-right: 1px solid var(--border-mid);
+}
+.timeline-item:last-child { border-right: none; }
+.timeline-year {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-size: 48px;
+  color: var(--red);
+  margin-bottom: 16px;
+  display: block;
+}
+.timeline-event {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--graphite);
+}
+
+/* ===== PROCESSO PAGE ===== */
+.processo-phases {
+  background: var(--cream);
+  padding: 96px 64px;
+}
+.phase-item {
+  display: grid;
+  grid-template-columns: 80px 1fr 1fr;
+  gap: 48px;
+  padding: 56px 0;
+  border-bottom: 1px solid var(--border-mid);
+  align-items: start;
+}
+.phase-item:last-child { border-bottom: none; }
+.phase-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  color: var(--stone);
+  text-transform: uppercase;
+  padding-top: 4px;
+}
+.phase-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 36px;
+  color: var(--black);
+  line-height: 1.15;
+}
+.phase-title em { font-style: italic; }
+.phase-body {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--graphite);
+}
+.certs-detail-section {
+  background: var(--bone);
+  padding: 96px 64px;
+}
+.certs-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  margin-top: 48px;
+}
+.cert-detail-card {
+  background: var(--paper);
+  border: 1px solid var(--border-mid);
+  padding: 40px;
+}
+.cert-detail-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.cert-detail-icon {
+  width: 48px;
+  height: 48px;
+  border: 1.5px solid var(--red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cert-detail-icon span {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: var(--red);
+  text-align: center;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+.cert-detail-name {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+.cert-detail-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 24px;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+.cert-detail-body {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--graphite);
+}
+
+/* ===== CONTATO PAGE ===== */
+.contato-section {
+  background: var(--cream);
+  padding: 96px 64px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 80px;
+}
+.form-group {
+  margin-bottom: 24px;
+}
+.form-label {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-bottom: 8px;
+}
+.form-input,
+.form-textarea,
+.form-select {
+  width: 100%;
+  padding: 14px 16px;
+  background: var(--paper);
+  border: 1px solid var(--border-mid);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.2s ease;
+  appearance: none;
+}
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+  border-color: var(--red);
+}
+.form-textarea { min-height: 140px; resize: vertical; }
+.form-submit { width: 100%; justify-content: center; font-size: 13px; }
+
+.contato-info-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.contato-info-item {
+  padding: 28px 0;
+  border-bottom: 1px solid var(--border-mid);
+}
+.contato-info-item:first-child { padding-top: 0; }
+.contato-info-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-bottom: 6px;
+}
+.contato-info-value {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.5;
+}
+.contato-info-value a { color: var(--red); }
+.map-placeholder {
+  margin-top: 32px;
+  background: var(--bone);
+  border: 1px solid var(--border-mid);
+  padding: 48px 32px;
+  text-align: center;
+}
+.map-placeholder-icon {
+  font-size: 32px;
+  margin-bottom: 12px;
+  display: block;
+}
+.map-placeholder-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--graphite);
+  line-height: 1.6;
+}
+
+/* ===== SCROLL TO TOP ===== */
+.scroll-top {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 48px;
+  height: 48px;
+  background: var(--red);
+  color: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 200;
+  font-size: 18px;
+  border: none;
+}
+.scroll-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+.scroll-top:hover { background: var(--red-dk); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+  .hero-h1 { font-size: 68px; }
+  .hero-right-heading { font-size: 34px; }
+  .stats-bar { padding: 48px 32px; }
+  .stat-number { font-size: 36px; }
+  .stat-item { padding: 24px 20px; }
+}
+
+@media (max-width: 1024px) {
+  .navbar {
+    grid-template-columns: auto auto;
+    gap: 16px;
+  }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .nav-actions { display: none; }
+
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-left { padding: 48px 32px; }
+  .hero-right { padding: 48px 32px; min-height: 400px; }
+  .hero-h1 { font-size: 56px; }
+
+  .stats-bar { grid-template-columns: repeat(2, 1fr); }
+  .stat-item { border-right: none; border-bottom: 1px solid rgba(248,242,233,0.08); }
+  .stat-item:nth-child(2n) { border-right: none; }
+
+  .portfolio-grid-home { grid-template-columns: 1fr 1fr; }
+  .about-section { grid-template-columns: 1fr; padding: 64px 32px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .service-col { border-right: none; border-bottom: 1px solid var(--border-mid); }
+
+  .process-timeline { grid-template-columns: 1fr 1fr; }
+  .process-step { border-right: none; border-bottom: 1px solid var(--border-mid); }
+  .process-step-arrow { display: none; }
+
+  .home-cta-section { grid-template-columns: 1fr; padding: 64px 32px; gap: 40px; }
+  .home-cta-h2 { font-size: 40px; }
+
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+
+  .casas-grid { grid-template-columns: repeat(2, 1fr); }
+  .casas-gallery { padding: 32px; }
+
+  .sobre-story { grid-template-columns: 1fr; padding: 64px 32px; gap: 48px; }
+  .values-grid { grid-template-columns: repeat(2, 1fr); }
+  .value-item { border-right: none; border-bottom: 1px solid rgba(248,242,233,0.08); }
+  .timeline-items { grid-template-columns: repeat(2, 1fr); }
+  .timeline-item { border-right: none; border-bottom: 1px solid var(--border-mid); }
+
+  .phase-item { grid-template-columns: 60px 1fr; gap: 24px; }
+  .phase-body { grid-column: 2; margin-top: -24px; }
+  .certs-detail-grid { grid-template-columns: 1fr; }
+
+  .contato-section { grid-template-columns: 1fr; padding: 64px 32px; gap: 48px; }
+
+  .c-section { padding: 64px 32px; }
+  .portfolio-section { padding: 64px 32px; }
+  .process-section { padding: 64px 32px; }
+  .services-section { padding: 64px 32px; }
+  .processo-phases { padding: 64px 32px; }
+  .certs-detail-section { padding: 64px 32px; }
+  .timeline-section { padding: 64px 32px; }
+  .values-section { padding: 64px 32px; }
+  .page-header { padding: 56px 32px 40px; }
+  .sobre-hero { padding: 64px 32px; }
+  .certs-section { padding: 48px 32px; gap: 32px; }
+  .footer { padding: 64px 32px 0; }
+}
+
+@media (max-width: 768px) {
+  .topbar {
+    padding: 10px 24px;
+    font-size: 9px;
+    gap: 12px;
+  }
+  .topbar-right { display: none; }
+
+  .navbar { padding: 18px 24px; gap: 12px; }
+  .mobile-menu a { padding: 16px 24px; }
+
+  .hero-left { padding: 40px 24px; }
+  .hero-right { padding: 40px 24px; }
+  .hero-h1 { font-size: 42px; }
+  .hero-meta { gap: 12px; font-size: 9px; flex-wrap: wrap; }
+  .hero-ctas { flex-direction: column; }
+
+  .stats-bar { padding: 32px 24px; }
+  .stat-number { font-size: 32px; }
+
+  .portfolio-grid-home { grid-template-columns: 1fr; }
+
+  .section-h2 { font-size: 38px; }
+  .about-h2 { font-size: 36px; }
+  .page-h1 { font-size: 52px; }
+
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  .footer-bottom { font-size: 9px; }
+}
+
+@media (max-width: 640px) {
+  .casas-grid { grid-template-columns: 1fr; }
+  .values-grid { grid-template-columns: 1fr; }
+  .timeline-items { grid-template-columns: 1fr; }
+  .process-timeline { grid-template-columns: 1fr; }
+  .certs-section { flex-direction: column; gap: 24px; }
+  .cert-sep { width: 40px; height: 1px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-left">
+    <span><span class="dot">●</span> Em obras agora · Alphaville, Barueri SP</span>
+    <div class="topbar-sep"></div>
+    <span>SP · Atendimento nacional</span>
+  </div>
+  <div class="topbar-right">
+    <span>(11) 4252-5900</span>
+    <div class="topbar-sep"></div>
+    <span>contato@steelconstrucoes.com.br</span>
+  </div>
+</div>
+
+<!-- NAVIGATION -->
+<nav class="navbar" id="navbar">
+  <div class="logo" onclick="navigate('home')">
+    <div class="logo-mark">
+      <div class="logo-mark-line"></div>
+    </div>
+    <div class="logo-text">
+      <span class="logo-title">STEEL</span>
+      <span class="logo-sub">Construções &amp; Empreendimentos</span>
+    </div>
+  </div>
+
+  <ul class="nav-links">
+    <li><a href="#/casas" data-route="casas" onclick="navigate('casas'); return false;">Steel Casas</a></li>
+    <li><a href="#/sobre" data-route="sobre" onclick="navigate('sobre'); return false;">A Steel</a></li>
+    <li><a href="#/processo" data-route="processo" onclick="navigate('processo'); return false;">Processo</a></li>
+    <li><a href="#/processo" data-route="processo" onclick="navigate('processo'); return false;">Qualidade</a></li>
+    <li><a href="#/contato" data-route="contato" onclick="navigate('contato'); return false;">Contato</a></li>
+  </ul>
+
+  <div class="nav-actions">
+    <button class="btn btn-outline" style="font-size:11px; padding:10px 18px;">Brochura ↓</button>
+    <a href="#/contato" class="btn btn-red" onclick="navigate('contato'); return false;">Iniciar conversa →</a>
+  </div>
+
+  <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMobileMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#/casas" data-route="casas" onclick="navigate('casas'); toggleMobileMenu(); return false;">Steel Casas</a>
+  <a href="#/sobre" data-route="sobre" onclick="navigate('sobre'); toggleMobileMenu(); return false;">A Steel</a>
+  <a href="#/processo" data-route="processo" onclick="navigate('processo'); toggleMobileMenu(); return false;">Processo &amp; Qualidade</a>
+  <a href="#/contato" data-route="contato" onclick="navigate('contato'); toggleMobileMenu(); return false;">Contato</a>
+</div>
+
+<!-- ========================== HOME PAGE ========================== -->
+<div id="page-home" class="page">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-meta">
+        <span><span class="hero-meta-dot">●</span> 2026 · Portfólio em curso</span>
+        <span class="hero-meta-sep">|</span>
+        <span>Fundada em 1987</span>
+        <span class="hero-meta-sep">|</span>
+        <span>ISO 9001 · PBQP-H Nível A</span>
+      </div>
+
+      <div class="hero-h1">
+        <span>Construir com intenção,</span>
+        <em>entregar com</em>
+        <span><span class="hero-highlight">assinatura.</span></span>
+      </div>
+
+      <div class="hero-bottom">
+        <p class="hero-desc">Há 39 anos, a Steel Construções executa obras de alto padrão com rigor técnico, cadeia construtiva verticalizada e compromisso com cada detalhe.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-black" href="#/casas" onclick="navigate('casas'); return false;">Ver portfólio completo →</a>
+          <a class="btn btn-outline" href="#/contato" onclick="navigate('contato'); return false;">Fale com a Steel</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-right-grid"></div>
+      <div>
+        <div class="hero-right-sub">Há mais de três décadas</div>
+        <div class="hero-right-heading">
+          <em>39 anos</em> de história contínua em engenharia de alto padrão
+        </div>
+      </div>
+      <div class="hero-featured-card">
+        <div class="img-wrap">
+          <img src="https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1763057090/IMG_7159_xx5idq.heic" alt="Tambore 2 — Mapa Group" loading="eager">
+        </div>
+        <div class="hero-featured-card-meta">Casa · 2349 m² · Mapa Group</div>
+        <div class="hero-featured-card-name">Tambore 2</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="stat-number"><em>39</em> anos</div>
+      <div class="stat-label">de história contínua</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">77+</div>
+      <div class="stat-label">projetos entregues</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">56</div>
+      <div class="stat-label">residências concluídas</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number"><em>ISO</em> 9001</div>
+      <div class="stat-label">PBQP-H Nível A — Máximo</div>
+    </div>
+  </div>
+
+  <!-- PORTFOLIO SECTION -->
+  <section class="portfolio-section">
+    <div class="section-header">
+      <div class="eyebrow">Cap. 01 · Portfólio</div>
+      <h2 class="section-h2">Steel Casas — <em>56 residências</em></h2>
+    </div>
+    <div class="portfolio-grid-home">
+      <div class="portfolio-card">
+        <div class="img-wrap">
+          <img src="https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1763057090/IMG_7159_xx5idq.heic" alt="Tambore 2" loading="lazy">
+        </div>
+        <div class="portfolio-card-info">
+          <div class="portfolio-card-num">01 · Tambore 2</div>
+          <div class="portfolio-card-name">Tambore 2</div>
+          <div class="portfolio-card-meta">2349 m² · Mapa Group</div>
+        </div>
+      </div>
+      <div class="portfolio-card">
+        <div class="img-wrap">
+          <img src="https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1753722483/Bela_Vista_741_18_ytpchk.jpg" alt="Boa Vista" loading="lazy">
+        </div>
+        <div class="portfolio-card-info">
+          <div class="portfolio-card-num">03 · Boa Vista</div>
+          <div class="portfolio-card-name">Boa Vista</div>
+          <div class="portfolio-card-meta">741 m² · Vanessa Feres</div>
+        </div>
+      </div>
+      <div class="portfolio-card">
+        <div class="img-wrap">
+          <img src="https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1770293092/Morumbi_904_1_kzeozr.png" alt="Morumbi" loading="lazy">
+        </div>
+        <div class="portfolio-card-info">
+          <div class="portfolio-card-num">11 · Morumbi</div>
+          <div class="portfolio-card-name">Morumbi</div>
+          <div class="portfolio-card-meta">904 m² · Tatiana Romanduni</div>
+        </div>
+      </div>
+      <div class="portfolio-card">
+        <div class="img-wrap">
+          <img src="https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1770319023/Alphaville_1_1200m2_1_ljpj7w.png" alt="Alphaville 1" loading="lazy">
+        </div>
+        <div class="portfolio-card-info">
+          <div class="portfolio-card-num">16 · Alphaville 1</div>
+          <div class="portfolio-card-name">Alphaville 1</div>
+          <div class="portfolio-card-meta">1200 m² · Carla Barranco</div>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-cta-wrap">
+      <a class="btn btn-black" href="#/casas" onclick="navigate('casas'); return false;">Ver todas as 56 residências →</a>
+    </div>
+  </section>
+
+  <!-- ABOUT / MANIFESTO -->
+  <section class="about-section">
+    <div class="about-left">
+      <div class="eyebrow">Quem somos</div>
+      <h2 class="about-h2">Engenharia <em>presente.</em> Cadeia <em>verticalizada.</em></h2>
+      <p class="about-body">Fundada em 1987, a Steel Construções e Empreendimentos tem em seu currículo inúmeras obras residenciais, comerciais e empreendimentos, tendo conseguido um padrão de eficiência e qualidade comprovada pelos seus clientes.</p>
+      <p class="about-body">Nossa cadeia construtiva verticalizada garante controle total do processo — do projeto executivo à entrega das chaves — com rigor técnico e cuidado estético que distinguem cada obra.</p>
+      <a class="btn btn-outline" href="#/sobre" onclick="navigate('sobre'); return false;">Conhecer a Steel →</a>
+    </div>
+    <div class="about-card">
+      <div class="about-quote">"A Steel entregou exatamente o que prometeu — sem surpresas, dentro do prazo, com acabamento impecável. Uma construtora rara."</div>
+      <div class="about-quote-attr">Cliente · Residência Alphaville, 2023</div>
+    </div>
+  </section>
+
+  <!-- SERVICE AREAS -->
+  <section class="services-section">
+    <div class="section-header">
+      <div class="eyebrow">Áreas de atuação</div>
+      <h2 class="section-h2">O que <em>construímos</em></h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-col">
+        <span class="service-num">01 / 03</span>
+        <div class="service-title">Residencial</div>
+        <p class="service-body">Custom homes de alto padrão com arquitetura autoral. Da casa de campo à residência urbana, cada projeto é tratado com atenção exclusiva.</p>
+      </div>
+      <div class="service-col red">
+        <span class="service-num">02 / 03</span>
+        <div class="service-title">Corporativo</div>
+        <p class="service-body">Edifícios comerciais, centros logísticos e instalações industriais executados com excelência técnica e gestão eficiente.</p>
+      </div>
+      <div class="service-col">
+        <span class="service-num">03 / 03</span>
+        <div class="service-title">Empreendimentos</div>
+        <p class="service-body">Incorporação de alto padrão do terreno à entrega das chaves — com governança completa e transparência em cada etapa.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS TIMELINE -->
+  <section class="process-section">
+    <div class="section-header">
+      <div class="eyebrow">Como trabalhamos</div>
+      <h2 class="section-h2">Nosso <em>processo</em></h2>
+    </div>
+    <div class="process-timeline">
+      <div class="process-step">
+        <span class="process-step-num">Fase 01</span>
+        <div class="process-step-arrow">→</div>
+        <div class="process-step-title">Viabilidade</div>
+        <div class="process-step-body">Análise técnica · Estudo de solo · Orçamento detalhado</div>
+      </div>
+      <div class="process-step">
+        <span class="process-step-num">Fase 02</span>
+        <div class="process-step-arrow">→</div>
+        <div class="process-step-title">Projeto BIM</div>
+        <div class="process-step-body">Modelagem 3D · Compatibilização · Projeto executivo</div>
+      </div>
+      <div class="process-step">
+        <span class="process-step-num">Fase 03</span>
+        <div class="process-step-arrow">→</div>
+        <div class="process-step-title">Execução</div>
+        <div class="process-step-body">Estrutura · Alvenaria · Instalações · Gestão de obra</div>
+      </div>
+      <div class="process-step">
+        <span class="process-step-num">Fase 04</span>
+        <div class="process-step-arrow">→</div>
+        <div class="process-step-title">Acabamentos</div>
+        <div class="process-step-body">Revestimentos · Esquadrias · Paisagismo · Detalhes</div>
+      </div>
+      <div class="process-step">
+        <span class="process-step-num">Fase 05</span>
+        <div class="process-step-title">Entrega</div>
+        <div class="process-step-body">Vistoria · Documentação · Chaves · Pós-obra</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS STRIP -->
+  <div class="certs-section">
+    <div class="cert-item">
+      <div class="cert-badge">
+        <div class="cert-badge-inner">ISO<br>9001</div>
+      </div>
+      <span class="cert-name">ISO 9001</span>
+    </div>
+    <div class="cert-sep"></div>
+    <div class="cert-item">
+      <div class="cert-badge">
+        <div class="cert-badge-inner">PBQP-H<br>Nível A</div>
+      </div>
+      <span class="cert-name">PBQP-H Nível A</span>
+    </div>
+    <div class="cert-sep"></div>
+    <div class="cert-item">
+      <div class="cert-badge">
+        <div class="cert-badge-inner">CREA</div>
+      </div>
+      <span class="cert-name">CREA</span>
+    </div>
+    <div class="cert-sep"></div>
+    <div class="cert-item">
+      <div class="cert-badge">
+        <div class="cert-badge-inner">CONFEA</div>
+      </div>
+      <span class="cert-name">CONFEA</span>
+    </div>
+  </div>
+
+  <!-- HOME CTA -->
+  <section class="home-cta-section">
+    <div class="home-cta-accent"></div>
+    <div>
+      <div class="eyebrow" style="color: var(--red-lt);">Próximo passo</div>
+      <h2 class="home-cta-h2">Conversemos sobre o seu próximo <em>projeto.</em></h2>
+    </div>
+    <div class="contact-card">
+      <div class="contact-card-item">
+        <span class="contact-card-label">Telefone</span>
+        <span class="contact-card-value">(11) 4252-5900</span>
+      </div>
+      <div class="contact-card-item">
+        <span class="contact-card-label">E-mail</span>
+        <span class="contact-card-value">contato@steelconstrucoes.com.br</span>
+      </div>
+      <div class="contact-card-item">
+        <span class="contact-card-label">Endereço</span>
+        <span class="contact-card-value">Av. Cauaxi, 350 — Sala 1201<br>Alphaville, Barueri – SP</span>
+      </div>
+      <a class="btn btn-red" href="#/contato" onclick="navigate('contato'); return false;" style="width:100%; justify-content:center;">Iniciar conversa →</a>
+    </div>
+  </section>
+
+  <!-- FOOTER (HOME) -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-name">STEEL</div>
+        <div class="footer-brand-sub">Construções &amp; Empreendimentos</div>
+        <div class="footer-quote">"Construir com intenção, entregar com assinatura."</div>
+      </div>
+      <div>
+        <div class="footer-col-title">Páginas</div>
+        <ul class="footer-links">
+          <li><a href="#/casas" onclick="navigate('casas'); return false;">Steel Casas</a></li>
+          <li><a href="#/sobre" onclick="navigate('sobre'); return false;">Quem Somos</a></li>
+          <li><a href="#/processo" onclick="navigate('processo'); return false;">Processo</a></li>
+          <li><a href="#/processo" onclick="navigate('processo'); return false;">Qualidade</a></li>
+          <li><a href="#/contato" onclick="navigate('contato'); return false;">Contato</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Serviços</div>
+        <ul class="footer-links">
+          <li><a href="#">Residencial</a></li>
+          <li><a href="#">Corporativo</a></li>
+          <li><a href="#">Empreendimentos</a></li>
+          <li><a href="#">Projeto BIM</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contato</div>
+        <ul class="footer-links">
+          <li><a href="tel:+551142525900">(11) 4252-5900</a></li>
+          <li><a href="mailto:contato@steelconstrucoes.com.br">contato@steelconstrucoes.com.br</a></li>
+          <li><a href="#">Av. Cauaxi, 350 — Sala 1201<br>Alphaville, Barueri SP</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Steel Construções e Empreendimentos Ltda · CNPJ 58.370.644/0001-51 · Avenida Cauaxi, 350 – Alphaville, Barueri SP · CEP 06454-020
+    </div>
+  </footer>
+</div>
+
+<!-- ========================== CASAS PAGE ========================== -->
+<div id="page-casas" class="page" hidden>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="eyebrow">Cap. 01 · Portfólio Residencial</div>
+    <div class="page-count">56 residências concluídas</div>
+    <h1 class="page-h1">Steel <em>Casas.</em></h1>
+    <p class="page-desc">Uma seleção de 56 residências executadas pela Steel Construções desde 1987 — cada obra um testemunho de rigor técnico, arquitetura de alto padrão e acabamento impecável.</p>
+  </div>
+
+  <!-- CASAS GRID -->
+  <div class="casas-gallery">
+    <div class="casas-grid" id="casasGrid">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-name">STEEL</div>
+        <div class="footer-brand-sub">Construções &amp; Empreendimentos</div>
+        <div class="footer-quote">"Construir com intenção, entregar com assinatura."</div>
+      </div>
+      <div>
+        <div class="footer-col-title">Páginas</div>
+        <ul class="footer-links">
+          <li><a href="#/" onclick="navigate('home'); return false;">Início</a></li>
+          <li><a href="#/sobre" onclick="navigate('sobre'); return false;">Quem Somos</a></li>
+          <li><a href="#/processo" onclick="navigate('processo'); return false;">Processo</a></li>
+          <li><a href="#/contato" onclick="navigate('contato'); return false;">Contato</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Serviços</div>
+        <ul class="footer-links">
+          <li><a href="#">Residencial</a></li>
+          <li><a href="#">Corporativo</a></li>
+          <li><a href="#">Empreendimentos</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contato</div>
+        <ul class="footer-links">
+          <li><a href="tel:+551142525900">(11) 4252-5900</a></li>
+          <li><a href="mailto:contato@steelconstrucoes.com.br">contato@steelconstrucoes.com.br</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Steel Construções e Empreendimentos Ltda · CNPJ 58.370.644/0001-51 · Avenida Cauaxi, 350 – Alphaville, Barueri SP
+    </div>
+  </footer>
+</div>
+
+<!-- ========================== SOBRE PAGE ========================== -->
+<div id="page-sobre" class="page" hidden>
+
+  <div class="sobre-hero">
+    <div class="eyebrow">A empresa</div>
+    <h1 class="page-h1">Quem <em>Somos.</em></h1>
+    <p class="page-desc" style="max-width:600px;">Fundada em 1987, a Steel é uma das mais respeitadas construtoras de alto padrão do estado de São Paulo — com 39 anos de história, equipe própria e certificações máximas de qualidade.</p>
+  </div>
+
+  <!-- STORY -->
+  <div class="sobre-story">
+    <div>
+      <div class="eyebrow">Nossa história</div>
+      <h2 class="story-h2">Três décadas construindo <em>excelência.</em></h2>
+      <p class="story-body">Fundada em 1987, a Steel Construções e Empreendimentos tem em seu currículo inúmeras obras residenciais, comerciais e empreendimentos, tendo conseguido um padrão de eficiência e qualidade comprovada pelos seus clientes.</p>
+      <p class="story-body">Com sede em Alphaville, Barueri — o mais importante polo de negócios do Grande ABC — a Steel está inserida no epicentro do mercado imobiliário de alto padrão paulista, atendendo clientes em todo o território nacional.</p>
+      <p class="story-body">Nossa cadeia construtiva verticalizada garante que cada etapa — do estudo de viabilidade à entrega das chaves — seja executada com rigor técnico, eficiência operacional e atenção estética que se tornou a marca da empresa.</p>
+    </div>
+    <div>
+      <div class="story-data-item">
+        <span class="story-data-label">Razão Social</span>
+        <span class="story-data-value">Steel Construções e Empreendimentos LTDA</span>
+      </div>
+      <div class="story-data-item">
+        <span class="story-data-label">CNPJ</span>
+        <span class="story-data-value">58.370.644/0001-51</span>
+      </div>
+      <div class="story-data-item">
+        <span class="story-data-label">Fundação</span>
+        <span class="story-data-value">1987 — 39 anos de história</span>
+      </div>
+      <div class="story-data-item">
+        <span class="story-data-label">Sede</span>
+        <span class="story-data-value">Avenida Cauaxi, 350 – Sala 1201<br>Alphaville, Barueri – SP<br>CEP 06454-020</span>
+      </div>
+      <div class="story-data-item">
+        <span class="story-data-label">Certificações</span>
+        <span class="story-data-value">ISO 9001 · PBQP-H Nível A (Máximo)</span>
+      </div>
+      <div class="story-data-item">
+        <span class="story-data-label">Site</span>
+        <span class="story-data-value">www.steelconstrucoes.com.br</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- VALUES -->
+  <div class="values-section">
+    <div class="eyebrow" style="color: var(--red-lt);">Nossos valores</div>
+    <h2 class="section-h2" style="color:var(--cream); margin-bottom:56px;">O que nos <em>orienta</em></h2>
+    <div class="values-grid">
+      <div class="value-item">
+        <span class="value-num">01</span>
+        <div class="value-title">Qualidade</div>
+        <p class="value-body">Certificações ISO 9001 e PBQP-H Nível A não são apenas selos — são a expressão cotidiana de processos rigorosos e comprometimento com a excelência.</p>
+      </div>
+      <div class="value-item">
+        <span class="value-num">02</span>
+        <div class="value-title">Transparência</div>
+        <p class="value-body">Relatórios de obra, cronogramas precisos e comunicação direta com o cliente em cada etapa do processo construtivo.</p>
+      </div>
+      <div class="value-item">
+        <span class="value-num">03</span>
+        <div class="value-title">Compromisso</div>
+        <p class="value-body">39 anos de entregas cumpridas, prazos respeitados e clientes satisfeitos são o melhor atestado do nosso compromisso.</p>
+      </div>
+      <div class="value-item">
+        <span class="value-num">04</span>
+        <div class="value-title">Inovação</div>
+        <p class="value-body">Tecnologia BIM, materiais de última geração e gestão de obra digitalizada — sem perder a atenção artesanal aos acabamentos.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="timeline-section">
+    <div class="eyebrow">Nossa trajetória</div>
+    <h2 class="section-h2">39 anos de <em>história</em></h2>
+    <div class="timeline-items">
+      <div class="timeline-item">
+        <span class="timeline-year">1987</span>
+        <div class="timeline-event">Fundação da Steel Construções em Alphaville. Primeiras obras residenciais de alto padrão na região metropolitana de São Paulo.</div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-year">2000s</span>
+        <div class="timeline-event">Expansão do portfólio para empreendimentos corporativos e comerciais. Obtenção das primeiras certificações de qualidade.</div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-year">2020</span>
+        <div class="timeline-event">Implementação de tecnologia BIM em todos os projetos. Certificação PBQP-H Nível A — o nível máximo do programa.</div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-year">2026</span>
+        <div class="timeline-event">56 residências de alto padrão entregues. 77+ projetos no portfólio. Referência em engenharia de excelência no estado de SP.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-name">STEEL</div>
+        <div class="footer-brand-sub">Construções &amp; Empreendimentos</div>
+        <div class="footer-quote">"Construir com intenção, entregar com assinatura."</div>
+      </div>
+      <div>
+        <div class="footer-col-title">Páginas</div>
+        <ul class="footer-links">
+          <li><a href="#/" onclick="navigate('home'); return false;">Início</a></li>
+          <li><a href="#/casas" onclick="navigate('casas'); return false;">Steel Casas</a></li>
+          <li><a href="#/processo" onclick="navigate('processo'); return false;">Processo</a></li>
+          <li><a href="#/contato" onclick="navigate('contato'); return false;">Contato</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Serviços</div>
+        <ul class="footer-links">
+          <li><a href="#">Residencial</a></li>
+          <li><a href="#">Corporativo</a></li>
+          <li><a href="#">Empreendimentos</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contato</div>
+        <ul class="footer-links">
+          <li><a href="tel:+551142525900">(11) 4252-5900</a></li>
+          <li><a href="mailto:contato@steelconstrucoes.com.br">contato@steelconstrucoes.com.br</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Steel Construções e Empreendimentos Ltda · CNPJ 58.370.644/0001-51 · Avenida Cauaxi, 350 – Alphaville, Barueri SP
+    </div>
+  </footer>
+</div>
+
+<!-- ========================== PROCESSO PAGE ========================== -->
+<div id="page-processo" class="page" hidden>
+
+  <div class="sobre-hero">
+    <div class="eyebrow">Como trabalhamos</div>
+    <h1 class="page-h1">Processo &amp; <em>Qualidade.</em></h1>
+    <p class="page-desc" style="max-width:600px;">Da análise de viabilidade à entrega das chaves, cada etapa do nosso processo é controlada, documentada e executada sob as mais rigorosas normas de qualidade.</p>
+  </div>
+
+  <!-- PHASES -->
+  <div class="processo-phases">
+    <div class="eyebrow">As 5 fases</div>
+    <h2 class="section-h2">O processo <em>Steel</em></h2>
+
+    <div class="phase-item">
+      <div class="phase-num">Fase 01</div>
+      <div class="phase-title"><em>Viabilidade</em></div>
+      <div class="phase-body">Toda obra Steel começa com uma análise técnica aprofundada: estudo de solo, levantamento topográfico, análise de projetos existentes e elaboração de orçamento detalhado. Nesta fase definimos o cronograma macro, identificamos riscos e estabelecemos o contrato com total transparência sobre custos e prazos.</div>
+    </div>
+
+    <div class="phase-item">
+      <div class="phase-num">Fase 02</div>
+      <div class="phase-title">Projeto <em>BIM</em></div>
+      <div class="phase-body">Utilizamos tecnologia BIM (Building Information Modeling) em todos os nossos projetos executivos. A modelagem 3D paramétrica permite identificar interferências entre disciplinas antes do início da obra, reduzindo retrabalhos e surpresas. Nosso processo de compatibilização envolve as equipes de arquitetura, estrutura, instalações elétricas, hidráulicas e ar-condicionado.</div>
+    </div>
+
+    <div class="phase-item">
+      <div class="phase-num">Fase 03</div>
+      <div class="phase-title"><em>Execução</em></div>
+      <div class="phase-body">A fase de execução é onde nossa cadeia verticalizada faz a diferença. Com equipe própria de estrutura, alvenaria e instalações, eliminamos a dependência de terceiros e mantemos controle total sobre qualidade e prazos. Relatórios semanais de obra e reuniões quinzenais com o cliente garantem plena transparência durante toda a construção.</div>
+    </div>
+
+    <div class="phase-item">
+      <div class="phase-num">Fase 04</div>
+      <div class="phase-title"><em>Acabamentos</em></div>
+      <div class="phase-body">Os acabamentos são onde a engenharia encontra a arte. Revestimentos de alto padrão, esquadrias de precisão, paisagismo integrado ao projeto arquitetônico e os mil detalhes que transformam uma construção em uma casa. Nossa equipe especializada em acabamentos trabalha com os melhores fornecedores e artesãos do mercado.</div>
+    </div>
+
+    <div class="phase-item">
+      <div class="phase-num">Fase 05</div>
+      <div class="phase-title"><em>Entrega</em></div>
+      <div class="phase-body">A entrega Steel vai além das chaves. Realizamos uma vistoria técnica completa, levantamos e corrigimos qualquer não conformidade, entregamos o Manual do Proprietário com todas as especificações da obra e iniciamos o período de pós-obra — garantindo que o cliente esteja completamente satisfeito com cada detalhe da sua nova residência.</div>
+    </div>
+  </div>
+
+  <!-- CERTIFICATIONS DETAIL -->
+  <div class="certs-detail-section">
+    <div class="eyebrow">Certificações</div>
+    <h2 class="section-h2">Qualidade <em>comprovada</em></h2>
+    <div class="certs-detail-grid">
+      <div class="cert-detail-card">
+        <div class="cert-detail-badge">
+          <div class="cert-detail-icon"><span>ISO<br>9001</span></div>
+          <div class="cert-detail-name">ISO 9001</div>
+        </div>
+        <div class="cert-detail-title">Sistema de Gestão da Qualidade</div>
+        <p class="cert-detail-body">A ISO 9001 é a norma internacional de gestão da qualidade mais reconhecida no mundo. A certificação Steel atesta que nossos processos construtivos seguem procedimentos documentados, controláveis e continuamente melhorados — garantindo consistência e confiabilidade em cada obra.</p>
+      </div>
+      <div class="cert-detail-card">
+        <div class="cert-detail-badge">
+          <div class="cert-detail-icon"><span>PBQP-H<br>Nível A</span></div>
+          <div class="cert-detail-name">PBQP-H Nível A</div>
+        </div>
+        <div class="cert-detail-title">Nível Máximo de Qualidade Habitacional</div>
+        <p class="cert-detail-body">O PBQP-H (Programa Brasileiro da Qualidade e Produtividade do Habitat) Nível A é o grau máximo de certificação para construtoras no Brasil. Exigido pelo Governo Federal para obras do setor habitacional, o nível A Steel demonstra que cumprimos os mais rigorosos critérios de gestão de fornecedores, materiais e processos.</p>
+      </div>
+      <div class="cert-detail-card">
+        <div class="cert-detail-badge">
+          <div class="cert-detail-icon"><span>CREA</span></div>
+          <div class="cert-detail-name">CREA</div>
+        </div>
+        <div class="cert-detail-title">Conselho Regional de Engenharia</div>
+        <p class="cert-detail-body">Registro ativo no Conselho Regional de Engenharia e Agronomia do Estado de São Paulo. Toda nossa equipe técnica é devidamente habilitada e registrada no CREA-SP, garantindo que cada obra seja executada por profissionais legalmente responsáveis e tecnicamente qualificados.</p>
+      </div>
+      <div class="cert-detail-card">
+        <div class="cert-detail-badge">
+          <div class="cert-detail-icon"><span>CONFEA</span></div>
+          <div class="cert-detail-name">CONFEA</div>
+        </div>
+        <div class="cert-detail-title">Conselho Federal de Engenharia</div>
+        <p class="cert-detail-body">Vinculação ao Conselho Federal de Engenharia, Arquitetura e Agronomia — o órgão máximo de regulamentação e fiscalização do exercício das profissões de engenharia no Brasil. Nossa conformidade com as normas CONFEA garante segurança legal e técnica em todos os projetos.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-name">STEEL</div>
+        <div class="footer-brand-sub">Construções &amp; Empreendimentos</div>
+        <div class="footer-quote">"Construir com intenção, entregar com assinatura."</div>
+      </div>
+      <div>
+        <div class="footer-col-title">Páginas</div>
+        <ul class="footer-links">
+          <li><a href="#/" onclick="navigate('home'); return false;">Início</a></li>
+          <li><a href="#/casas" onclick="navigate('casas'); return false;">Steel Casas</a></li>
+          <li><a href="#/sobre" onclick="navigate('sobre'); return false;">Quem Somos</a></li>
+          <li><a href="#/contato" onclick="navigate('contato'); return false;">Contato</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Serviços</div>
+        <ul class="footer-links">
+          <li><a href="#">Residencial</a></li>
+          <li><a href="#">Corporativo</a></li>
+          <li><a href="#">Empreendimentos</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contato</div>
+        <ul class="footer-links">
+          <li><a href="tel:+551142525900">(11) 4252-5900</a></li>
+          <li><a href="mailto:contato@steelconstrucoes.com.br">contato@steelconstrucoes.com.br</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Steel Construções e Empreendimentos Ltda · CNPJ 58.370.644/0001-51 · Avenida Cauaxi, 350 – Alphaville, Barueri SP
+    </div>
+  </footer>
+</div>
+
+<!-- ========================== CONTATO PAGE ========================== -->
+<div id="page-contato" class="page" hidden>
+
+  <div class="sobre-hero">
+    <div class="eyebrow">Fale conosco</div>
+    <h1 class="page-h1">Iniciar <em>Conversa.</em></h1>
+    <p class="page-desc" style="max-width:560px;">Seja para uma residência de alto padrão ou um grande empreendimento, nossa equipe está pronta para entender o seu projeto e apresentar a melhor solução.</p>
+  </div>
+
+  <div class="contato-section">
+    <!-- FORM -->
+    <div>
+      <div class="eyebrow">Envie uma mensagem</div>
+      <h2 class="section-h2" style="margin-bottom:40px;">Seu <em>projeto</em> começa aqui</h2>
+      <form onsubmit="handleFormSubmit(event)">
+        <div class="form-group">
+          <label class="form-label" for="nome">Nome completo</label>
+          <input class="form-input" type="text" id="nome" name="nome" placeholder="Seu nome" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="empresa">Empresa (opcional)</label>
+          <input class="form-input" type="text" id="empresa" name="empresa" placeholder="Nome da empresa">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="email">E-mail</label>
+          <input class="form-input" type="email" id="email" name="email" placeholder="seu@email.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="telefone">Telefone</label>
+          <input class="form-input" type="tel" id="telefone" name="telefone" placeholder="(11) 00000-0000">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="assunto">Assunto</label>
+          <select class="form-select" id="assunto" name="assunto">
+            <option value="">Selecione o tipo de projeto</option>
+            <option value="residencial">Residência de alto padrão</option>
+            <option value="corporativo">Edifício corporativo</option>
+            <option value="empreendimento">Empreendimento imobiliário</option>
+            <option value="outro">Outro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="mensagem">Mensagem</label>
+          <textarea class="form-textarea" id="mensagem" name="mensagem" placeholder="Conte-nos sobre o seu projeto — localização, área, arquiteto envolvido, prazo desejado..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-red form-submit">Enviar mensagem →</button>
+      </form>
+    </div>
+
+    <!-- CONTACT INFO -->
+    <div class="contato-info-block">
+      <div class="eyebrow">Informações</div>
+      <h2 class="section-h2" style="margin-bottom:32px; font-size:38px;">Onde <em>estamos</em></h2>
+
+      <div class="contato-info-item">
+        <div class="contato-info-label">Telefone</div>
+        <div class="contato-info-value"><a href="tel:+551142525900">(11) 4252-5900</a></div>
+      </div>
+      <div class="contato-info-item">
+        <div class="contato-info-label">E-mail</div>
+        <div class="contato-info-value"><a href="mailto:contato@steelconstrucoes.com.br">contato@steelconstrucoes.com.br</a></div>
+      </div>
+      <div class="contato-info-item">
+        <div class="contato-info-label">Endereço</div>
+        <div class="contato-info-value">
+          Avenida Cauaxi, 350 – Sala 1201<br>
+          Alphaville, Barueri – SP<br>
+          CEP 06454-020
+        </div>
+      </div>
+      <div class="contato-info-item">
+        <div class="contato-info-label">Horário de atendimento</div>
+        <div class="contato-info-value">Segunda a sexta, 9h às 18h</div>
+      </div>
+
+      <div class="map-placeholder">
+        <span class="map-placeholder-icon">📍</span>
+        <div class="map-placeholder-text">
+          Avenida Cauaxi, 350 — Sala 1201<br>
+          Alphaville · Barueri – SP<br>
+          CEP 06454-020
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-name">STEEL</div>
+        <div class="footer-brand-sub">Construções &amp; Empreendimentos</div>
+        <div class="footer-quote">"Construir com intenção, entregar com assinatura."</div>
+      </div>
+      <div>
+        <div class="footer-col-title">Páginas</div>
+        <ul class="footer-links">
+          <li><a href="#/" onclick="navigate('home'); return false;">Início</a></li>
+          <li><a href="#/casas" onclick="navigate('casas'); return false;">Steel Casas</a></li>
+          <li><a href="#/sobre" onclick="navigate('sobre'); return false;">Quem Somos</a></li>
+          <li><a href="#/processo" onclick="navigate('processo'); return false;">Processo</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Serviços</div>
+        <ul class="footer-links">
+          <li><a href="#">Residencial</a></li>
+          <li><a href="#">Corporativo</a></li>
+          <li><a href="#">Empreendimentos</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contato</div>
+        <ul class="footer-links">
+          <li><a href="tel:+551142525900">(11) 4252-5900</a></li>
+          <li><a href="mailto:contato@steelconstrucoes.com.br">contato@steelconstrucoes.com.br</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Steel Construções e Empreendimentos Ltda · CNPJ 58.370.644/0001-51 · Avenida Cauaxi, 350 – Alphaville, Barueri SP
+    </div>
+  </footer>
+</div>
+
+<!-- SCROLL TO TOP -->
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Voltar ao topo">↑</button>
+
+<script>
+// ===== CASAS DATA =====
+const CASAS = [
+  {id:1,nome:"Tambore 2",area:"2349 m²",arquiteto:"Mapa Group",img:"https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1763057090/IMG_7159_xx5idq.heic"},
+  {id:2,nome:"Alpha 0",area:"500 m²",arquiteto:"FPoles Arquitetura",img:"https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1756497201/Alpha_0_500m2_03_u4hqm3.png"},
+  {id:3,nome:"Boa Vista",area:"741 m²",arquiteto:"Vanessa Feres",img:"https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1753722483/Bela_Vista_741_18_ytpchk.jpg"},
+  {id:4,nome:"Tamboré 2",area:"1600 m²",arquiteto:"Sessa Arquitetura",img:"https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1726767058/WhatsApp_Image_2024-09-13_at_08.29.39_noes5u.jpg"},
+  {id:5,nome:"Guarujá",area:"895 m²",arquiteto:"Vanessa Feres",img:"https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1716227508/WhatsApp_Image_2024-05-20_at_14.03.35_rgjsax.jpg"},
+  {id:6,nome:"Monte Mor",area:"800 m²",arquiteto:"Vanessa Feres",img:"https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1716227139/WhatsApp_Image_2024-05-20_at_14.06.24_ijymin.jpg"},
+  {id:7,nome:"Cunha",area:"898 m²",arquiteto:"Vanessa Feres",img:"https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1716226816/WhatsApp_Image_2024-05-20_at_14.05.23_9_izrqya.jpg"},
+  {id:8,nome:"Alpha 0",area:"520 m²",arquiteto:"Guilherme Torres",img:"https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1684784727/WhatsApp_Image_2023-05-22_at_16.45.10_hio8gf.jpg"},
+  {id:9,nome:"Alpha 0",area:"480 m²",arquiteto:"Guilherme Torres",img:"https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1684783984/WhatsApp_Image_2023-05-22_at_16.20.00_bhb5y6.jpg"},
+  {id:10,nome:"Alpha 6",area:"654 m²",arquiteto:"Carla Barranco",img:"https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1770920702/Alpha_6_654_Fachada_4_slwdyv.jpg"},
+  {id:11,nome:"Morumbi",area:"904 m²",arquiteto:"Tatiana Romanduni",img:"https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1770293092/Morumbi_904_1_kzeozr.png"},
+  {id:12,nome:"Alpha Sítio",area:"460 m²",arquiteto:"JNA Arquitetos",img:"https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1629480695/casas/WhatsApp_Image_2021-08-20_at_13.52.39_p7vqdo.jpg"},
+  {id:13,nome:"Alphaville 1",area:"409 m²",arquiteto:"Henrique Balbin",img:"https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1770300986/01_Alphaville_1_409_ckczyy.png"},
+  {id:14,nome:"Tamboré 2",area:"600 m²",arquiteto:"Manuela Vilas-Bôas",img:"https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto,w_800/v1607640358/casas/DSC08958_quecxv.jpg"},
+  {id:15,nome:"Genesis 1",area:"600 m²",arquiteto:"Newton Massafumi Yamato",img:"https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1770310964/Genesis_1_600m2_1_o0m2jh.png"},
+  {id:16,nome:"Alphaville 1",area:"1200 m²",arquiteto:"Carla Barranco",img:"https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1770319023/Alphaville_1_1200m2_1_ljpj7w.png"},
+  {id:17,nome:"Alphaville Zero",area:"540 m²",arquiteto:"Carla Barranco",img:"https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1770640296/Alphaville_0_540m2_1_aa76py.png"},
+  {id:18,nome:"Gênesis 2",area:"640 m²",arquiteto:"Newton Massafume",img:"https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1768499150/IMG_7261_64_algus4.jpg"},
+  {id:19,nome:"Melville",area:"600 m²",arquiteto:"Carla Barranco",img:"https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1770646293/MelVille_600m2_4_ufihbu.png"},
+  {id:20,nome:"Gênesis 1",area:"415 m²",arquiteto:"Flavia Cancian",img:"https://res.cloudinary.com/duriirkok/image/upload/v1606508212/casas/genesis1-42_ukmirb.jpg"},
+  {id:21,nome:"New Ville",area:"380 m²",arquiteto:"Thais Doretto",img:"https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1770645458/Fachada_02_wu7k3c.png"},
+  {id:22,nome:"Jardim Europa",area:"1275 m²",arquiteto:"Raul di Pace",img:"https://res.cloudinary.com/duriirkok/image/upload/v1606507951/casas/jardim-europa-37_sd2oy1.jpg"},
+  {id:23,nome:"Jardim Europa",area:"3000 m²",arquiteto:"Raul di Pace",img:"https://res.cloudinary.com/duriirkok/image/upload/v1606507900/casas/jardim-europa-36_dhtdtu.jpg"},
+  {id:24,nome:"Vila Solaia",area:"210 m²",arquiteto:"Melissa Corbet",img:"https://res.cloudinary.com/duriirkok/image/upload/v1606507809/casas/vila-solaia-34_a1hicb.jpg"},
+  {id:25,nome:"Itahyê",area:"420 m²",arquiteto:"Marilia Richieri",img:"https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1770646601/Itahy%C3%AA_02_xl0hsq.png"},
+  {id:26,nome:"Tamboré 2",area:"780 m²",arquiteto:"Melissa Corbett",img:"https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1770645458/Fachada_02_wu7k3c.png"},
+  {id:27,nome:"Alpha Sítio",area:"350 m²",arquiteto:"Merê Esteves",img:"https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1629480695/casas/WhatsApp_Image_2021-08-20_at_13.52.39_p7vqdo.jpg"},
+  {id:28,nome:"Vila Solaia",area:"360 m²",arquiteto:"Pedro Paes",img:"https://res.cloudinary.com/duriirkok/image/upload/v1606507809/casas/vila-solaia-34_a1hicb.jpg"},
+  {id:29,nome:"Alpha Conde",area:"650 m²",arquiteto:"Henrique Balbin",img:"https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1770300986/01_Alphaville_1_409_ckczyy.png"},
+  {id:30,nome:"Gênesis 1",area:"410 m²",arquiteto:"Cesar Shundi",img:"https://res.cloudinary.com/duriirkok/image/upload/v1606508212/casas/genesis1-42_ukmirb.jpg"},
+  {id:31,nome:"Morumbi",area:"4200 m²",arquiteto:"Raul di Pace",img:"https://res.cloudinary.com/duriirkok/image/upload/v1606507951/casas/jardim-europa-37_sd2oy1.jpg"},
+  {id:32,nome:"Alpha Plus",area:"600 m²",arquiteto:"Clovis Chiezzi",img:"https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1770646293/MelVille_600m2_4_ufihbu.png"},
+  {id:33,nome:"Tamboré 3",area:"960 m²",arquiteto:"Glória Batista",img:"https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1770645458/Fachada_02_wu7k3c.png"},
+  {id:34,nome:"Morumbi",area:"750 m²",arquiteto:"Raul di Pace",img:"https://res.cloudinary.com/duriirkok/image/upload/v1606507951/casas/jardim-europa-37_sd2oy1.jpg"},
+  {id:35,nome:"Morumbi",area:"980 m²",arquiteto:"Raul di Pace",img:"https://res.cloudinary.com/duriirkok/image/upload/v1606507900/casas/jardim-europa-36_dhtdtu.jpg"},
+  {id:36,nome:"Vila Nova Conceição",area:"500 m²",arquiteto:"Beto Amaral",img:"https://res.cloudinary.com/duriirkok/image/upload/v1606507809/casas/vila-solaia-34_a1hicb.jpg"},
+  {id:37,nome:"Itu",area:"800 m²",arquiteto:"Ligia Resston",img:"https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1770645458/Fachada_02_wu7k3c.png"},
+  {id:38,nome:"Jardins",area:"400 m²",arquiteto:"Malki Arquitetura",img:"https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1770646293/MelVille_600m2_4_ufihbu.png"},
+  {id:39,nome:"Morumbi",area:"400 m²",arquiteto:"Raul di Pace",img:"https://res.cloudinary.com/duriirkok/image/upload/v1606507951/casas/jardim-europa-37_sd2oy1.jpg"},
+  {id:40,nome:"Jardim América",area:"1500 m²",arquiteto:"Beth Yunes",img:"https://res.cloudinary.com/duriirkok/image/upload/v1606507900/casas/jardim-europa-36_dhtdtu.jpg"},
+  {id:41,nome:"Grécia 2",area:"440 m²",arquiteto:"Raul di Pace",img:"https://res.cloudinary.com/duriirkok/image/upload/v1606507809/casas/vila-solaia-34_a1hicb.jpg"},
+  {id:42,nome:"Pinheiros",area:"450 m²",arquiteto:"Vanessa Feres",img:"https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1770645458/Fachada_02_wu7k3c.png"},
+  {id:43,nome:"Morumbi",area:"900 m²",arquiteto:"Raul di Pace",img:"https://res.cloudinary.com/duriirkok/image/upload/v1606507951/casas/jardim-europa-37_sd2oy1.jpg"},
+  {id:44,nome:"Itu",area:"400 m²",arquiteto:"Vanessa Feres",img:"https://res.cloudinary.com/duriirkok/image/upload/v1606507900/casas/jardim-europa-36_dhtdtu.jpg"},
+  {id:45,nome:"Grécia 1",area:"450 m²",arquiteto:"Raul di Pace",img:"https://res.cloudinary.com/duriirkok/image/upload/v1606507809/casas/vila-solaia-34_a1hicb.jpg"},
+  {id:46,nome:"Morumbi",area:"650 m²",arquiteto:"Raul di Pace",img:"https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1770645458/Fachada_02_wu7k3c.png"},
+  {id:47,nome:"Gênesis 1",area:"280 m²",arquiteto:"Sandra Roiphe",img:"https://res.cloudinary.com/duriirkok/image/upload/v1606508212/casas/genesis1-42_ukmirb.jpg"},
+  {id:48,nome:"Melville",area:"700 m²",arquiteto:"Clovis Chiezzi",img:"https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1770646293/MelVille_600m2_4_ufihbu.png"},
+  {id:49,nome:"Gênesis 2",area:"760 m²",arquiteto:"Newton Massafume",img:"https://res.cloudinary.com/duriirkok/image/upload/v1606507951/casas/jardim-europa-37_sd2oy1.jpg"},
+  {id:50,nome:"Alpha Conde",area:"450 m²",arquiteto:"Malki Arquitetura",img:"https://res.cloudinary.com/duriirkok/image/upload/v1606507900/casas/jardim-europa-36_dhtdtu.jpg"},
+  {id:51,nome:"Morumbi",area:"900 m²",arquiteto:"Raul di Pace",img:"https://res.cloudinary.com/duriirkok/image/upload/v1606507809/casas/vila-solaia-34_a1hicb.jpg"},
+  {id:52,nome:"Melville",area:"500 m²",arquiteto:"Carlos Bianchini",img:"https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1770645458/Fachada_02_wu7k3c.png"},
+  {id:53,nome:"Alphaville 1",area:"870 m²",arquiteto:"Massahiko Sototuka",img:"https://res.cloudinary.com/duriirkok/image/upload/v1606508212/casas/genesis1-42_ukmirb.jpg"},
+  {id:54,nome:"Morumbi",area:"850 m²",arquiteto:"Raul di Pace",img:"https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1770646293/MelVille_600m2_4_ufihbu.png"},
+  {id:55,nome:"Tamboré 7",area:"440 m²",arquiteto:"Glória Batista",img:"https://res.cloudinary.com/duriirkok/image/upload/v1606507951/casas/jardim-europa-37_sd2oy1.jpg"},
+  {id:56,nome:"Tamboré 3",area:"900 m²",arquiteto:"Vanessa Feres",img:"https://res.cloudinary.com/duriirkok/image/upload/v1606507900/casas/jardim-europa-36_dhtdtu.jpg"}
+];
+
+// ===== ROUTING =====
+const PAGES = ['home','casas','sobre','processo','contato'];
+
+function navigate(page) {
+  if (!PAGES.includes(page)) page = 'home';
+  PAGES.forEach(function(p) {
+    var el = document.getElementById('page-' + p);
+    if (el) el.hidden = (p !== page);
+  });
+  // Update nav active states
+  document.querySelectorAll('[data-route]').forEach(function(a) {
+    a.classList.toggle('active', a.dataset.route === page);
+  });
+  window.scrollTo({top: 0, behavior: 'instant'});
+  var url = page === 'home' ? '#/' : '#/' + page;
+  history.replaceState(null, '', url);
+  // Update document title
+  var titles = {
+    home: 'Steel Construções e Empreendimentos',
+    casas: 'Steel Casas — Portfólio Residencial | Steel',
+    sobre: 'Quem Somos | Steel Construções',
+    processo: 'Processo & Qualidade | Steel Construções',
+    contato: 'Contato | Steel Construções'
+  };
+  document.title = titles[page] || titles.home;
+}
+
+window.addEventListener('hashchange', function() {
+  var hash = location.hash.replace('#/', '') || 'home';
+  if (hash === '') hash = 'home';
+  navigate(PAGES.includes(hash) ? hash : 'home');
+});
+
+// ===== BUILD CASAS GRID =====
+function buildCasasGrid() {
+  var grid = document.getElementById('casasGrid');
+  if (!grid) return;
+  var html = '';
+  CASAS.forEach(function(casa) {
+    var num = String(casa.id).padStart(2, '0');
+    html += '<div class="casa-card">' +
+      '<div class="img-wrap">' +
+        '<span class="casa-card-num">' + num + '</span>' +
+        '<img src="' + casa.img + '" alt="' + casa.nome + ' — ' + casa.arquiteto + '" loading="lazy">' +
+      '</div>' +
+      '<div class="casa-card-info">' +
+        '<div class="casa-card-name">' + casa.nome + '</div>' +
+        '<div class="casa-card-meta">' + casa.area + ' · ' + casa.arquiteto + '</div>' +
+      '</div>' +
+    '</div>';
+  });
+  grid.innerHTML = html;
+}
+
+// ===== STICKY NAV =====
+window.addEventListener('scroll', function() {
+  var navbar = document.getElementById('navbar');
+  var scrollTop = document.getElementById('scrollTop');
+  if (navbar) {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  }
+  if (scrollTop) {
+    scrollTop.classList.toggle('visible', window.scrollY > 400);
+  }
+});
+
+// ===== MOBILE MENU =====
+function toggleMobileMenu() {
+  var menu = document.getElementById('mobileMenu');
+  var hamburger = document.getElementById('hamburger');
+  if (menu && hamburger) {
+    menu.classList.toggle('open');
+    hamburger.classList.toggle('open');
+  }
+}
+
+// ===== FORM HANDLER =====
+function handleFormSubmit(e) {
+  e.preventDefault();
+  var btn = e.target.querySelector('[type="submit"]');
+  btn.textContent = 'Mensagem enviada ✓';
+  btn.style.background = 'var(--coal)';
+  btn.disabled = true;
+  setTimeout(function() {
+    e.target.reset();
+    btn.textContent = 'Enviar mensagem →';
+    btn.style.background = '';
+    btn.disabled = false;
+  }, 4000);
+}
+
+// ===== INIT =====
+document.addEventListener('DOMContentLoaded', function() {
+  buildCasasGrid();
+  var hash = location.hash.replace('#/', '') || 'home';
+  if (hash === '') hash = 'home';
+  navigate(PAGES.includes(hash) ? hash : 'home');
+});
+</script>
+</body>
+</html>
