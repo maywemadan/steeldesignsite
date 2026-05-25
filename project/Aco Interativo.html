@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Steel · Aço — Protótipo Interativo (variação A)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style/tokens.css">
+<style>
+  html, body {
+    margin: 0; padding: 0;
+    background: #0F0E0D;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+
+  /* ── Stage wraps the 1440 canvas and scales it to viewport width ── */
+  #stage {
+    position: relative;
+    width: 100vw;
+    min-height: 100vh;
+    background: var(--steel-cream);
+    overflow-x: hidden;
+  }
+  #stage-inner {
+    width: 1440px;
+    transform-origin: top left;
+    /* JS will rewrite transform: scale(...) on resize */
+  }
+
+  /* ── Page swap container ── */
+  .route {
+    opacity: 0;
+    transition: opacity .28s ease;
+    pointer-events: none;
+  }
+  .route.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .route-stack { position: relative; }
+  .route-stack > .route:not(.active) {
+    position: absolute; inset: 0; height: 0; overflow: hidden;
+  }
+
+  /* ── Scroll-to-top floating button ── */
+  .totop {
+    position: fixed;
+    right: 18px; bottom: 18px;
+    z-index: 9998;
+    width: 44px; height: 44px;
+    background: var(--steel-black);
+    color: var(--steel-cream);
+    border: 1px solid rgba(241,235,224,0.16);
+    display: none;
+    align-items: center; justify-content: center;
+    cursor: pointer;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+  }
+  .totop.visible { display: flex; }
+  .totop:hover { background: var(--steel-red); }
+
+  /* ── Loader ── */
+  #loader {
+    position: fixed; inset: 0;
+    background: var(--steel-black);
+    color: var(--steel-cream);
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column;
+    gap: 18px;
+    z-index: 10000;
+    transition: opacity .35s ease;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+  #loader.hidden { opacity: 0; pointer-events: none; }
+  #loader .mark {
+    width: 56px; height: 56px;
+    background: var(--steel-red);
+    position: relative;
+  }
+  #loader .mark::before {
+    content:''; position:absolute; left:14%; right:14%; top:46%; height:7%;
+    background: var(--steel-cream); transform: rotate(-45deg);
+  }
+  #loader .mark::after {
+    content:''; position:absolute; top:16%; right:16%; width:28%; height:28%;
+    background: var(--steel-cream);
+  }
+  #loader .lab { color: rgba(241,235,224,0.55); }
+  #loader .lab span { color: var(--steel-red-lt); }
+</style>
+</head>
+<body>
+
+<div id="loader">
+  <div class="mark"></div>
+  <div class="lab">Steel · <span>Aço A</span> · Carregando protótipo</div>
+</div>
+
+<button class="totop" id="toTop" title="Voltar ao topo">↑</button>
+
+<div id="stage">
+  <div id="stage-inner">
+    <div id="root"></div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<!-- Direction (used as Home) -->
+<script type="text/babel" src="directions/aco.jsx"></script>
+
+<!-- Variação A das internas -->
+<script type="text/babel" src="pages/emp-detail-a.jsx"></script>
+<script type="text/babel" src="pages/emp-list-a.jsx"></script>
+<script type="text/babel" src="pages/about-a.jsx"></script>
+<script type="text/babel" src="pages/contact-a.jsx"></script>
+<script type="text/babel" src="pages/process-a.jsx"></script>
+<script type="text/babel" src="pages/construct-a.jsx"></script>
+
+<script type="text/babel">
+  const { useState, useEffect, useRef, useCallback } = React;
+
+  // ─── Router ───────────────────────────────────────────────────────
+  const ROUTES = [
+    { id: 'home',       label: 'Home',            comp: 'AcoDirection' },
+    { id: 'emp-list',   label: 'Empreendimentos', comp: 'EmpListA' },
+    { id: 'emp-detail', label: 'Detalhe',         comp: 'EmpDetailA' },
+    { id: 'construct',  label: 'Construções',     comp: 'ConstructA' },
+    { id: 'about',      label: 'A Steel',         comp: 'AboutA' },
+    { id: 'process',    label: 'Processo',        comp: 'ProcessA' },
+    { id: 'contact',    label: 'Contato',         comp: 'ContactA' },
+  ];
+  const ROUTE_IDS = ROUTES.map(r => r.id);
+
+  // Map text content of internal page nav links → route id
+  const NAV_TEXT_TO_ROUTE = {
+    'empreendimentos': 'emp-list',
+    'construções':     'construct',
+    'construcoes':     'construct',
+    'a steel':         'about',
+    'sobre':           'about',
+    'sobre a steel':   'about',
+    'processo':        'process',
+    'método':          'process',
+    'metodo':          'process',
+    'contato':         'contact',
+    'fale conosco':    'contact',
+    'fale com a steel':'contact',
+    'iniciar conversa':'contact',
+    'imprensa':        null, // unsupported in this prototype
+  };
+
+  // Map button text (CTAs) that should go to specific routes
+  const CTA_TEXT_TO_ROUTE = [
+    [/iniciar conversa/i, 'contact'],
+    [/conversemos/i,      'contact'],
+    [/falar com a steel/i,'contact'],
+    [/fale conosco/i,     'contact'],
+    [/ver empreendimentos/i, 'emp-list'],
+    [/ver todos? os empreendimentos/i, 'emp-list'],
+    [/conhecer a steel/i, 'about'],
+    [/ver método/i,       'process'],
+    [/ver metodo/i,       'process'],
+    [/todos os serviços/i,'construct'],
+    [/todos os servicos/i,'construct'],
+    [/voltar/i,           'home'],
+  ];
+
+  function getInitialRoute() {
+    const h = (location.hash || '').replace(/^#\/?/, '');
+    return ROUTE_IDS.includes(h) ? h : 'home';
+  }
+
+  function App() {
+    const [route, setRoute] = useState(getInitialRoute());
+    const stageInnerRef = useRef(null);
+
+    const go = useCallback((id) => {
+      if (!ROUTE_IDS.includes(id)) return;
+      if (id !== route) {
+        setRoute(id);
+        history.replaceState(null, '', '#/' + id);
+        // Reset scroll to top of the page (the page itself scrolls in window)
+        try { window.scrollTo({ top: 0, behavior: 'instant' }); } catch(e) { window.scrollTo(0,0); }
+      }
+    }, [route]);
+
+    // hashchange (back/forward)
+    useEffect(() => {
+      const onHash = () => {
+        const h = (location.hash || '').replace(/^#\/?/, '');
+        if (ROUTE_IDS.includes(h) && h !== route) {
+          setRoute(h);
+          try { window.scrollTo({ top: 0, behavior: 'instant' }); } catch(e) { window.scrollTo(0,0); }
+        }
+      };
+      window.addEventListener('hashchange', onHash);
+      return () => window.removeEventListener('hashchange', onHash);
+    }, [route]);
+
+    // Global anchor/button click interception inside the page
+    useEffect(() => {
+      const stage = document.getElementById('stage-inner');
+      const onClick = (e) => {
+        const el = e.target.closest('a, button, [role="link"], .c-emp-card, .la-card, [data-emp-card]');
+        if (!el) return;
+        if (el.id === 'toTop') return;
+
+        // 1) Explicit data-route attribute wins
+        if (el.dataset && el.dataset.route && ROUTE_IDS.includes(el.dataset.route)) {
+          e.preventDefault();
+          go(el.dataset.route);
+          return;
+        }
+
+        // 2) Empreendimento cards → detail
+        if (el.matches('.c-emp-card, .la-card, [data-emp-card]')
+            || el.querySelector?.('.c-emp-card, .la-card')) {
+          e.preventDefault();
+          go('emp-detail');
+          return;
+        }
+
+        // 3) Steel logo / brand → home
+        if (el.matches('.logo, .brand, .brand-word, .logo-word, .logo-mark, .da-logo-mark, .pra-mark, .cna-mark, .cta-mark, .ata-mark, .la-mark')
+            || el.closest('.logo, .brand')) {
+          e.preventDefault();
+          go('home');
+          return;
+        }
+
+        // 4) Match by text content (nav links + CTAs)
+        const raw = (el.textContent || '').trim().toLowerCase()
+                       .replace(/[→↓↑←·]/g, '').replace(/\s+/g, ' ').trim();
+        if (!raw) return;
+
+        // Strict match against nav vocabulary
+        if (Object.prototype.hasOwnProperty.call(NAV_TEXT_TO_ROUTE, raw)) {
+          const target = NAV_TEXT_TO_ROUTE[raw];
+          if (target) { e.preventDefault(); go(target); }
+          else { e.preventDefault(); } // 'imprensa' etc — block but do nothing
+          return;
+        }
+
+        // Loose CTA matching
+        for (const [re, target] of CTA_TEXT_TO_ROUTE) {
+          if (re.test(raw)) {
+            e.preventDefault();
+            go(target);
+            return;
+          }
+        }
+
+        // Prevent stray anchors from scrolling to top
+        if (el.tagName === 'A' && (!el.getAttribute('href') || el.getAttribute('href') === '#')) {
+          e.preventDefault();
+        }
+      };
+      stage.addEventListener('click', onClick);
+      return () => {
+        stage.removeEventListener('click', onClick);
+      };
+    }, [go]);
+
+    const Comps = {
+      AcoDirection: window.AcoDirection,
+      EmpListA:     window.EmpListA,
+      EmpDetailA:   window.EmpDetailA,
+      ConstructA:   window.ConstructA,
+      AboutA:       window.AboutA,
+      ProcessA:     window.ProcessA,
+      ContactA:     window.ContactA,
+    };
+
+    return (
+      <div className="route-stack" ref={stageInnerRef}>
+        {ROUTES.map(r => {
+          const C = Comps[r.comp];
+          return (
+            <div
+              key={r.id}
+              data-screen-label={r.id}
+              className={'route ' + (r.id === route ? 'active' : '')}
+              aria-hidden={r.id !== route}
+            >
+              {C ? <C /> : (
+                <div style={{padding:'120px 48px', fontFamily:'JetBrains Mono, monospace', color:'#1C1A17'}}>
+                  Component {r.comp} not loaded
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
+
+  // ─── Boot: wait for components, then render and fit-to-viewport ──
+  function bootWhenReady() {
+    const needed = ['AcoDirection','EmpListA','EmpDetailA','ConstructA','AboutA','ProcessA','ContactA'];
+    const missing = needed.filter(n => !window[n]);
+    if (missing.length) {
+      // Babel scripts load async — poll briefly
+      return setTimeout(bootWhenReady, 60);
+    }
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+
+    // Fit-to-width scaler
+    const inner = document.getElementById('stage-inner');
+    const stage = document.getElementById('stage');
+    function fit() {
+      const w = window.innerWidth;
+      const scale = Math.min(1, w / 1440);
+      inner.style.transform = 'scale(' + scale + ')';
+      // Stage height = page natural height * scale; set on stage so scroll matches.
+      // Use rAF to wait for layout.
+      requestAnimationFrame(() => {
+        const h = inner.getBoundingClientRect().height;
+        // getBoundingClientRect is already post-transform; that's what we want for stage height.
+        stage.style.height = Math.max(window.innerHeight, h) + 'px';
+      });
+    }
+    fit();
+    window.addEventListener('resize', fit);
+    // Refit when content height changes (route swap, image load)
+    const ro = new ResizeObserver(fit);
+    ro.observe(inner);
+
+    // Loader fade
+    setTimeout(() => {
+      const ld = document.getElementById('loader');
+      ld.classList.add('hidden');
+      setTimeout(() => ld.remove(), 500);
+    }, 220);
+
+    // To-top
+    const toTop = document.getElementById('toTop');
+    const onScroll = () => {
+      toTop.classList.toggle('visible', window.scrollY > 600);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    toTop.addEventListener('click', () => {
+      try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch(e) { window.scrollTo(0,0); }
+    });
+  }
+  bootWhenReady();
+</script>
+
+</body>
+</html>

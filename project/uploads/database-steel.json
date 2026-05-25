@@ -1,0 +1,473 @@
+{
+  "metadata": {
+    "site_atual": "https://steelconstrucoes.com.br",
+    "data_extracao": "2026-05-25",
+    "total_projetos": 77,
+    "total_imagens": 76
+  },
+  "empresa": {
+    "nome_completo": "Steel Construcoes e Empreendimentos LTDA",
+    "cnpj": "58.370.644/0001-51",
+    "endereco": "Avenida Cauaxi, 350 - Sala 1201",
+    "bairro": "Alphaville",
+    "cidade": "Barueri",
+    "estado": "SP",
+    "cep": "06454-020",
+    "ano_fundacao": 1987,
+    "descricao": "Fundada em 1987 a STEEL CONSTRUÇÕES E EMPREENDIMENTOS tem em seu currículo inúmeras obras residenciais, comerciais e empreendimentos, tendo conseguido um padrão de eficiência e qualidade comprovada pelos seus clientes.",
+    "certificacoes": [
+      "ISO 9001",
+      "PBQP-H Nível A - Máximo"
+    ]
+  },
+  "casas": [
+    {
+      "id": 1,
+      "nome": "Tambore 2",
+      "area": "2349 m²",
+      "arquiteto": "Mapa Group",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1763057090/IMG_7159_xx5idq.heic"
+    },
+    {
+      "id": 2,
+      "nome": "Alpha 0",
+      "area": "500 m²",
+      "arquiteto": "FPoles Arquitetura",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1756497201/Alpha_0_500m2_03_u4hqm3.png"
+    },
+    {
+      "id": 3,
+      "nome": "Boa Vista",
+      "area": "741 m²",
+      "arquiteto": "Vanessa Feres",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1753722483/Bela_Vista_741_18_ytpchk.jpg"
+    },
+    {
+      "id": 4,
+      "nome": "TAMBORÉ 2",
+      "area": "1600 m²",
+      "arquiteto": "Sessa Arquitetura",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1726767058/WhatsApp_Image_2024-09-13_at_08.29.39_noes5u.jpg"
+    },
+    {
+      "id": 5,
+      "nome": "GUARUJÁ",
+      "area": "895 m²",
+      "arquiteto": "Vanessa Feres",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1716227508/WhatsApp_Image_2024-05-20_at_14.03.35_rgjsax.jpg"
+    },
+    {
+      "id": 6,
+      "nome": "MONTE MOR",
+      "area": "800 m²",
+      "arquiteto": "Vanessa Feres",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1716227139/WhatsApp_Image_2024-05-20_at_14.06.24_ijymin.jpg"
+    },
+    {
+      "id": 7,
+      "nome": "CUNHA",
+      "area": "898 m²",
+      "arquiteto": "Vanessa Feres",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1716226816/WhatsApp_Image_2024-05-20_at_14.05.23_9_izrqya.jpg"
+    },
+    {
+      "id": 8,
+      "nome": "ALPHA 0",
+      "area": "520 m²",
+      "arquiteto": "Guilherme Torres",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1684784727/WhatsApp_Image_2023-05-22_at_16.45.10_hio8gf.jpg"
+    },
+    {
+      "id": 9,
+      "nome": "ALPHA 0",
+      "area": "480 m²",
+      "arquiteto": "Guilherme Torres",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1684783984/WhatsApp_Image_2023-05-22_at_16.20.00_bhb5y6.jpg"
+    },
+    {
+      "id": 10,
+      "nome": "ALPHA 6",
+      "area": "654 m²",
+      "arquiteto": "Carla Barranco",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1770920702/Alpha_6_654_Fachada_4_slwdyv.jpg"
+    },
+    {
+      "id": 11,
+      "nome": "MORUMBI",
+      "area": "904 m²",
+      "arquiteto": "Tatiana Romanduni",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1770293092/Morumbi_904_1_kzeozr.png"
+    },
+    {
+      "id": 12,
+      "nome": "ALPHA SÍTIO",
+      "area": "460 m²",
+      "arquiteto": "JNA Arquitetos",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1629480695/casas/WhatsApp_Image_2021-08-20_at_13.52.39_p7vqdo.jpg"
+    },
+    {
+      "id": 13,
+      "nome": "ALPHAVILLE 1",
+      "area": "409 m²",
+      "arquiteto": "Henrique Balbin",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1770300986/01_Alphaville_1_409_ckczyy.png"
+    },
+    {
+      "id": 14,
+      "nome": "TAMBORÉ 2",
+      "area": "600 m²",
+      "arquiteto": "Manuela Vilas-Bôas",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto,w_800/v1607640358/casas/DSC08958_quecxv.jpg"
+    },
+    {
+      "id": 15,
+      "nome": "GENESIS 1",
+      "area": "600 m²",
+      "arquiteto": "Newton Massafumi Yamato",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1770310964/Genesis_1_600m2_1_o0m2jh.png"
+    },
+    {
+      "id": 16,
+      "nome": "ALPHAVILLE 1",
+      "area": "1200 m²",
+      "arquiteto": "Carla Barranco",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1770319023/Alphaville_1_1200m2_1_ljpj7w.png"
+    },
+    {
+      "id": 17,
+      "nome": "ALPHAVILLE ZERO",
+      "area": "540 m²",
+      "arquiteto": "Carla Barranco",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1770640296/Alphaville_0_540m2_1_aa76py.png"
+    },
+    {
+      "id": 18,
+      "nome": "GÊNESIS 2",
+      "area": "640 m²",
+      "arquiteto": "Newton Massafume",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1768499150/IMG_7261_64_algus4.jpg"
+    },
+    {
+      "id": 19,
+      "nome": "MELVILLE",
+      "area": "600 m²",
+      "arquiteto": "Carla Barranco",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1770646293/MelVille_600m2_4_ufihbu.png"
+    },
+    {
+      "id": 20,
+      "nome": "GÊNESIS 1",
+      "area": "415 m²",
+      "arquiteto": "Flavia Cancian",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/v1606508212/casas/genesis1-42_ukmirb.jpg"
+    },
+    {
+      "id": 21,
+      "nome": "NEW VILLE",
+      "area": "380 m²",
+      "arquiteto": "Thais Doretto",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1770645458/Fachada_02_wu7k3c.png"
+    },
+    {
+      "id": 22,
+      "nome": "JARDIM EUROPA",
+      "area": "1275 m²",
+      "arquiteto": "Raul di Pace",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/v1606507951/casas/jardim-europa-37_sd2oy1.jpg"
+    },
+    {
+      "id": 23,
+      "nome": "JARDIM EUROPA",
+      "area": "3000 m²",
+      "arquiteto": "Raul di Pace",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/v1606507900/casas/jardim-europa-36_dhtdtu.jpg"
+    },
+    {
+      "id": 24,
+      "nome": "VILA SOLAIA",
+      "area": "210 m²",
+      "arquiteto": "Melissa Corbet",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/v1606507809/casas/vila-solaia-34_a1hicb.jpg"
+    },
+    {
+      "id": 25,
+      "nome": "ITAHYÊ",
+      "area": "420 m²",
+      "arquiteto": "Marilia Richieri",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1770646601/Itahy%C3%AA_02_xl0hsq.png"
+    },
+    {
+      "id": 26,
+      "nome": "TAMBORÉ 2",
+      "area": "780 m²",
+      "arquiteto": "Melissa Corbett",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1770645458/Fachada_02_wu7k3c.png"
+    },
+    {
+      "id": 27,
+      "nome": "ALPHA SÍTIO",
+      "area": "350 m²",
+      "arquiteto": "Merê Esteves",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1629480695/casas/WhatsApp_Image_2021-08-20_at_13.52.39_p7vqdo.jpg"
+    },
+    {
+      "id": 28,
+      "nome": "VILA SOLAIA",
+      "area": "360 m²",
+      "arquiteto": "Pedro Paes",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/v1606507809/casas/vila-solaia-34_a1hicb.jpg"
+    },
+    {
+      "id": 29,
+      "nome": "ALPHA CONDE",
+      "area": "650 m²",
+      "arquiteto": "Henrique Balbin",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1770300986/01_Alphaville_1_409_ckczyy.png"
+    },
+    {
+      "id": 30,
+      "nome": "GÊNESIS 1",
+      "area": "410 m²",
+      "arquiteto": "Cesar Shundi",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/v1606508212/casas/genesis1-42_ukmirb.jpg"
+    },
+    {
+      "id": 31,
+      "nome": "MORUMBI",
+      "area": "4200 m²",
+      "arquiteto": "Raul di Pace",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/v1606507951/casas/jardim-europa-37_sd2oy1.jpg"
+    },
+    {
+      "id": 32,
+      "nome": "ALPHA PLUS",
+      "area": "600 m²",
+      "arquiteto": "Clovis Chiezzi",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1770646293/MelVille_600m2_4_ufihbu.png"
+    },
+    {
+      "id": 33,
+      "nome": "TAMBORÉ 3",
+      "area": "960 m²",
+      "arquiteto": "Glória Batista",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1770645458/Fachada_02_wu7k3c.png"
+    },
+    {
+      "id": 34,
+      "nome": "MORUMBI",
+      "area": "750 m²",
+      "arquiteto": "Raul di Pace",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/v1606507951/casas/jardim-europa-37_sd2oy1.jpg"
+    },
+    {
+      "id": 35,
+      "nome": "MORUMBI",
+      "area": "980 m²",
+      "arquiteto": "Raul di Pace",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/v1606507900/casas/jardim-europa-36_dhtdtu.jpg"
+    },
+    {
+      "id": 36,
+      "nome": "VILA NOVA CONCEIÇÃO",
+      "area": "500 m²",
+      "arquiteto": "Beto Amaral",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/v1606507809/casas/vila-solaia-34_a1hicb.jpg"
+    },
+    {
+      "id": 37,
+      "nome": "ITU",
+      "area": "800 m²",
+      "arquiteto": "Ligia Resston",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1770645458/Fachada_02_wu7k3c.png"
+    },
+    {
+      "id": 38,
+      "nome": "JARDINS",
+      "area": "400 m²",
+      "arquiteto": "Malki Arquiteura",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1770646293/MelVille_600m2_4_ufihbu.png"
+    },
+    {
+      "id": 39,
+      "nome": "MORUMBI",
+      "area": "400 m²",
+      "arquiteto": "Raul di Pace",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/v1606507951/casas/jardim-europa-37_sd2oy1.jpg"
+    },
+    {
+      "id": 40,
+      "nome": "JARDIM AMERICA",
+      "area": "1500 m²",
+      "arquiteto": "Beth Yunes",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/v1606507900/casas/jardim-europa-36_dhtdtu.jpg"
+    },
+    {
+      "id": 41,
+      "nome": "GRECIA 2",
+      "area": "440 m²",
+      "arquiteto": "Raul di Pace",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/v1606507809/casas/vila-solaia-34_a1hicb.jpg"
+    },
+    {
+      "id": 42,
+      "nome": "PINHEIROS",
+      "area": "450 m²",
+      "arquiteto": "Vanessa Feres",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1770645458/Fachada_02_wu7k3c.png"
+    },
+    {
+      "id": 43,
+      "nome": "MORUMBI",
+      "area": "900 m²",
+      "arquiteto": "Raul di Pace",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/v1606507951/casas/jardim-europa-37_sd2oy1.jpg"
+    },
+    {
+      "id": 44,
+      "nome": "ITU",
+      "area": "400 m²",
+      "arquiteto": "Vanessa Feres",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/v1606507900/casas/jardim-europa-36_dhtdtu.jpg"
+    },
+    {
+      "id": 45,
+      "nome": "GRECIA 1",
+      "area": "450 m²",
+      "arquiteto": "Raul di Pace",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/v1606507809/casas/vila-solaia-34_a1hicb.jpg"
+    },
+    {
+      "id": 46,
+      "nome": "MORUMBI",
+      "area": "650 m²",
+      "arquiteto": "Raul di Pace",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1770645458/Fachada_02_wu7k3c.png"
+    },
+    {
+      "id": 47,
+      "nome": "GÊNESIS 1",
+      "area": "280 m²",
+      "arquiteto": "Sandra Roiphe",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/v1606508212/casas/genesis1-42_ukmirb.jpg"
+    },
+    {
+      "id": 48,
+      "nome": "MELVILLE",
+      "area": "700 m²",
+      "arquiteto": "Clovis Chiezzi",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1770646293/MelVille_600m2_4_ufihbu.png"
+    },
+    {
+      "id": 49,
+      "nome": "GÊNESIS 2",
+      "area": "760 m²",
+      "arquiteto": "Newton Massafume",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/v1606507951/casas/jardim-europa-37_sd2oy1.jpg"
+    },
+    {
+      "id": 50,
+      "nome": "ALPHA CONDE",
+      "area": "450 m²",
+      "arquiteto": "Malki Arquitetura",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/v1606507900/casas/jardim-europa-36_dhtdtu.jpg"
+    },
+    {
+      "id": 51,
+      "nome": "MORUMBI",
+      "area": "900 m²",
+      "arquiteto": "Raul di Pace",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/v1606507809/casas/vila-solaia-34_a1hicb.jpg"
+    },
+    {
+      "id": 52,
+      "nome": "MELVILLE",
+      "area": "500 m²",
+      "arquiteto": "Carlos Bianchini",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1770645458/Fachada_02_wu7k3c.png"
+    },
+    {
+      "id": 53,
+      "nome": "ALPHAVILLE 1",
+      "area": "870 m²",
+      "arquiteto": "Massahiko Sototuka",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/v1606508212/casas/genesis1-42_ukmirb.jpg"
+    },
+    {
+      "id": 54,
+      "nome": "MORUMBI",
+      "area": "850 m²",
+      "arquiteto": "Raul di Pace",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/c_scale,f_auto,q_auto/v1770646293/MelVille_600m2_4_ufihbu.png"
+    },
+    {
+      "id": 55,
+      "nome": "TAMBORÉ 7",
+      "area": "440 m²",
+      "arquiteto": "Glória Batista",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/v1606507951/casas/jardim-europa-37_sd2oy1.jpg"
+    },
+    {
+      "id": 56,
+      "nome": "TAMBORÉ 3",
+      "area": "900 m²",
+      "arquiteto": "Vanessa Feres",
+      "tipo": "ARQUITETURA",
+      "imagem_url": "https://res.cloudinary.com/duriirkok/image/upload/v1606507900/casas/jardim-europa-36_dhtdtu.jpg"
+    }
+  ]
+}

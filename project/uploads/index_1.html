@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MADAN Corp — Presentes que impressionam</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Instrument+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+/* ─── HERO ───────────────────────────────────────── */
+.hero {
+  min-height: calc(100vh - 70px);
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+}
+.hero-qc-1 {
+  top: 0; left: 0;
+  width: 380px; height: 380px;
+  background: var(--amber);
+  border-radius: 0 0 380px 0;
+  opacity: 0.18;
+}
+.hero-qc-2 {
+  bottom: 0; right: 0;
+  width: 480px; height: 480px;
+  background: var(--terracota);
+  border-radius: 480px 0 0 0;
+  opacity: 0.16;
+}
+.hero-qc-3 {
+  top: 30%; left: 42%;
+  width: 200px; height: 200px;
+  background: var(--sage);
+  border-radius: 200px 0 0 0;
+  opacity: 0.14;
+}
+.hero-qc-4 {
+  bottom: 90px; left: 130px;
+  width: 90px; height: 90px;
+  background: var(--rose);
+  border-radius: 90px 0 0 0;
+  opacity: 0.4;
+}
+.hero-qc-5 {
+  top: 100px; right: 30%;
+  width: 60px; height: 60px;
+  background: var(--lavanda);
+  border-radius: 0 0 60px 0;
+  opacity: 0.5;
+}
+
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 64px var(--pad-x);
+  position: relative;
+  z-index: 2;
+}
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(250,245,240,0.1);
+  border: 1px solid rgba(250,245,240,0.18);
+  border-radius: 100px;
+  padding: 7px 16px 7px 12px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--amber-lt);
+  letter-spacing: 0.06em;
+  margin-bottom: 32px;
+  width: fit-content;
+  animation: upIn 0.6s ease 0.05s both;
+}
+.hero-tag-dot {
+  width: 7px; height: 7px;
+  background: var(--amber);
+  border-radius: 50%;
+  animation: blink 2s ease-in-out infinite;
+}
+.hero-h1 {
+  font-family: var(--ff-d);
+  font-weight: 300;
+  font-size: clamp(54px, 6vw, 84px);
+  line-height: 0.98;
+  color: var(--cream);
+  margin-bottom: 4px;
+  animation: upIn 0.7s ease 0.1s both;
+}
+.hero-h1 em {
+  font-style: italic;
+  color: var(--amber-lt);
+  display: block;
+  animation: upIn 0.8s ease 0.25s both;
+}
+.hero-p {
+  font-size: 17px;
+  font-weight: 300;
+  color: rgba(250,245,240,0.65);
+  line-height: 1.7;
+  max-width: 460px;
+  margin: 22px 0 48px;
+  animation: upIn 0.7s ease 0.4s both;
+}
+.hero-btns {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  animation: upIn 0.7s ease 0.55s both;
+}
+.btn-hero-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--amber);
+  color: var(--cream);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 16px 30px;
+  border-radius: var(--r-sm);
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-hero-primary:hover {
+  background: var(--terracota);
+  transform: translateY(-2px);
+}
+
+/* Stats strip */
+.hero-stats {
+  display: flex;
+  margin-top: 60px;
+  border-top: 1px solid rgba(250,245,240,0.1);
+  padding-top: 32px;
+  animation: upIn 0.7s ease 0.7s both;
+}
+.hero-stat {
+  flex: 1;
+  padding-right: 28px;
+  border-right: 1px solid rgba(250,245,240,0.1);
+}
+.hero-stat:last-child { border: none; padding-right: 0; padding-left: 28px; }
+.hero-stat:nth-child(2) { padding-left: 28px; }
+.stat-num {
+  font-family: var(--ff-d);
+  font-size: 42px;
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.stat-num em { color: var(--amber-lt); font-style: normal; }
+.stat-label { font-size: 12px; color: rgba(250,245,240,0.45); font-weight: 300; line-height: 1.4; }
+
+/* Hero right - Dan card */
+.hero-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 64px var(--pad-x) 64px 32px;
+  position: relative;
+  z-index: 2;
+}
+.dan-card {
+  width: 100%;
+  max-width: 440px;
+  background: var(--cream);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.4);
+  animation: upIn 0.9s ease 0.3s both;
+}
+.dan-top {
+  background: var(--amber);
+  padding: 32px 32px 28px;
+  position: relative;
+  overflow: hidden;
+}
+.dan-top::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 140px; height: 140px;
+  background: var(--terracota);
+  border-radius: 140px 0 0 0;
+  opacity: 0.45;
+}
+.dan-top::after {
+  content: '';
+  position: absolute;
+  bottom: -20px; left: 30px;
+  width: 80px; height: 80px;
+  background: var(--cream);
+  border-radius: 80px 0 0 0;
+  opacity: 0.12;
+}
+.dan-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(250,245,240,0.85);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+}
+.dan-label-dot {
+  width: 6px; height: 6px;
+  background: var(--cream);
+  border-radius: 50%;
+  animation: blink 2s ease-in-out infinite;
+}
+.dan-name {
+  font-family: var(--ff-d);
+  font-size: 34px;
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1.05;
+  position: relative;
+  z-index: 1;
+}
+.dan-body {
+  padding: 28px 32px 32px;
+}
+.dan-desc {
+  font-size: 14px;
+  color: var(--mid);
+  font-weight: 300;
+  line-height: 1.7;
+  margin-bottom: 22px;
+}
+.dan-chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+.dan-chip {
+  background: var(--linho);
+  color: var(--terra);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 6px 12px;
+  border-radius: 100px;
+}
+.btn-dan {
+  width: 100%;
+  background: var(--navy);
+  color: var(--cream);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 16px 20px;
+  border-radius: var(--r-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: background 0.2s;
+}
+.btn-dan:hover { background: var(--navy-dk); }
+.dan-note {
+  text-align: center;
+  font-size: 11px;
+  color: var(--mid);
+  margin-top: 10px;
+  font-weight: 300;
+}
+
+@media (max-width: 1000px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-right { padding: 0 var(--pad-x) 64px; }
+}
+
+/* ─── OCCASIONS ──────────────────────────────────── */
+.occ-header {
+  background: var(--cream);
+  padding: 96px var(--pad-x) 48px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+}
+.occ-header h2 {
+  font-family: var(--ff-d);
+  font-weight: 300;
+  font-size: clamp(32px, 4vw, 50px);
+  line-height: 1.05;
+  color: var(--navy);
+  margin-top: 12px;
+}
+.occ-header h2 em { font-style: italic; color: var(--amber); }
+
+.occasions {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+.occ {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 32px 24px 28px;
+  min-height: 360px;
+  transition: flex 0.4s cubic-bezier(.4,0,.2,1);
+  flex: 1;
+  border-right: 1px solid rgba(250,245,240,0.1);
+}
+.occ:last-child { border-right: none; }
+.occ:hover { flex: 2.4; }
+
+.occ-1 { background: var(--navy); }
+.occ-2 { background: var(--rose); }
+.occ-3 { background: var(--amber); }
+.occ-4 { background: var(--mineral); }
+.occ-5 { background: var(--terracota); }
+.occ-6 { background: var(--sage-dk); }
+
+.occ::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 160px; height: 160px;
+  background: rgba(250,245,240,0.08);
+  border-radius: 160px 0 0 0;
+  transition: transform 0.4s;
+}
+.occ:hover::before { transform: scale(1.4); }
+
+.occ-icon-wrap {
+  position: absolute;
+  top: 28px; left: 24px;
+  width: 46px; height: 46px;
+  border-radius: 12px;
+  background: rgba(250,245,240,0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  transition: background 0.3s, transform 0.3s;
+}
+.occ:hover .occ-icon-wrap {
+  background: rgba(250,245,240,0.28);
+  transform: scale(1.1);
+}
+
+.occ-name {
+  font-family: var(--ff-d);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1.15;
+  margin-bottom: 8px;
+}
+.occ-desc {
+  font-size: 12.5px;
+  color: rgba(250,245,240,0.7);
+  font-weight: 300;
+  line-height: 1.55;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s;
+  opacity: 0;
+}
+.occ:hover .occ-desc { max-height: 80px; opacity: 1; }
+.occ-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(250,245,240,0.55);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-top: 14px;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.3s 0.1s;
+}
+.occ:hover .occ-arrow { max-height: 30px; opacity: 1; }
+
+@media (max-width: 1000px) {
+  .occasions { grid-template-columns: repeat(3, 1fr); }
+  .occ:hover { flex: 1; }
+}
+@media (max-width: 600px) {
+  .occasions { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ─── KITS PRONTOS ───────────────────────────────── */
+.kits {
+  background: var(--terra);
+  padding: 100px var(--pad-x);
+  position: relative;
+  overflow: hidden;
+}
+.kits::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 320px; height: 320px;
+  background: var(--amber);
+  border-radius: 320px 0 0 0;
+  opacity: 0.1;
+}
+.kits::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 100px;
+  width: 160px; height: 160px;
+  background: var(--sage);
+  border-radius: 0 160px 0 0;
+  opacity: 0.15;
+}
+.kits-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 48px;
+  position: relative;
+  z-index: 1;
+}
+.kits-header h2 {
+  font-family: var(--ff-d);
+  font-weight: 300;
+  font-size: clamp(32px, 4vw, 50px);
+  line-height: 1.05;
+  color: var(--cream);
+  margin-top: 12px;
+}
+.kits-header h2 em { font-style: italic; color: var(--amber-lt); }
+.kits-header .eyebrow { color: var(--amber-lt); }
+
+.kits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  position: relative;
+  z-index: 1;
+}
+.kit-card-dark {
+  border-radius: 18px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  background: rgba(250,245,240,0.04);
+  border: 1px solid rgba(250,245,240,0.1);
+}
+.kit-card-dark:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+  border-color: var(--amber);
+}
+.kit-img {
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 72px;
+  position: relative;
+  overflow: hidden;
+}
+.kit-card-dark:nth-child(1) .kit-img { background: var(--mineral); }
+.kit-card-dark:nth-child(2) .kit-img { background: var(--sage-dk); }
+.kit-card-dark:nth-child(3) .kit-img { background: var(--navy); }
+
+.kit-img::after {
+  content: '';
+  position: absolute;
+  bottom: -18px; right: -18px;
+  width: 100px; height: 100px;
+  background: rgba(250,245,240,0.1);
+  border-radius: 100px 0 0 0;
+}
+.kit-pill {
+  position: absolute;
+  top: 14px; right: 14px;
+  background: var(--amber);
+  color: var(--cream);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 5px 13px;
+  border-radius: 100px;
+  z-index: 1;
+}
+.kit-content {
+  padding: 24px;
+}
+.kit-cat {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--amber-lt);
+  margin-bottom: 8px;
+}
+.kit-name {
+  font-family: var(--ff-d);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+.kit-desc {
+  font-size: 13px;
+  color: rgba(250,245,240,0.55);
+  font-weight: 300;
+  line-height: 1.6;
+  margin-bottom: 22px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.kit-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.kit-price-d {
+  font-family: var(--ff-d);
+  font-size: 26px;
+  font-weight: 300;
+  color: var(--cream);
+}
+.kit-price-d small {
+  font-family: var(--ff-b);
+  font-size: 11px;
+  color: rgba(250,245,240,0.4);
+  font-weight: 300;
+}
+.btn-kit {
+  background: var(--amber);
+  color: var(--cream);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 10px 18px;
+  border-radius: var(--r-sm);
+  transition: background 0.2s;
+}
+.btn-kit:hover { background: var(--terracota); }
+
+.link-light {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--amber-lt);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  transition: gap 0.2s;
+}
+.link-light:hover { gap: 14px; }
+
+@media (max-width: 1000px) {
+  .kits-grid { grid-template-columns: 1fr; }
+}
+
+/* ─── COLLECTIONS ─────────────────────────────────── */
+.coll-header {
+  background: var(--cream);
+  padding: 96px var(--pad-x) 56px;
+}
+.coll-header h2 {
+  font-family: var(--ff-d);
+  font-weight: 300;
+  font-size: clamp(32px, 4vw, 50px);
+  line-height: 1.05;
+  color: var(--navy);
+  margin-top: 12px;
+}
+.coll-header h2 em { font-style: italic; color: var(--amber); }
+
+.collections {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 320px;
+  gap: 0;
+}
+.col-cell {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-end;
+  border: 1px solid rgba(250,245,240,0.08);
+}
+.col-cell.tall { grid-row: span 2; }
+
+.col-1 { background: var(--navy); }
+.col-2 { background: var(--amber); }
+.col-3 { background: var(--terracota); }
+.col-4 { background: var(--sage-dk); }
+.col-5 { background: var(--mineral); }
+.col-6 { background: var(--rose); }
+
+.col-cell::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 220px; height: 220px;
+  background: rgba(250,245,240,0.06);
+  border-radius: 0 0 220px 0;
+  pointer-events: none;
+  z-index: 1;
+}
+.col-cell::after {
+  content: '';
+  position: absolute;
+  bottom: 0; right: 0;
+  width: 140px; height: 140px;
+  background: rgba(250,245,240,0.06);
+  border-radius: 140px 0 0 0;
+  pointer-events: none;
+  z-index: 1;
+  transition: transform 0.5s;
+}
+.col-cell:hover::after { transform: scale(1.4); }
+
+.col-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(30,20,14,0.7) 0%, transparent 60%);
+  z-index: 2;
+}
+.col-body {
+  position: relative;
+  z-index: 3;
+  padding: 36px;
+  width: 100%;
+}
+.col-cat {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--amber-lt);
+  margin-bottom: 10px;
+}
+.col-name {
+  font-family: var(--ff-d);
+  font-size: clamp(22px, 2.6vw, 38px);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.05;
+  margin-bottom: 10px;
+}
+.col-desc {
+  font-size: 13px;
+  color: rgba(250,245,240,0.7);
+  font-weight: 300;
+  line-height: 1.55;
+  max-width: 340px;
+  margin-bottom: 18px;
+}
+
+@media (max-width: 800px) {
+  .collections { grid-template-columns: 1fr; }
+  .col-cell.tall { grid-row: span 1; }
+}
+
+/* ─── WHY MADAN ───────────────────────────────────── */
+.why {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 580px;
+}
+.why-left {
+  background: var(--amber);
+  padding: 80px var(--pad-x);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.why-left::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 240px; height: 240px;
+  background: var(--terracota);
+  border-radius: 240px 0 0 0;
+  opacity: 0.45;
+}
+.why-left::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 140px; height: 140px;
+  background: var(--terra);
+  border-radius: 0 140px 0 0;
+  opacity: 0.3;
+}
+.why-eyebrow {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(250,245,240,0.7);
+  margin-bottom: 22px;
+  position: relative;
+  z-index: 1;
+}
+.why-h2 {
+  font-family: var(--ff-d);
+  font-size: clamp(34px, 4vw, 52px);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.05;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+}
+.why-h2 em { font-style: italic; color: var(--terra); }
+.why-p {
+  font-size: 15px;
+  color: rgba(250,245,240,0.75);
+  font-weight: 300;
+  line-height: 1.75;
+  max-width: 420px;
+  margin-bottom: 36px;
+  position: relative;
+  z-index: 1;
+}
+.btn-why {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--cream);
+  color: var(--amber);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 15px 28px;
+  border-radius: var(--r-sm);
+  width: fit-content;
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+  position: relative;
+  z-index: 1;
+}
+.btn-why:hover {
+  background: var(--terra);
+  color: var(--cream);
+  transform: translateY(-2px);
+}
+
+.why-right {
+  background: var(--cream);
+  padding: 64px var(--pad-x) 64px 56px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  align-content: center;
+}
+.why-item {
+  padding: 26px 22px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--cream);
+  transition: all 0.25s;
+}
+.why-item:hover {
+  border-color: var(--amber);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 32px rgba(184,132,74,0.14);
+}
+.why-item.hl { background: var(--navy); border-color: var(--navy); }
+.why-item.hl .why-t { color: var(--cream); }
+.why-item.hl .why-d { color: rgba(250,245,240,0.55); }
+.why-item.hl .why-num { color: rgba(250,245,240,0.18); }
+.why-num {
+  font-family: var(--ff-d);
+  font-size: 36px;
+  font-weight: 300;
+  color: var(--linho);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.why-t {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+.why-d {
+  font-size: 13px;
+  color: var(--mid);
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+@media (max-width: 1000px) {
+  .why { grid-template-columns: 1fr; }
+  .why-right { padding: 48px var(--pad-x); }
+}
+@media (max-width: 600px) {
+  .why-right { grid-template-columns: 1fr; }
+}
+
+/* ─── HOW IT WORKS ────────────────────────────────── */
+.how {
+  background: var(--navy);
+  padding: 96px var(--pad-x);
+  position: relative;
+  overflow: hidden;
+}
+.how::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 340px; height: 340px;
+  background: var(--mineral);
+  border-radius: 340px 0 0 0;
+  opacity: 0.18;
+}
+.how::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 200px; height: 200px;
+  background: var(--amber);
+  border-radius: 0 200px 0 0;
+  opacity: 0.16;
+}
+.how-header { margin-bottom: 64px; position: relative; z-index: 1; }
+.how-header .eyebrow { color: var(--amber-lt); margin-bottom: 14px; }
+.how-h2 {
+  font-family: var(--ff-d);
+  font-size: clamp(32px, 4vw, 50px);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.05;
+}
+.how-h2 em { font-style: italic; color: var(--amber-lt); }
+
+.how-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  position: relative;
+  z-index: 1;
+}
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.step-dot {
+  width: 68px; height: 68px;
+  border-radius: 50%;
+  border: 1px solid rgba(250,245,240,0.2);
+  background: rgba(250,245,240,0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--ff-d);
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--cream);
+  margin-bottom: 24px;
+  transition: all 0.25s;
+}
+.step:hover .step-dot {
+  background: var(--amber);
+  border-color: var(--amber);
+  transform: scale(1.12);
+}
+.step-t {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--cream);
+  margin-bottom: 8px;
+}
+.step-d {
+  font-size: 12px;
+  color: rgba(250,245,240,0.5);
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .how-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ─── DAN CTA ────────────────────────────────────── */
+.dan-cta {
+  background: var(--terracota);
+  padding: 80px var(--pad-x);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 60px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.dan-cta::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: 250px;
+  width: 320px; height: 320px;
+  background: var(--rose);
+  border-radius: 0 0 320px 0;
+  opacity: 0.3;
+}
+.dan-cta::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 200px; height: 200px;
+  background: var(--terra);
+  border-radius: 0 200px 0 0;
+  opacity: 0.3;
+}
+.dan-cta-left { position: relative; z-index: 1; }
+.dan-cta-eyebrow {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(250,245,240,0.6);
+  margin-bottom: 16px;
+}
+.dan-cta-h2 {
+  font-family: var(--ff-d);
+  font-size: clamp(36px, 4.5vw, 60px);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.05;
+  margin-bottom: 18px;
+}
+.dan-cta-h2 em { font-style: italic; color: var(--terra); }
+.dan-cta-p {
+  font-size: 16px;
+  color: rgba(250,245,240,0.7);
+  font-weight: 300;
+  max-width: 480px;
+  line-height: 1.75;
+  margin-bottom: 36px;
+}
+.btn-cta-cream {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--cream);
+  color: var(--terracota);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 16px 32px;
+  border-radius: var(--r-sm);
+  transition: all 0.2s;
+}
+.btn-cta-cream:hover {
+  background: var(--terra);
+  color: var(--cream);
+  transform: translateY(-2px);
+}
+.dan-avatar {
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: rgba(250,245,240,0.12);
+  border: 2px solid rgba(250,245,240,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 88px;
+  position: relative;
+  z-index: 1;
+}
+@media (max-width: 800px) {
+  .dan-cta { grid-template-columns: 1fr; }
+  .dan-avatar { width: 140px; height: 140px; font-size: 64px; }
+}
+
+/* ─── TRUSTED BY ─────────────────────────────────── */
+.trusted {
+  background: var(--cream-2);
+  padding: 56px var(--pad-x);
+  text-align: center;
+}
+.trusted-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 28px;
+}
+.trusted-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 56px;
+  flex-wrap: wrap;
+}
+.trusted-logo {
+  font-family: var(--ff-d);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--mid);
+  letter-spacing: 0.08em;
+  opacity: 0.65;
+  transition: opacity 0.2s;
+}
+.trusted-logo:hover { opacity: 1; color: var(--navy); }
+</style>
+</head>
+<body>
+
+<div class="palette-stripe">
+  <div class="ps ps1"></div><div class="ps ps2"></div><div class="ps ps3"></div>
+  <div class="ps ps4"></div><div class="ps ps5"></div><div class="ps ps6"></div>
+  <div class="ps ps7"></div><div class="ps ps8"></div>
+</div>
+
+<!-- ═══ NAV ═══ -->
+<nav class="main">
+  <a href="index.html" class="nav-logo">
+    MADAN <em>corp</em>
+  </a>
+  <ul class="nav-links">
+    <li><a href="ocasioes.html">Por Ocasião ▾</a></li>
+    <li><a href="catalogo.html">Catálogo</a></li>
+    <li><a href="kits.html">Kits Prontos</a></li>
+    <li><a href="como-funciona.html">Como funciona</a></li>
+    <li><a href="sobre.html">Sobre</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="btn-nav-user">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      Mayara
+    </button>
+    <a href="curadoria.html" class="btn-nav-cta">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+      Minha curadoria
+    </a>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="qc hero-qc-1"></div>
+  <div class="qc hero-qc-2"></div>
+  <div class="qc hero-qc-3"></div>
+  <div class="qc hero-qc-4"></div>
+  <div class="qc hero-qc-5"></div>
+
+  <div class="hero-left">
+    <div class="hero-tag">
+      <span class="hero-tag-dot"></span>
+      Assessoria em Presentes Corporativos
+    </div>
+    <h1 class="hero-h1">
+      Presentes que
+      <em>impressionam.</em>
+    </h1>
+    <p class="hero-p">Curadoria estratégica de presentes corporativos — do briefing à entrega, com intenção em cada detalhe.</p>
+    <div class="hero-btns">
+      <a href="catalogo.html" class="btn-hero-primary">
+        Explorar Catálogo
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="montar-kit.html" class="btn-ghost-light">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12h8M12 8v8"/></svg>
+        Montar kit personalizado
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="stat-num">5<em>+</em></div>
+        <div class="stat-label">anos de curadoria corporativa</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-num">200<em>+</em></div>
+        <div class="stat-label">empresas atendidas</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-num">98<em>%</em></div>
+        <div class="stat-label">taxa de aprovação dos clientes</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="dan-card">
+      <div class="dan-top">
+        <div class="dan-label">
+          <span class="dan-label-dot"></span>
+          Assessora Madan · online agora
+        </div>
+        <div class="dan-name">Converse com<br>a Dan</div>
+      </div>
+      <div class="dan-body">
+        <p class="dan-desc">Conte seu briefing — ocasião, perfil, prazo — e a Dan monta uma curadoria sob medida em minutos.</p>
+        <div class="dan-chips">
+          <span class="dan-chip">Onboarding</span>
+          <span class="dan-chip">Fim de ano</span>
+          <span class="dan-chip">Reconhecimento</span>
+          <span class="dan-chip">Personalizado</span>
+        </div>
+        <a href="assessor.html" class="btn-dan">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          Falar com a Dan
+        </a>
+        <p class="dan-note">1ª consulta gratuita · resposta em minutos</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TRUSTED ═══ -->
+<section class="trusted">
+  <div class="trusted-label">Empresas que escolhem a Madan</div>
+  <div class="trusted-row">
+    <div class="trusted-logo">Blip</div>
+    <div class="trusted-logo">Itaú</div>
+    <div class="trusted-logo">Nubank</div>
+    <div class="trusted-logo">Loft</div>
+    <div class="trusted-logo">Stone</div>
+    <div class="trusted-logo">XP</div>
+    <div class="trusted-logo">QuintoAndar</div>
+  </div>
+</section>
+
+<!-- ═══ OCCASIONS ═══ -->
+<div class="occ-header">
+  <div>
+    <div class="eyebrow">Por Ocasião</div>
+    <h2>O que você precisa<br>presentear <em>hoje?</em></h2>
+  </div>
+  <a href="ocasioes.html" class="link-arrow">Ver todas as ocasiões →</a>
+</div>
+
+<div class="occasions">
+  <a href="ocasioes.html#onboarding" class="occ occ-1">
+    <div class="occ-icon-wrap">🤝</div>
+    <div class="occ-name">Onboarding</div>
+    <div class="occ-desc">Boas-vindas para novos colaboradores e clientes que ficam.</div>
+    <div class="occ-arrow">Explorar →</div>
+  </a>
+  <a href="ocasioes.html#aniversario" class="occ occ-2">
+    <div class="occ-icon-wrap">🎂</div>
+    <div class="occ-name">Aniversário</div>
+    <div class="occ-desc">Datas especiais que merecem ser lembradas com cuidado.</div>
+    <div class="occ-arrow">Explorar →</div>
+  </a>
+  <a href="ocasioes.html#tempo-empresa" class="occ occ-3">
+    <div class="occ-icon-wrap">⭐</div>
+    <div class="occ-name">Tempo de empresa</div>
+    <div class="occ-desc">Reconhecimento de trajetória e fidelidade.</div>
+    <div class="occ-arrow">Explorar →</div>
+  </a>
+  <a href="ocasioes.html#fim-de-ano" class="occ occ-4">
+    <div class="occ-icon-wrap">🎆</div>
+    <div class="occ-name">Fim de ano</div>
+    <div class="occ-desc">Encerramento de ciclo com presença e cuidado real.</div>
+    <div class="occ-arrow">Explorar →</div>
+  </a>
+  <a href="ocasioes.html#reconhecimento" class="occ occ-5">
+    <div class="occ-icon-wrap">🏆</div>
+    <div class="occ-name">Reconhecimento</div>
+    <div class="occ-desc">Premiar conquistas, metas e atitudes que fazem diferença.</div>
+    <div class="occ-arrow">Explorar →</div>
+  </a>
+  <a href="ocasioes.html#dia-das-maes" class="occ occ-6">
+    <div class="occ-icon-wrap">💐</div>
+    <div class="occ-name">Dia das Mães</div>
+    <div class="occ-desc">Homenagem com afeto e intenção para quem importa.</div>
+    <div class="occ-arrow">Explorar →</div>
+  </a>
+</div>
+
+<!-- ═══ KITS PRONTOS ═══ -->
+<section class="kits">
+  <div class="kits-header">
+    <div>
+      <div class="eyebrow">Soluções Completas</div>
+      <h2>Kits prontos para<br>presentear.</h2>
+    </div>
+    <a href="kits.html" class="link-light">Ver todos os kits →</a>
+  </div>
+
+  <div class="kits-grid">
+    <div class="kit-card-dark">
+      <div class="kit-img">🧳<span class="kit-pill">Kit</span></div>
+      <div class="kit-content">
+        <div class="kit-cat">Lifestyle Premium</div>
+        <div class="kit-name">Kit Viagem Couro</div>
+        <div class="kit-desc">Mala, porta-passaporte e acessórios em couro legítimo. Sofisticação que acompanha o destino.</div>
+        <div class="kit-foot">
+          <div class="kit-price-d">R$ 2.849<small> / kit</small></div>
+          <a href="kits.html" class="btn-kit">Ver kit →</a>
+        </div>
+      </div>
+    </div>
+    <div class="kit-card-dark">
+      <div class="kit-img">👕<span class="kit-pill">Kit</span></div>
+      <div class="kit-content">
+        <div class="kit-cat">Bem-estar & Estilo</div>
+        <div class="kit-name">Kit Fluidez</div>
+        <div class="kit-desc">Camiseta, ecobag e itens de alto padrão pensados para o cotidiano de quem importa.</div>
+        <div class="kit-foot">
+          <div class="kit-price-d">R$ 300<small> / kit</small></div>
+          <a href="kits.html" class="btn-kit">Ver kit →</a>
+        </div>
+      </div>
+    </div>
+    <div class="kit-card-dark">
+      <div class="kit-img">📓<span class="kit-pill">Kit</span></div>
+      <div class="kit-content">
+        <div class="kit-cat">Organização Premium</div>
+        <div class="kit-name">Kit Legado Couro</div>
+        <div class="kit-desc">Caderno, porta-caneta e acessórios de mesa que combinam estética e praticidade real.</div>
+        <div class="kit-foot">
+          <div class="kit-price-d">R$ 211<small> / kit</small></div>
+          <a href="kits.html" class="btn-kit">Ver kit →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ COLLECTIONS ═══ -->
+<div class="coll-header">
+  <div class="eyebrow">Explore por Coleção</div>
+  <h2>Cada universo tem<br>seu <em>presente certo.</em></h2>
+</div>
+<div class="collections">
+  <a href="catalogo.html?cat=movimento" class="col-cell tall col-1">
+    <div class="col-overlay"></div>
+    <div style="position:absolute;top:0;right:0;width:280px;height:280px;background:var(--mineral);border-radius:280px 0 0 0;opacity:0.25;z-index:1;"></div>
+    <div class="col-body">
+      <div class="col-cat">Esporte & Bem-estar</div>
+      <h3 class="col-name" style="font-size:clamp(28px,3vw,46px)">Movimento</h3>
+      <p class="col-desc">Produtos esportivos e de bem-estar para ações de saúde, eventos ao ar livre e brindes que motivam.</p>
+      <a href="catalogo.html?cat=movimento" class="link-arrow-light">Explorar coleção →</a>
+    </div>
+  </a>
+  <a href="catalogo.html?cat=dia-a-dia" class="col-cell col-2">
+    <div class="col-overlay"></div>
+    <div style="position:absolute;top:0;left:0;width:140px;height:140px;background:var(--terracota);border-radius:0 0 140px 0;opacity:0.45;z-index:1;"></div>
+    <div class="col-body">
+      <div class="col-cat">Praticidade & Estilo</div>
+      <h3 class="col-name">Dia a Dia</h3>
+      <a href="catalogo.html?cat=dia-a-dia" class="link-arrow-light">Explorar →</a>
+    </div>
+  </a>
+  <a href="catalogo.html?cat=viagem" class="col-cell col-3">
+    <div class="col-overlay"></div>
+    <div style="position:absolute;top:0;right:0;width:120px;height:120px;background:var(--rose);border-radius:120px 0 0 0;opacity:0.4;z-index:1;"></div>
+    <div class="col-body">
+      <div class="col-cat">Aventura & Conforto</div>
+      <h3 class="col-name">Viagem & Lazer</h3>
+      <a href="catalogo.html?cat=viagem" class="link-arrow-light">Explorar →</a>
+    </div>
+  </a>
+  <a href="catalogo.html?cat=couro" class="col-cell col-4">
+    <div class="col-overlay"></div>
+    <div style="position:absolute;bottom:0;left:0;width:120px;height:120px;background:var(--amber);border-radius:0 120px 0 0;opacity:0.35;z-index:1;"></div>
+    <div class="col-body">
+      <div class="col-cat">Couro & Acessórios</div>
+      <h3 class="col-name">Legado</h3>
+      <a href="catalogo.html?cat=couro" class="link-arrow-light">Explorar →</a>
+    </div>
+  </a>
+  <a href="catalogo.html?cat=escritorio" class="col-cell col-5">
+    <div class="col-overlay"></div>
+    <div style="position:absolute;top:0;right:0;width:140px;height:140px;background:var(--lavanda);border-radius:140px 0 0 140px;opacity:0.4;z-index:1;"></div>
+    <div class="col-body">
+      <div class="col-cat">Escritório & Estudo</div>
+      <h3 class="col-name">Tinteiro</h3>
+      <a href="catalogo.html?cat=escritorio" class="link-arrow-light">Explorar →</a>
+    </div>
+  </a>
+  <a href="catalogo.html?cat=gourmet" class="col-cell col-6">
+    <div class="col-overlay"></div>
+    <div style="position:absolute;bottom:0;right:0;width:140px;height:140px;background:var(--sage);border-radius:140px 0 0 0;opacity:0.4;z-index:1;"></div>
+    <div class="col-body">
+      <div class="col-cat">Gourmet & Sabor</div>
+      <h3 class="col-name">Mesa</h3>
+      <a href="catalogo.html?cat=gourmet" class="link-arrow-light">Explorar →</a>
+    </div>
+  </a>
+</div>
+
+<!-- ═══ WHY MADAN ═══ -->
+<section class="why">
+  <div class="why-left">
+    <div class="why-eyebrow">Por que a Madan</div>
+    <h2 class="why-h2">Assessoria<br><em>especializada</em><br>em gifting estratégico.</h2>
+    <p class="why-p">Não somos fornecedores de brinde. Somos parceiros na construção de experiências que fortalecem vínculos e comunicam intenção.</p>
+    <a href="sobre.html" class="btn-why">Conhecer a Madan →</a>
+  </div>
+  <div class="why-right">
+    <div class="why-item">
+      <div class="why-num">01</div>
+      <div class="why-t">Curadoria com intenção</div>
+      <div class="why-d">Cada item escolhido com propósito, não preenchendo volume.</div>
+    </div>
+    <div class="why-item hl">
+      <div class="why-num">02</div>
+      <div class="why-t">Personalização real</div>
+      <div class="why-d">Nome, mensagem e identidade da empresa em cada detalhe.</div>
+    </div>
+    <div class="why-item">
+      <div class="why-num">03</div>
+      <div class="why-t">Entrega rastreada</div>
+      <div class="why-d">Cada kit acompanhado até o destinatário. Você vê tudo.</div>
+    </div>
+    <div class="why-item">
+      <div class="why-num">04</div>
+      <div class="why-t">Assessoria dedicada</div>
+      <div class="why-d">A Dan monta a curadoria certa para cada momento.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HOW IT WORKS ═══ -->
+<section class="how">
+  <div class="how-header">
+    <div class="eyebrow">Como funciona</div>
+    <h2 class="how-h2">Do briefing à entrega,<br><em>sem complicação.</em></h2>
+  </div>
+  <div class="how-grid">
+    <div class="step">
+      <div class="step-dot">1</div>
+      <div class="step-t">Contato inicial</div>
+      <div class="step-d">Você fala com a Madan via WhatsApp ou aqui no catálogo.</div>
+    </div>
+    <div class="step">
+      <div class="step-dot">2</div>
+      <div class="step-t">Proposta em 24h</div>
+      <div class="step-d">Receba uma proposta visual com itens, tier e prazo.</div>
+    </div>
+    <div class="step">
+      <div class="step-dot">3</div>
+      <div class="step-t">Briefing & aprovação</div>
+      <div class="step-d">Envie a lista de colaboradores e identidade visual.</div>
+    </div>
+    <div class="step">
+      <div class="step-dot">4</div>
+      <div class="step-t">Produção & montagem</div>
+      <div class="step-d">A Madan cuida de tudo. Fotos antes do envio.</div>
+    </div>
+    <div class="step">
+      <div class="step-dot">5</div>
+      <div class="step-t">Entrega & feedback</div>
+      <div class="step-d">Rastreio individual e confirmação de cada entrega.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DAN CTA ═══ -->
+<section class="dan-cta">
+  <div class="dan-cta-left">
+    <div class="dan-cta-eyebrow">Assessora Madan</div>
+    <h2 class="dan-cta-h2">A <em>Dan resolve.</em><br>Você presenteia.</h2>
+    <p class="dan-cta-p">Conte o momento, o perfil e o orçamento. Em minutos você tem uma curadoria pronta para aprovar — sem planilha, sem sufoco.</p>
+    <a href="assessor.html" class="btn-cta-cream">Falar com a Dan agora →</a>
+  </div>
+  <div class="dan-avatar">🐙</div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="main">
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-name">MADAN</div>
+      <div class="footer-brand-sub">corp</div>
+      <p class="footer-tag">Curadoria estratégica de presentes corporativos. Onde o cuidado encontra estratégia.</p>
+      <div class="social-row">
+        <a href="#" class="soc-btn">in</a>
+        <a href="#" class="soc-btn">ig</a>
+        <a href="#" class="soc-btn">wa</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-label">Catálogo</div>
+      <ul class="footer-links">
+        <li><a href="ocasioes.html">Por ocasião</a></li>
+        <li><a href="kits.html">Kits prontos</a></li>
+        <li><a href="catalogo.html">Catálogo completo</a></li>
+        <li><a href="montar-kit.html">Montar kit</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-label">Empresa</div>
+      <ul class="footer-links">
+        <li><a href="sobre.html">Sobre a Madan</a></li>
+        <li><a href="como-funciona.html">Como funciona</a></li>
+        <li><a href="assessor.html">Assessoria</a></li>
+        <li><a href="#">Loja Madan</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-label">Contato</div>
+      <ul class="footer-links">
+        <li><a href="#">WhatsApp</a></li>
+        <li><a href="mailto:vendas@wemadan.com">vendas@wemadan.com</a></li>
+        <li><a href="#">wemadan.com.br</a></li>
+        <li><a href="#">@wemadan</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 MADAN Comunicação e Produção Ltda.  ·  <a href="#">Privacidade</a>  ·  <a href="#">Termos</a></div>
+    <div class="footer-tag-bottom">onde o cuidado encontra estratégia</div>
+  </div>
+</footer>
+
+<div class="palette-stripe">
+  <div class="ps ps8"></div><div class="ps ps7"></div><div class="ps ps6"></div>
+  <div class="ps ps5"></div><div class="ps ps4"></div><div class="ps ps3"></div>
+  <div class="ps ps2"></div><div class="ps ps1"></div>
+</div>
+
+</body>
+</html>

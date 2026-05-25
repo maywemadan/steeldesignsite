@@ -1,0 +1,35 @@
+/* ─── Steel Construções — base tokens (shared across directions) ─── */
+/* All variants share the brand red derived from the logo. Each direction
+   re-defines neutrals + type to express a different facet. */
+:root {
+  /* Brand red — refined, "fechado" (deep oxblood, premium tone) */
+  --steel-red:    #8E1B22;   /* primary action / accent */
+  --steel-red-dk: #5C0F14;   /* hover / deep */
+  --steel-red-lt: #C24E54;   /* text on dark / muted */
+  --steel-red-faint: rgba(142,27,34,0.10);
+
+  /* Neutrals — warm */
+  --steel-black:  #0F0E0D;   /* near-black, warm */
+  --steel-ink:    #1C1A17;   /* body ink */
+  --steel-coal:   #2A2622;   /* card bg dark */
+  --steel-graphite: #5A524B; /* mid muted */
+  --steel-stone:  #8C857D;   /* mid */
+  --steel-sand:   #C9BEB0;   /* warm light gray */
+  --steel-bone:   #E8DFD0;   /* warm cream */
+  --steel-cream:  #F1EBE0;   /* base cream */
+  --steel-paper:  #F7F2E9;   /* paper */
+  --steel-white:  #FBF8F2;   /* off-white */
+
+  /* Misc */
+  --steel-border: rgba(15,14,13,0.08);
+  --steel-border-d: rgba(241,235,224,0.10);
+}
+
+/* Reset within a steel scope so each artboard is self-contained */
+.steel * { box-sizing: border-box; margin: 0; padding: 0; }
+.steel *::before, .steel *::after { box-sizing: border-box; }
+.steel a { text-decoration: none; color: inherit; }
+.steel button { font-family: inherit; cursor: pointer; border: none; background: none; }
+.steel img { display: block; max-width: 100%; }
+.steel ul, .steel ol { list-style: none; }
+.steel { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
